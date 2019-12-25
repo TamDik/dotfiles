@@ -1,0 +1,117 @@
+export LANG=en_US.UTF-8
+setopt no_beep
+setopt ignoreeof
+# disable r
+
+
+# prompt
+setopt prompt_subst
+autoload -Uz vcs_info
+export PROMPT='
+%~
+%F{110}❱%f '
+precmd() {
+  vcs_info
+}
+RF=0
+RK=102
+UNSTAGEDCOLOR=210
+STAGEDCOLOR=150
+zstyle ':vcs_info:git:*' check-for-changes true
+zstyle ':vcs_info:git:*' stagedstr "%F{${STAGEDCOLOR}}%K{${STAGEDCOLOR}}"
+zstyle ':vcs_info:git:*' unstagedstr "%F{${UNSTAGEDCOLOR}}%K{${UNSTAGEDCOLOR}}"
+zstyle ':vcs_info:*' formats "%F{${RK}}%f%K{${RK}}%F{${RF}} %s  %b %k%f"
+zstyle ':vcs_info:git:*' formats "%F{${RK}}%c%u%k%f%K{${RK}}%c%u%F{${RF}}  %b %k%f"
+export RPROMPT='${vcs_info_msg_0_}'
+unset RK RF UNSTAGEDCOLOR STAGEDCOLOR
+
+
+# key bind
+export KEYTIMEOUT=1
+bindkey -v
+# bindkey -M viins 'jj' vi-cmd-mode
+
+
+# zplug
+export ZPLUG_HOME=~/repos/github.com/zplug/zplug
+export ZPLUG_CACHE_DIR=~/.cache/zplug
+export ZPLUG_REPOS=~/repos/zplug
+if [ ! -d $ZPLUG_HOME ]; then
+  curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
+fi
+source $ZPLUG_HOME/init.zsh
+zplug "momo-lab/zsh-abbrev-alias"
+# now installed with ``brew''
+# zplug "universal-ctags/ctags"
+zplug "junegunn/fzf-bin", as:command, from:gh-r, rename-to:fzf
+zplug "junegunn/fzf", as:command, use:bin/fzf-tmux
+if ! zplug check; then
+  zplug install
+fi
+zplug load
+
+
+# history
+setopt hist_ignore_dups
+setopt hist_ignore_all_dups
+setopt share_history
+setopt hist_no_store
+setopt hist_reduce_blanks
+setopt hist_verify
+export HISTFILE=${DOTFILES}/zsh/history
+export HISTSIZE=10000
+export SAVEHIST=10000
+
+
+# cd
+setopt auto_cd
+setopt auto_pushd
+setopt pushd_ignore_dups
+alias dirs='dirs -v'
+cdpath=(
+  $cdpath
+)
+
+chpwd() {
+  if [ $(pwd) = $HOME ]; then
+    ls -aGF
+  else
+    ls -alGF
+  fi
+}
+
+
+# completion
+autoload -Uz compinit
+compinit -d ${DOTFILES}/zsh/zcompdump
+setopt correct
+zmodload zsh/complist
+zstyle ':completion:*' menu select
+bindkey -M menuselect '^h' vi-backward-char
+bindkey -M menuselect '^k' vi-up-line-or-history
+bindkey -M menuselect '^l' vi-forward-char
+bindkey -M menuselect '^j' vi-down-line-or-history
+
+# anaconda
+[ -f ${DOTFILES}/python/anacondarc.zsh ] && source ${DOTFILES}/python/anacondarc.zsh
+
+# fzf
+[ -f ${DOTFILES}/zsh/fzfrc.zsh ] && source ${DOTFILES}/zsh/fzfrc.zsh
+
+# alias
+[ -f ${DOTFILES}/zsh/aliasrc.zsh ] && source ${DOTFILES}/zsh/aliasrc.zsh
+
+# tmux
+if [ -z "$TMUX" ]; then
+  session=$(fts)
+  if [ -n "$session" ]; then
+    tmux attach -t $session
+  else
+    echo -n '\n\e[031mNEW SESSION NAME ❱\e[m '
+    read newsession
+    if [ -n "$newsession" ]; then
+      tmux -f ${DOTFILES}/tmux/tmux.conf new -s $newsession
+    fi
+  fi
+fi
+

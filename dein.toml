@@ -1,0 +1,74 @@
+[[plugins]]
+repo = 'cocopon/iceberg.vim'
+hook_add = '''
+  colorscheme iceberg
+'''
+
+[[plugins]]
+repo = 'itchyny/lightline.vim'
+hook_add = '''
+  set laststatus=2
+  let g:lightline = {
+    \ 'colorscheme': 'seoul256',
+    \ 'active': {
+    \   'left':  [['mode'],
+    \             ['filename']],
+    \   'right': [['filetype'],
+    \             ['fileencoding'],
+    \             ['fileformat']]
+    \ },
+    \ 'inactive': {
+    \   'left':  [['filename']],
+    \   'right': []
+    \ }
+    \ }
+'''
+
+
+[[plugins]]
+repo = 'tpope/vim-surround'
+
+
+[[plugins]]
+repo = 'Shougo/neocomplete.vim'
+hook_add = '''
+  let g:neocomplete#enable_at_startup = 1
+  let g:neocomplete#enable_smart_case = 1
+  let g:neocomplete#enable_underbar_completion = 1
+  let g:neocomplete#enable_camel_case_completion = 1
+  let g:neocomplete#enable_auto_close_preview = 1
+'''
+
+
+[[plugins]]
+repo = 'SirVer/ultisnips'
+hook_add = '''
+  let g:UltiSnipsExpandTrigger = "<tab>"
+  let g:UltiSnipsJumpForwardTrigger  = "<c-b>"
+  let g:UltiSnipsJumpBackwardTrigger = "<c-z>"
+  let g:UltiSnipsEditSplit = "vertical"
+'''
+
+
+[[plugins]]
+repo = 'honza/vim-snippets'
+
+
+[[plugins]]
+repo = 'junegunn/fzf.vim'
+hook_add = '''
+  nnoremap <leader>ff :Files<CR>
+  nnoremap <leader>fb :Buffers<CR>
+  nnoremap <leader>ft :Tags<CR>
+  nnoremap <leader>fh :History<CR>   " Fils
+'''
+
+
+[[plugins]]
+repo = 'junegunn/fzf'
+merged = '0'
+ 
+
+[[plugins]]
+repo = 'christoomey/vim-tmux-navigator'
+

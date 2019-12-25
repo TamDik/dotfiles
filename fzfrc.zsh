@@ -1,0 +1,38 @@
+#!/bin/zsh
+
+export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
+
+FZF_SHELL_DIR=~/repos/zplug/junegunn/fzf/shell
+[ -f $FZF_SHELL_DIR/completion.zsh ] && source $FZF_SHELL_DIR/completion.zsh
+[ -f $FZF_SHELL_DIR/key-bindings.zsh ] && source $FZF_SHELL_DIR/key-bindings.zsh
+# CTRL-T - Paste the selected files and directories onto the command-line
+# CTRL-R - Paste the selected command from history onto the command-line
+# ALT-C  - cd into the selected directory
+
+
+# Open the selected file at ``rcdir'' 
+frc() (
+  local rcdir rcfile
+  rcdir=~/repos/github.com/TamDik/dotfiles
+  cd $rcdir > /dev/null
+  rcfile=$(find . -name '.git' -prune -o -type f -print | sed '/README/d' | sed -e 's/^.\///' | fzf)
+  if [ -z "$rcfile" ]; then
+    return
+  fi
+  vim "$rcdir/$rcfile"
+  echo '~/repos/github.com/TamDik/dotfiles/'$rcfile
+)
+
+# select a tmux session
+fts () {
+  tmux list-sessions 2> /dev/null | fzf --exit-0 | awk -F: '{print $1}'
+}
+
+# attach the selected session
+fta () {
+  session=$(fts)
+  if [ -z "$session" ]; then
+    return
+  fi
+  tmux attach-session -t $session
+}

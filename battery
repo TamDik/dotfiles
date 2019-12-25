@@ -1,0 +1,31 @@
+#!/bin/bash
+
+battery_info=$(pmset -g ps | awk 'NR==2{print $3 $4}')
+
+
+if [ ${battery_info#*;} = 'charging;' ]; then
+  icons=('' '' '' '' '' '' '')
+  charging=1
+else
+  icons=('' '' '' '' '' '' '' '' '' '')
+fi
+
+remain=${battery_info%%%*}
+icons_cnt=${#icons[@]}
+
+if [ $remain -ge 100 ]; then
+  i=$((icons_cnt-1))
+else
+  i=$((remain*icons_cnt/100))
+fi
+
+if [ $charging ]; then
+  icon_col='#[fg=colour36]'
+elif [ $remain -le 15 ]; then
+  icon_col='#[fg=colour196]'
+elif [ $remain -le 30 ]; then
+  icon_col='#[fg=colour226]'
+fi
+
+echo " #[bg=colour239 fg=colour255] ${remain}% $icon_col${icons[$i]} #[default]"
+
