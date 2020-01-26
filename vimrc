@@ -134,6 +134,7 @@ set incsearch
 set hlsearch
 set ignorecase
 set smartcase
+set infercase
 nnoremap <silent> <leader><Space> :nohl<CR>
 
 
