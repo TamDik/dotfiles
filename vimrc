@@ -106,11 +106,10 @@ augroup END
 set tags=./tags,tags,./.tags,.tags
 
 function! s:tags_file()
-  if filereadable('./tags')
-    return './tags'
-  else
+  if filereadable('./.tags')
     return './.tags'
   endif
+  return './tags'
 endfunction
 
 function! s:make_tags()
@@ -120,7 +119,7 @@ function! s:make_tags()
 endfunction
 
 function! s:write_buffer()
-  if filereadable('./.tags') || filereadable('./tags')
+  if filereadable('./tags') || filereadable('./.tags')
     call s:make_tags()
   endif
 endfunction
