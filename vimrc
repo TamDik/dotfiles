@@ -2,6 +2,7 @@ scriptencoding utf-8
 set encoding=utf-8
 set shortmess+=I
 set completeopt=menuone
+set spelllang+=cjk
 set visualbell t_vb=
 set backspace=indent,start
 set ambiwidth=double
