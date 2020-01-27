@@ -6,6 +6,7 @@ set spelllang+=cjk
 set visualbell t_vb=
 set backspace=indent,start
 set ambiwidth=double
+set noshowcmd
 set noshowmode
 set hidden
 set number relativenumber
