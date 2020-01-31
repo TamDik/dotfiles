@@ -35,6 +35,7 @@ ln -snfv ${SCRIPT_DIR}/fzfrc.zsh         ${ZSH_DIR}/fzfrc.zsh
 ln -snfv ${SCRIPT_DIR}/anacondarc.zsh    ${PYTHON_DIR}/anacondarc.zsh
 ln -snfv ${SCRIPT_DIR}/pythonrc.py       ${PYTHON_DIR}/pythonrc.py
 ln -snfv ${SCRIPT_DIR}/deinrc.vim        ${VIM_DIR}/deinrc.vim
+ln -snfv ${SCRIPT_DIR}/mappingrc.vim     ${VIM_DIR}/mappingrc.vim
 ln -snfv ${SCRIPT_DIR}/dein.toml         ${VIM_DIR}/dein.toml
 ln -snfv ${SCRIPT_DIR}/dein_lazy.toml    ${VIM_DIR}/dein_lazy.toml
 ln -snfv ${SCRIPT_DIR}/ignore_global     ${GIT_DIR}/ignore_global

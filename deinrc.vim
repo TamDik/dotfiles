@@ -16,9 +16,8 @@ endif
 let g:dein#cache_directory = expand('~/.cache/dein')
 call dein#begin(s:dein_repo_path)
 
-let s:config_dir  = $DOTFILES . '/vim'
-let s:toml        = s:config_dir . '/dein.toml'
-let s:lazy_toml   = s:config_dir . '/dein_lazy.toml'
+let s:toml        = g:VIM_ROOT . '/dein.toml'
+let s:lazy_toml   = g:VIM_ROOT . '/dein_lazy.toml'
 if filereadable(s:toml)
   call dein#load_toml(s:toml,      {'lazy': 0})
 endif

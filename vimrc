@@ -10,17 +10,27 @@ set noshowcmd
 set noshowmode
 set hidden
 set number relativenumber
-let mapleader = "\<Space>"
 filetype plugin indent on
 syntax enable
 
+if &compatible
+  set nocompatible
+endif
+
+let mapleader = "\<Space>"
+let g:VIM_ROOT = $DOTFILES . '/vim'
 
 " dein
-let s:dein_rc = $DOTFILES . '/vim/deinrc.vim'
+let s:dein_rc = g:VIM_ROOT . '/deinrc.vim'
 if filereadable(s:dein_rc)
   execute 'source' s:dein_rc
 endif
 
+" mapping
+let s:mapping_rc = g:VIM_ROOT . '/mappingrc.vim'
+if filereadable(s:mapping_rc)
+  execute 'source' s:mapping_rc
+endif
 
 " color
 augroup TransparentBG
@@ -40,11 +50,10 @@ set matchtime=1
 
 
 " backup files and so on
-let s:vim_path  = $DOTFILES . '/vim'
-let s:backup_path = s:vim_path . '/temp/backup'
-let s:swap_path   = s:vim_path . '/temp/swap'
-let s:undo_path   = s:vim_path . '/temp/undo'
-let s:info_path   = s:vim_path . '/viminfo'
+let s:backup_path = g:VIM_ROOT . '/temp/backup'
+let s:swap_path   = g:VIM_ROOT . '/temp/swap'
+let s:undo_path   = g:VIM_ROOT . '/temp/undo'
+let s:info_path   = g:VIM_ROOT . '/viminfo'
 if !isdirectory(s:backup_path)
   call mkdir(s:backup_path, 'p')
 endif
@@ -107,28 +116,8 @@ set hlsearch
 set ignorecase
 set smartcase
 set infercase
-nnoremap <silent> <leader><Space> :nohl<CR>
 
 
 " split 
 set splitbelow
 set splitright
-nnoremap <leader>s :sp<CR>
-nnoremap <leader>v :vs<CR>
-nnoremap <leader>q :q<CR>
-
-
-" buffer
-nnoremap <silent> <leader>j :bprevious<CR>
-nnoremap <silent> <leader>k :bnext<CR>
-
-
-" other key mapping
-inoremap jj <ESC>
-nnoremap Y y$
-cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
-if executable('compiler')
-  nnoremap <silent> <F5> :w<CR>:!compiler %<CR>
-  inoremap <silent> <F5> <ESC>:w<CR>:!compiler %<CR>
-endif
-
