@@ -28,11 +28,31 @@ fts () {
   tmux list-sessions 2> /dev/null | fzf --exit-0 | awk -F: '{print $1}'
 }
 
+
 # attach the selected session
 fta () {
-  session=$(fts)
-  if [ -z "$session" ]; then
+  if [ -n "$TMUX" ]; then
     return
   fi
-  tmux attach-session -t $session
+
+  newsession='CREATE NEW SESSION'
+  sessions=$(tmux list-sessions 2> /dev/null)
+  if [ -z "$sessions" ]; then
+    sessions=$newsession
+  else
+    sessions="${newsession}\n${sessions}"
+  fi
+
+  session=$(echo $sessions | fzf --exit-0 --select-1 | awk -F: '{print $1}')
+  case $session in
+    ${newsession} )
+      echo -n '\n\e[031mNEW SESSION NAME ❱\e[m '
+      read session_name
+      if [ -n "$session_name" ]; then
+        tmux -f ${DOTFILES}/tmux/tmux.conf new -s $session_name
+      fi;;
+
+    '' ) ;;
+    * ) tmux attach -t $session;;
+  esac
 }

@@ -102,16 +102,6 @@ bindkey -M menuselect '^j' vi-down-line-or-history
 [ -f ${DOTFILES}/zsh/aliasrc.zsh ] && source ${DOTFILES}/zsh/aliasrc.zsh
 
 # tmux
-if [ -z "$TMUX" ]; then
-  session=$(fts)
-  if [ -n "$session" ]; then
-    tmux attach -t $session
-  else
-    echo -n '\n\e[031mNEW SESSION NAME ❱\e[m '
-    read newsession
-    if [ -n "$newsession" ]; then
-      tmux -f ${DOTFILES}/tmux/tmux.conf new -s $newsession
-    fi
-  fi
+if type fta > /dev/null 2>&1; then
+  fta
 fi
-
