@@ -22,13 +22,13 @@ mkdir -p ${DEIN_DIR}
 mkdir -p ${GIT_DIR}
 
 echo '[ links ]'
-ln -snfv ${SCRIPT_DIR}/anacondarc.zsh    ${PYTHON_DIR}/anacondarc.zsh
-ln -snfv ${SCRIPT_DIR}/commit_template   ${GIT_DIR}/commit_template
-ln -snfv ${SCRIPT_DIR}/ignore_global     ${GIT_DIR}/ignore_global
-ln -snfv ${SCRIPT_DIR}/pythonrc.py       ${PYTHON_DIR}/pythonrc.py
-ln -snfv ${SCRIPT_DIR}/tmux/battery           ${TMUX_DIR}/battery
-ln -snfv ${SCRIPT_DIR}/tmux/tmux.conf         ${TMUX_DIR}/tmux.conf
-ln -snfv ${SCRIPT_DIR}/tmux/tpm_install       ${TMUX_DIR}/tpm_install
+ln -snfv ${SCRIPT_DIR}/anacondarc.zsh        ${PYTHON_DIR}/anacondarc.zsh
+ln -snfv ${SCRIPT_DIR}/commit_template       ${GIT_DIR}/commit_template
+ln -snfv ${SCRIPT_DIR}/ignore_global         ${GIT_DIR}/ignore_global
+ln -snfv ${SCRIPT_DIR}/pythonrc.py           ${PYTHON_DIR}/pythonrc.py
+ln -snfv ${SCRIPT_DIR}/tmux/battery          ${TMUX_DIR}/battery
+ln -snfv ${SCRIPT_DIR}/tmux/tmux.conf        ${TMUX_DIR}/tmux.conf
+ln -snfv ${SCRIPT_DIR}/tmux/tpm_install      ${TMUX_DIR}/tpm_install
 ln -snfv ${SCRIPT_DIR}/vim/dein.toml         ${VIM_DIR}/dein.toml
 ln -snfv ${SCRIPT_DIR}/vim/dein_lazy.toml    ${VIM_DIR}/dein_lazy.toml
 ln -snfv ${SCRIPT_DIR}/vim/deinrc.vim        ${VIM_DIR}/deinrc.vim
