@@ -80,3 +80,7 @@ merged = '0'
 [[plugins]]
 repo = 'christoomey/vim-tmux-navigator'
 
+
+# [[plugins]]
+# repo = 'dense-analysis/ale'
+
