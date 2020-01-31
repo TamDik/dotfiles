@@ -22,24 +22,24 @@ mkdir -p ${DEIN_DIR}
 mkdir -p ${GIT_DIR}
 
 echo '[ links ]'
-ln -snfv ${SCRIPT_DIR}/vimrc             ~/.vimrc
-ln -snfv ${SCRIPT_DIR}/zshenv            ~/.zshenv
-ln -snfv ${SCRIPT_DIR}/gvimrc            ~/.gvimrc
-ln -snfv ${SCRIPT_DIR}/zprofile          ${ZSH_DIR}/.zprofile
-ln -snfv ${SCRIPT_DIR}/zshrc             ${ZSH_DIR}/.zshrc
-ln -snfv ${SCRIPT_DIR}/tmux.conf         ${TMUX_DIR}/tmux.conf
-ln -snfv ${SCRIPT_DIR}/tpm_install       ${TMUX_DIR}/tpm_install
-ln -snfv ${SCRIPT_DIR}/battery           ${TMUX_DIR}/battery
-ln -snfv ${SCRIPT_DIR}/aliasrc.zsh       ${ZSH_DIR}/aliasrc.zsh
-ln -snfv ${SCRIPT_DIR}/fzfrc.zsh         ${ZSH_DIR}/fzfrc.zsh
 ln -snfv ${SCRIPT_DIR}/anacondarc.zsh    ${PYTHON_DIR}/anacondarc.zsh
-ln -snfv ${SCRIPT_DIR}/pythonrc.py       ${PYTHON_DIR}/pythonrc.py
-ln -snfv ${SCRIPT_DIR}/deinrc.vim        ${VIM_DIR}/deinrc.vim
-ln -snfv ${SCRIPT_DIR}/mappingrc.vim     ${VIM_DIR}/mappingrc.vim
-ln -snfv ${SCRIPT_DIR}/dein.toml         ${VIM_DIR}/dein.toml
-ln -snfv ${SCRIPT_DIR}/dein_lazy.toml    ${VIM_DIR}/dein_lazy.toml
-ln -snfv ${SCRIPT_DIR}/ignore_global     ${GIT_DIR}/ignore_global
 ln -snfv ${SCRIPT_DIR}/commit_template   ${GIT_DIR}/commit_template
+ln -snfv ${SCRIPT_DIR}/ignore_global     ${GIT_DIR}/ignore_global
+ln -snfv ${SCRIPT_DIR}/pythonrc.py       ${PYTHON_DIR}/pythonrc.py
+ln -snfv ${SCRIPT_DIR}/tmux/battery           ${TMUX_DIR}/battery
+ln -snfv ${SCRIPT_DIR}/tmux/tmux.conf         ${TMUX_DIR}/tmux.conf
+ln -snfv ${SCRIPT_DIR}/tmux/tpm_install       ${TMUX_DIR}/tpm_install
+ln -snfv ${SCRIPT_DIR}/vim/dein.toml         ${VIM_DIR}/dein.toml
+ln -snfv ${SCRIPT_DIR}/vim/dein_lazy.toml    ${VIM_DIR}/dein_lazy.toml
+ln -snfv ${SCRIPT_DIR}/vim/deinrc.vim        ${VIM_DIR}/deinrc.vim
+ln -snfv ${SCRIPT_DIR}/vim/gvimrc            ~/.gvimrc
+ln -snfv ${SCRIPT_DIR}/vim/mappingrc.vim     ${VIM_DIR}/mappingrc.vim
+ln -snfv ${SCRIPT_DIR}/vim/vimrc             ~/.vimrc
+ln -snfv ${SCRIPT_DIR}/zsh/aliasrc.zsh       ${ZSH_DIR}/aliasrc.zsh
+ln -snfv ${SCRIPT_DIR}/zsh/fzfrc.zsh         ${ZSH_DIR}/fzfrc.zsh
+ln -snfv ${SCRIPT_DIR}/zsh/zprofile          ${ZSH_DIR}/.zprofile
+ln -snfv ${SCRIPT_DIR}/zsh/zshenv            ~/.zshenv
+ln -snfv ${SCRIPT_DIR}/zsh/zshrc             ${ZSH_DIR}/.zshrc
 
 cat << EOF
 
