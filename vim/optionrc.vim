@@ -64,3 +64,6 @@ set infercase
 set splitbelow
 set splitright
 
+
+" ctags
+set tags=./tags,tags,./.tags,.tags

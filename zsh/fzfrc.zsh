@@ -20,7 +20,6 @@ frc() (
     return
   fi
   vim "$rcdir/$rcfile"
-  echo '~/repos/github.com/TamDik/dotfiles/'$rcfile
 )
 
 # select a tmux session

@@ -1,4 +1,8 @@
 [[plugins]]
+repo = '~/repos/github.com/TamDik/vim-tags'
+
+
+[[plugins]]
 repo = 'cocopon/iceberg.vim'
 hook_add = '''
   colorscheme iceberg
@@ -83,4 +87,3 @@ repo = 'christoomey/vim-tmux-navigator'
 
 # [[plugins]]
 # repo = 'dense-analysis/ale'
-

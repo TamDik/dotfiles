@@ -8,57 +8,21 @@ if &compatible
   set nocompatible
 endif
 
+function! s:source_file(filename)
+  if !filereadable(a:filename)
+    return
+  endif
+  execute 'source' . a:filename
+endfunction
+
 " options
-let s:option_rc = g:VIM_ROOT . '/optionrc.vim'
-if filereadable(s:option_rc)
-  execute 'source' . s:option_rc
-endif
+call s:source_file(g:VIM_ROOT . '/optionrc.vim')
 
 " dein
-let s:dein_rc = g:VIM_ROOT . '/deinrc.vim'
-if filereadable(s:dein_rc)
-  execute 'source' s:dein_rc
-endif
+call s:source_file(g:VIM_ROOT . '/deinrc.vim')
 
 " color
-augroup TransparentBG
-  autocmd!
-  autocmd ColorScheme * highlight Normal      ctermbg=none
-  autocmd ColorScheme * highlight LineNr      ctermbg=none
-  autocmd ColorScheme * highlight Folded      ctermbg=none
-  autocmd ColorScheme * highlight NonText     ctermbg=none
-  autocmd ColorScheme * highlight EndOfBuffer ctermbg=none
-augroup END
-syntax on
+call s:source_file(g:VIM_ROOT . '/colorrc.vim')
 
 " mapping
-let s:mapping_rc = g:VIM_ROOT . '/mappingrc.vim'
-if filereadable(s:mapping_rc)
-  execute 'source' s:mapping_rc
-endif
-
-
-" ctags
-set tags=./tags,tags,./.tags,.tags
-
-function! s:tags_file()
-  if filereadable('./.tags')
-    return './.tags'
-  endif
-  return './tags'
-endfunction
-
-function! s:make_tags()
-  if executable('ctags')
-    call system("ctags -R -f " . s:tags_file())
-  endif
-endfunction
-
-function! s:write_buffer()
-  if filereadable('./tags') || filereadable('./.tags')
-    call s:make_tags()
-  endif
-endfunction
-
-command MakeTags call s:make_tags()
-autocmd BufWritePost * call s:write_buffer()
+call s:source_file(g:VIM_ROOT . '/mappingrc.vim')
