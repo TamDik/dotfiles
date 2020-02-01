@@ -10,6 +10,7 @@ endif
 
 function! s:source_file(filename)
   if !filereadable(a:filename)
+    echo 'File Not Found : ' . a:filename
     return
   endif
   execute 'source' . a:filename

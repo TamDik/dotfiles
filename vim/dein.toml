@@ -1,5 +1,6 @@
 [[plugins]]
 repo = '~/repos/github.com/TamDik/vim-tags'
+# repo = 'TamDik/vim-tags'
 
 
 [[plugins]]
