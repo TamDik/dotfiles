@@ -2,9 +2,9 @@
 nnoremap <silent> <leader><Space> :nohl<CR>
 
 " split 
-nnoremap <leader>s :sp<CR>
-nnoremap <leader>v :vs<CR>
-nnoremap <leader>q :q<CR>
+nnoremap <silent> <leader>s :sp<CR>
+nnoremap <silent> <leader>v :vs<CR>
+nnoremap <silent> <leader>q :q<CR>
 
 " buffer
 nnoremap <silent> <leader>j :bprevious<CR>
