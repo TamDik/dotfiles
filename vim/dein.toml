@@ -86,5 +86,18 @@ merged = '0'
 repo = 'christoomey/vim-tmux-navigator'
 
 
-# [[plugins]]
-# repo = 'dense-analysis/ale'
+[[plugins]]
+repo = 'dense-analysis/ale'
+hook_add = '''
+  let g:ale_sign_error = ''
+  let g:ale_sign_warning = ''
+  let g:ale_echo_msg_error_str = 'E'
+  let g:ale_echo_msg_warning_str = 'W'
+  let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+
+  augroup ALEColor
+    autocmd!
+    autocmd ColorScheme * highlight ALEErrorSign   ctermfg=203 ctermbg=none
+    autocmd ColorScheme * highlight ALEWarningSign ctermfg=216 ctermbg=none
+  augroup END
+'''

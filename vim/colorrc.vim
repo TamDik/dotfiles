@@ -6,5 +6,6 @@ augroup TransparentBG
   autocmd ColorScheme * highlight Folded      ctermbg=none
   autocmd ColorScheme * highlight NonText     ctermbg=none
   autocmd ColorScheme * highlight EndOfBuffer ctermbg=none
+  autocmd ColorScheme * highlight SignColumn  ctermbg=none
 augroup END
 syntax on
