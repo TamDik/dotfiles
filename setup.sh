@@ -22,7 +22,8 @@ mkdir -p ${DEIN_DIR}
 mkdir -p ${GIT_DIR}
 
 echo '[ links ]'
-ln -snfv ${SCRIPT_DIR}/anacondarc.zsh        ${PYTHON_DIR}/anacondarc.zsh
+ln -snfv ${SCRIPT_DIR}/zsh/pythonrc.zsh      ${PYTHON_DIR}/pythonrc.zsh
+ln -snfv ${SCRIPT_DIR}/pylintrc              ${PYTHON_DIR}/pylintrc
 ln -snfv ${SCRIPT_DIR}/commit_template       ${GIT_DIR}/commit_template
 ln -snfv ${SCRIPT_DIR}/ignore_global         ${GIT_DIR}/ignore_global
 ln -snfv ${SCRIPT_DIR}/pythonrc.py           ${PYTHON_DIR}/pythonrc.py

@@ -34,7 +34,7 @@ fta () {
     return
   fi
 
-  newsession='CREATE NEW SESSION'
+  newsession='CREATE NEW SESSION (or not tumx)'
   sessions=$(tmux list-sessions 2> /dev/null)
   if [ -z "$sessions" ]; then
     sessions=$newsession

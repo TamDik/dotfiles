@@ -2,7 +2,7 @@ set shortmess+=I
 set completeopt=menuone
 set spelllang+=cjk
 set visualbell t_vb=
-set backspace=indent,start
+set backspace=indent,start,eol
 set ambiwidth=double
 set noshowcmd
 set noshowmode
