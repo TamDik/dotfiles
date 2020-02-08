@@ -22,10 +22,9 @@ mkdir -p ${DEIN_DIR}
 mkdir -p ${GIT_DIR}
 
 echo '[ links ]'
-ln -snfv ${SCRIPT_DIR}/zsh/pythonrc.zsh      ${PYTHON_DIR}/pythonrc.zsh
-ln -snfv ${SCRIPT_DIR}/pylintrc              ${PYTHON_DIR}/pylintrc
 ln -snfv ${SCRIPT_DIR}/commit_template       ${GIT_DIR}/commit_template
 ln -snfv ${SCRIPT_DIR}/ignore_global         ${GIT_DIR}/ignore_global
+ln -snfv ${SCRIPT_DIR}/pylintrc              ${PYTHON_DIR}/pylintrc
 ln -snfv ${SCRIPT_DIR}/pythonrc.py           ${PYTHON_DIR}/pythonrc.py
 ln -snfv ${SCRIPT_DIR}/tmux/battery          ${TMUX_DIR}/battery
 ln -snfv ${SCRIPT_DIR}/tmux/tmux.conf        ${TMUX_DIR}/tmux.conf
@@ -40,6 +39,7 @@ ln -snfv ${SCRIPT_DIR}/vim/optionrc.vim      ${VIM_DIR}/optionrc.vim
 ln -snfv ${SCRIPT_DIR}/vim/vimrc             ~/.vimrc
 ln -snfv ${SCRIPT_DIR}/zsh/aliasrc.zsh       ${ZSH_DIR}/aliasrc.zsh
 ln -snfv ${SCRIPT_DIR}/zsh/fzfrc.zsh         ${ZSH_DIR}/fzfrc.zsh
+ln -snfv ${SCRIPT_DIR}/zsh/pythonrc.zsh      ${PYTHON_DIR}/pythonrc.zsh
 ln -snfv ${SCRIPT_DIR}/zsh/zprofile          ${ZSH_DIR}/.zprofile
 ln -snfv ${SCRIPT_DIR}/zsh/zshenv            ~/.zshenv
 ln -snfv ${SCRIPT_DIR}/zsh/zshrc             ${ZSH_DIR}/.zshrc
