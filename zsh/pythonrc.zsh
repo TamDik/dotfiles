@@ -33,3 +33,4 @@ unset __conda_setup
 
 # pylint
 export PYLINTRC="${DOTFILES}/python/pylintrc"
+export PYLINTHOME="${DOTFILES}/python/pylint.d"

@@ -23,6 +23,7 @@ zstyle ':vcs_info:git:*' unstagedstr "%F{${UNSTAGEDCOLOR}}%K{${UNSTAGEDCOLOR}}"
 zstyle ':vcs_info:*' formats "%F{${RK}}%f%K{${RK}}%F{${RF}} %s  %b %k%f"
 zstyle ':vcs_info:git:*' formats "%F{${RK}}%c%u%k%f%K{${RK}}%c%u%F{${RF}}  %b %k%f"
 export RPROMPT='${vcs_info_msg_0_}'
+export PS2='%F{248}❱%f '
 unset RK RF UNSTAGEDCOLOR STAGEDCOLOR
 
 

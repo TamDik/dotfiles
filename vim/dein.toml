@@ -1,5 +1,5 @@
-[[plugins]]
-repo = '~/repos/github.com/TamDik/vim-tags'
+# [[plugins]]
+# repo = '~/repos/github.com/TamDik/vim-tags'
 # repo = 'TamDik/vim-tags'
 
 
@@ -89,11 +89,16 @@ repo = 'christoomey/vim-tmux-navigator'
 [[plugins]]
 repo = 'dense-analysis/ale'
 hook_add = '''
+  "let b:ale_linters = ['pylint', 'javac']
   let g:ale_sign_error = ''
   let g:ale_sign_warning = ''
   let g:ale_echo_msg_error_str = 'E'
   let g:ale_echo_msg_warning_str = 'W'
   let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+
+  if isdirectory('src')
+    let g:ale_java_javac_classpath = getcwd() . '/src'
+  endif
 
   augroup ALEColor
     autocmd!

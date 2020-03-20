@@ -6,3 +6,6 @@ export PATH
 
 export LSCOLORS=ExFxCxdxBxegedabagacad
 export LESSHISTFILE=${DOTFILES}/less_history
+
+JavaFXLib=$JavaFXLib:~/Prog/Java/javafx-sdk-11.0.2/lib/
+export JavaFXLib
