@@ -18,7 +18,8 @@ GIT_DIR=${DOTFILES}/git
 mkdir -p ${ZSH_DIR}
 mkdir -p ${TMUX_DIR}
 mkdir -p ${PYTHON_DIR}
-mkdir -p ${DEIN_DIR}
+# mkdir -p ${DEIN_DIR}
+mkdir -p ${VIM_DIR}
 mkdir -p ${GIT_DIR}
 
 echo '[ links ]'

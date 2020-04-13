@@ -36,14 +36,13 @@ execute 'set viminfo+=n' . s:info_path
 
 
 " tab
-set tabstop=2
+set tabstop=4
 set shiftwidth=0
 set expandtab
 augroup TabSetting
   autocmd!
-  autocmd FileType python   setlocal tabstop=4
   autocmd FileType markdown setlocal tabstop=2
-  autocmd FileType java     setlocal tabstop=4
+  autocmd FileType xml setlocal tabstop=2
 augroup END
 
 

@@ -19,7 +19,7 @@ frc() (
   if [ -z "$rcfile" ]; then
     return
   fi
-  vim "$rcdir/$rcfile"
+  vim "$rcfile"
 )
 
 # select a tmux session
@@ -34,17 +34,17 @@ fta () {
     return
   fi
 
-  newsession='CREATE NEW SESSION (or not tumx)'
+  message_of_creation='CREATE NEW SESSION (or not tumx)'
   sessions=$(tmux list-sessions 2> /dev/null)
   if [ -z "$sessions" ]; then
-    sessions=$newsession
+    sessions=$message_of_creation
   else
-    sessions="${newsession}\n${sessions}"
+    sessions="${message_of_creation}\n${sessions}"
   fi
 
   session=$(echo $sessions | fzf --exit-0 --select-1 | awk -F: '{print $1}')
   case $session in
-    ${newsession} )
+    ${message_of_creation} )
       echo -n '\n\e[031mNEW SESSION NAME ❱\e[m '
       read session_name
       if [ -n "$session_name" ]; then
@@ -55,3 +55,12 @@ fta () {
     * ) tmux attach -t $session;;
   esac
 }
+
+# fbr - checkout git branch
+fbr() {
+  local branches branch
+  branches=$(git --no-pager branch -vv) &&
+  branch=$(echo "$branches" | fzf +m) &&
+  git checkout $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
+}
+
