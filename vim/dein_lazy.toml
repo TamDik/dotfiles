@@ -8,7 +8,9 @@ hook_add = '''
     autocmd!
     autocmd User GoyoEnter :nnoremap j gj
     autocmd User GoyoEnter :nnoremap k gk
+    autocmd User GoyoEnter :nnoremap J gJ
     autocmd User GoyoLeave :nnoremap j j
     autocmd User GoyoLeave :nnoremap k k
+    autocmd User GoyoLeave :nnoremap J J
   augroup END
 '''
