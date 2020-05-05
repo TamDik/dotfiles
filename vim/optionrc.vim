@@ -43,6 +43,7 @@ augroup TabSetting
   autocmd!
   autocmd FileType markdown setlocal tabstop=2
   autocmd FileType xml setlocal tabstop=2
+  autocmd FileType html setlocal tabstop=2
 augroup END
 
 
