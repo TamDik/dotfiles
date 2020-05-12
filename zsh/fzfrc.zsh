@@ -34,7 +34,7 @@ fta () {
     return
   fi
 
-  message_of_creation='CREATE NEW SESSION (or not tumx)'
+  message_of_creation='CREATE NEW SESSION'
   sessions=$(tmux list-sessions 2> /dev/null)
   if [ -z "$sessions" ]; then
     sessions=$message_of_creation
