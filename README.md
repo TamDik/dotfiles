@@ -131,7 +131,7 @@ let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 
-" 処理の hook
+" hooks
 augroup YourGroup
     autocmd!
     autocmd User ALELintPre    call YourFunction()
@@ -155,4 +155,18 @@ let g:ale_lint_on_save = 0
 ```
 
 #### [junegunn/goyo.vim](https://github.com/junegunn/goyo.vim)
+```vim
+" Goyo をトグルする
+:Goyo
 
+" サイズの設定
+let g:goyo_width = 80
+let g:goyo_height = '100%'
+
+" ？？？
+let g:goyo_linenr = 0
+
+" hooks
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
+```
