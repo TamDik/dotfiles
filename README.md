@@ -3,7 +3,7 @@
 ## Vim
 `let mapleader = "\<Space>"`
 
-### Normal
+### Normal mode
 | map               | effect                      |
 | ----------------- | --------------------------- |
 | `<leader>ff`      | `:Files<CR>`                |
@@ -22,13 +22,13 @@
 | `<F5>`            | `:w<CR>:!compiler %<CR>`    |
 | `nnoremap`        | `Y y$`                      |
 
-### Insert
+### Insert mode
 | map    | effect                            |
 | ------ | --------------------------------- |
 | `jj`   | `<ESC>`                           |
 | `<F5>` | `<ESC>:w<CR>:!compiler %<CR>`     |
 
-### Command-line
+### Command-line mode
 | map    | effect                                           |
 | ------ | ------------------------------------------------ |
 | `%%`   | `getcmdtype() == ':' ? expand('%:h').'/' : '%%'` |
