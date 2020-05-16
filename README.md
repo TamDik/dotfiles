@@ -33,3 +33,28 @@
 | ------ | ------------------------------------------------ |
 | `%%`   | `getcmdtype() == ':' ? expand('%:h').'/' : '%%'` |
 
+
+### Plugins
+#### [cocopon/iceberg.vim](https://github/cocopon/iceberg.vim)
+
+#### [itchyny/lightline.vim](https://github/itchyny/lightline.vim)
+
+#### [tpope/vim-surround](https://github/tpope/vim-surround)
+
+#### [tpope/vim-repeat](https://github/tpope/vim-repeat)
+
+#### [tpope/vim-commentary](https://github/tpope/vim-commentary)
+
+#### [Shougo/neocomplete.vim](https://github/Shougo/neocomplete.vim)
+
+#### [SirVer/ultisnips](https://github/SirVer/ultisnips)
+
+#### [honza/vim-snippets](https://github/honza/vim-snippets)
+
+#### [junegunn/fzf.vim](https://github/junegunn/fzf.vim)
+
+#### [junegunn/fzf](https://github/junegunn/fzf)
+
+#### [christoomey/vim-tmux-navigator](https://github/christoomey/vim-tmux-navigator)
+
+#### [dense-analysis/ale](https://github/dense-analysis/ale)
