@@ -35,26 +35,26 @@
 
 
 ### Plugins
-#### [cocopon/iceberg.vim](https://github/cocopon/iceberg.vim)
+#### [cocopon/iceberg.vim](https://github.com/cocopon/iceberg.vim)
 
-#### [itchyny/lightline.vim](https://github/itchyny/lightline.vim)
+#### [itchyny/lightline.vim](https://github.com/itchyny/lightline.vim)
 
-#### [tpope/vim-surround](https://github/tpope/vim-surround)
+#### [tpope/vim-surround](https://github.com/tpope/vim-surround)
 
-#### [tpope/vim-repeat](https://github/tpope/vim-repeat)
+#### [tpope/vim-repeat](https://github.com/tpope/vim-repeat)
 
-#### [tpope/vim-commentary](https://github/tpope/vim-commentary)
+#### [tpope/vim-commentary](https://github.com/tpope/vim-commentary)
 
-#### [Shougo/neocomplete.vim](https://github/Shougo/neocomplete.vim)
+#### [Shougo/neocomplete.vim](https://github.com/Shougo/neocomplete.vim)
 
-#### [SirVer/ultisnips](https://github/SirVer/ultisnips)
+#### [SirVer/ultisnips](https://github.com/SirVer/ultisnips)
 
-#### [honza/vim-snippets](https://github/honza/vim-snippets)
+#### [honza/vim-snippets](https://github.com/honza/vim-snippets)
 
-#### [junegunn/fzf.vim](https://github/junegunn/fzf.vim)
+#### [junegunn/fzf.vim](https://github.com/junegunn/fzf.vim)
 
-#### [junegunn/fzf](https://github/junegunn/fzf)
+#### [junegunn/fzf](https://github.com/junegunn/fzf)
 
-#### [christoomey/vim-tmux-navigator](https://github/christoomey/vim-tmux-navigator)
+#### [christoomey/vim-tmux-navigator](https://github.com/christoomey/vim-tmux-navigator)
 
-#### [dense-analysis/ale](https://github/dense-analysis/ale)
+#### [dense-analysis/ale](https://github.com/dense-analysis/ale)
