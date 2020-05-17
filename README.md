@@ -57,6 +57,72 @@
 #### [junegunn/fzf](https://github.com/junegunn/fzf)
 
 #### [christoomey/vim-tmux-navigator](https://github.com/christoomey/vim-tmux-navigator)
+tmux と vim の画面移動を同一キーで行う。
+* `<ctrl-h>` => 左に移動
+* `<ctrl-j>` => 下に移動
+* `<ctrl-k>` => 上に移動
+* `<ctrl-l>` => 右に移動
+* `<ctrl-\>` => 前の分割に移動
+
+Tmux Plugin Manager (TPM) を使用している場合は以下を ~/.tmux.conf に追記。
+```tmux
+# ~/.tmux.conf
+set -g @plugin 'christoomey/vim-tmux-navigator'
+run '~/.tmux/plugins/tpm/tpm'
+```
+TPM 以外の場合は [README](https://github.com/christoomey/vim-tmux-navigator#add-a-snippet) を参照。
+```tmux
+# ~/.tmux.conf
+is_vim="ps -o state= -o comm= -t '#{pane_tty}' \
+    | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|n?vim?x?)(diff)?$'"
+bind-key -n 'C-h' if-shell "$is_vim" 'send-keys C-h'  'select-pane -L'
+bind-key -n 'C-j' if-shell "$is_vim" 'send-keys C-j'  'select-pane -D'
+bind-key -n 'C-k' if-shell "$is_vim" 'send-keys C-k'  'select-pane -U'
+bind-key -n 'C-l' if-shell "$is_vim" 'send-keys C-l'  'select-pane -R'
+tmux_version='$(tmux -V | sed -En "s/^tmux ([0-9]+(.[0-9]+)?).*/\1/p")'
+if-shell -b '[ "$(echo "$tmux_version < 3.0" | bc)" = 1 ]' \
+    "bind-key -n 'C-\\' if-shell \"$is_vim\" 'send-keys C-\\'  'select-pane -l'"
+if-shell -b '[ "$(echo "$tmux_version >= 3.0" | bc)" = 1 ]' \
+    "bind-key -n 'C-\\' if-shell \"$is_vim\" 'send-keys C-\\\\'  'select-pane -l'"
+
+bind-key -T copy-mode-vi 'C-h' select-pane -L
+bind-key -T copy-mode-vi 'C-j' select-pane -D
+bind-key -T copy-mode-vi 'C-k' select-pane -U
+bind-key -T copy-mode-vi 'C-l' select-pane -R
+bind-key -T copy-mode-vi 'C-\' select-pane -l
+```
+
+キーバインドを変更する場合は ~/.tmux.conf の `bind-key` の書き換えと、以下を ~/.vimrc に追記。
+```vim
+" ~/.vimrc
+let g:tmux_navigator_no_mappings = 1
+
+nnoremap <silent> {Left-Mapping} :TmuxNavigateLeft<cr>
+nnoremap <silent> {Down-Mapping} :TmuxNavigateDown<cr>
+nnoremap <silent> {Up-Mapping} :TmuxNavigateUp<cr>
+nnoremap <silent> {Right-Mapping} :TmuxNavigateRight<cr>
+nnoremap <silent> {Previous-Mapping} :TmuxNavigatePrevious<cr>
+```
+
+vim から抜けて tmux に入った時に buffer を自動的に保存したい場合
+```vim
+" ~/.vimrc
+let g:tmux_navigator_save_on_switch = 1  " :update 現在の buffer のみを対象に、変更されていた場合保存
+let g:tmux_navigator_save_on_switch = 2  " :wall   全ての buffer を保存
+```
+
+tmux のズームモード (\<prefix\>z)で、tmux に移動する方向へ移動しようとした時、自動的にズームを解除する
+```vim
+" ~/.vimrc
+let g:tmux_navigator_disable_when_zoomed = 1
+```
+
+\<prefix\> C-l をスクリーンクリアに割り当てる
+```tmux
+~/.tmux.conf
+bind C-l send-keys 'C-l'
+```
+
 
 #### [dense-analysis/ale](https://github.com/dense-analysis/ale)
 ```vim
