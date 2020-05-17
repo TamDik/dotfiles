@@ -128,12 +128,13 @@ silent! call repeat#set("\<Plug>MyWonderfulMap", v:count)
 | `:g/TODO/Commentar` | `TODO` にマッチした行をコメントをトグル |
 | `gcgc`              | 行をアンコメント                        |
 
-未対応の言語でコメントのフォーマットを追加
 ```vim
+" 未対応の言語でコメントのフォーマットを追加
 autocmd FileType apache setlocal commentstring=#\ %s
 ```
 
 #### [Shougo/neocomplete.vim](https://github.com/Shougo/neocomplete.vim)
+([Shougo/deoplete](https://github.com/Shougo/deoplete.nvim)に移行したい。)
 
 #### [SirVer/ultisnips](https://github.com/SirVer/ultisnips)
 
