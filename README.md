@@ -92,7 +92,7 @@ let g:lightline.mode_map = {
 
 #### [tpope/vim-surround](https://github.com/tpope/vim-surround)
 surroundings マッピングを追加する。
-| key        | effect                       |
+| command    | effect                       |
 | ---------- | ---------------------------- |
 | `cs"'`     | `"` から `'` に変える        |
 | `cs'<q>`   | `'` から `<p>` タグに変える  |
@@ -119,6 +119,19 @@ silent! call repeat#set("\<Plug>MyWonderfulMap", v:count)
 ```
 
 #### [tpope/vim-commentary](https://github.com/tpope/vim-commentary)
+コメントアウトマッピングを追加する
+| command             | effect                                  |
+| ------------------- | --------------------------------------- |
+| `gcc`               | 行をコメントをトグル                    |
+| `gcip`              | `ip` をコメントをトグル                 |
+| `:7,17Commentary`   | 7〜17行目をコメントをトグル             |
+| `:g/TODO/Commentar` | `TODO` にマッチした行をコメントをトグル |
+| `gcgc`              | 行をアンコメント                        |
+
+未対応の言語でコメントのフォーマットを追加
+```vim
+autocmd FileType apache setlocal commentstring=#\ %s
+```
 
 #### [Shougo/neocomplete.vim](https://github.com/Shougo/neocomplete.vim)
 
