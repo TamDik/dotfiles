@@ -8,23 +8,26 @@ if &runtimepath !~# '/dein.vim'
   execute 'set runtimepath^=' . fnamemodify(s:dein_vim_path, ':p')
 endif
 
+function! s:load_dein_toml(filename, ...)
+  if !filereadable(a:filename)
+    echo 'File Not Found : ' . a:filename
+    return
+  endif
+  let lazy = get(a:000, 0, 0)
+  call dein#load_toml(a:filename, {'lazy': lazy})
+endfunction
+
 let s:dein_repo_path = expand('~/repos/dein.vim')
+let s:dein_cache_path = expand('~/.cache/dein')
+
 if !dein#load_state(s:dein_repo_path)
   finish
 endif
 
-let g:dein#cache_directory = expand('~/.cache/dein')
+let g:dein#cache_directory = s:dein_cache_path
 call dein#begin(s:dein_repo_path)
-
-let s:toml        = g:VIM_ROOT . '/dein.toml'
-let s:lazy_toml   = g:VIM_ROOT . '/dein_lazy.toml'
-if filereadable(s:toml)
-  call dein#load_toml(s:toml,      {'lazy': 0})
-endif
-if filereadable(s:lazy_toml)
-  call dein#load_toml(s:lazy_toml, {'lazy': 1})
-endif
-
+call s:load_dein_toml(g:VIM_ROOT . '/dein.toml')
+call s:load_dein_toml(g:VIM_ROOT . '/dein_lazy.toml', 1)
 call dein#end()
 call dein#save_state()
 
