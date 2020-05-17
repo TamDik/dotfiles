@@ -57,20 +57,14 @@
 #### [junegunn/fzf](https://github.com/junegunn/fzf)
 
 #### [christoomey/vim-tmux-navigator](https://github.com/christoomey/vim-tmux-navigator)
-tmux と vim の画面移動を同一キーで行う。
+tmux と vim の画面移動を同一キーで行うことを可能にする。
 * `<ctrl-h>` => 左に移動
 * `<ctrl-j>` => 下に移動
 * `<ctrl-k>` => 上に移動
 * `<ctrl-l>` => 右に移動
 * `<ctrl-\>` => 前の分割に移動
 
-Tmux Plugin Manager (TPM) を使用している場合は以下を ~/.tmux.conf に追記。
-```tmux
-# ~/.tmux.conf
-set -g @plugin 'christoomey/vim-tmux-navigator'
-run '~/.tmux/plugins/tpm/tpm'
-```
-TPM 以外の場合は [README](https://github.com/christoomey/vim-tmux-navigator#add-a-snippet) を参照。
+~/.tmux.conf に以下を追記。
 ```tmux
 # ~/.tmux.conf
 is_vim="ps -o state= -o comm= -t '#{pane_tty}' \
@@ -90,6 +84,13 @@ bind-key -T copy-mode-vi 'C-j' select-pane -D
 bind-key -T copy-mode-vi 'C-k' select-pane -U
 bind-key -T copy-mode-vi 'C-l' select-pane -R
 bind-key -T copy-mode-vi 'C-\' select-pane -l
+```
+
+Tmux Plugin Manager (TPM) を使用している場合は以下を ~/.tmux.conf に追記。
+```tmux
+# ~/.tmux.conf
+set -g @plugin 'christoomey/vim-tmux-navigator'
+run '~/.tmux/plugins/tpm/tpm'
 ```
 
 キーバインドを変更する場合は ~/.tmux.conf の `bind-key` の書き換えと、以下を ~/.vimrc に追記。
