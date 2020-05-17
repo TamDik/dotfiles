@@ -101,10 +101,22 @@ surroundings マッピングを追加する。
 | `ysiw]`    | `word` を `[]` で囲む        |
 | `yss)`     | 1行全体を `()` で囲む        |
 | `ysiw<em>` | `word` を `<em></em>` で囲む |
-* `ys` や `yss` で囲み文字に、開き括弧を指定した場合はスペースを括弧の内側に挿入し、閉じ括弧を指定した場合はスペースを挿入しない。
+* `ys` や `yss` で囲み文字に開き括弧を指定した場合はスペースを括弧の内側に挿入し、閉じ括弧を指定した場合はスペースを挿入しない。
 * `)` の代わりに `b` を使うこともできる。
 
 #### [tpope/vim-repeat](https://github.com/tpope/vim-repeat)
+`.` コマンドを、プラグインで追加されたマッピングに対応させる。
+対応しているプラグインは以下。
+* [tpope/vim-surround](https://github.com/tpope/vim-surround)
+* [tpope/vim-speeddating](https://github.com/tpope/vim-speeddating)
+* [tpope/vim-unimpaired](https://github.com/tpope/vim-unimpaired)
+* [svermeulen/vim-easyclip](https://github.com/svermeulen/vim-easyclip)
+* [glts/vim-radical](https://github.com/glts/vim-radical)
+
+上記以外も以下で追加できる？？？
+```vim
+silent! call repeat#set("\<Plug>MyWonderfulMap", v:count)
+```
 
 #### [tpope/vim-commentary](https://github.com/tpope/vim-commentary)
 
