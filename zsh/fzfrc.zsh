@@ -15,7 +15,8 @@ frc() (
   local rcdir rcfile
   rcdir=~/repos/github.com/TamDik/dotfiles
   cd $rcdir > /dev/null
-  rcfile=$(find . -name '.git' -prune -o -type f -print | sed '/README/d' | sed -e 's/^.\///' | fzf)
+  # rcfile=$(find . -name '.git' -prune -o -type f -print | sed '/README/d' | sed -e 's/^.\///' | fzf)
+  rcfile=$(find . -name '.git' -prune -o -type f -print | sed -e 's/^.\///' | fzf)
   if [ -z "$rcfile" ]; then
     return
   fi
