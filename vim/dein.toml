@@ -25,7 +25,7 @@ hook_add = '''
     \ 'inactive': {
     \   'left':  [['filename']],
     \   'right': []
-    \ }
+    \ },
     \ }
 '''
 

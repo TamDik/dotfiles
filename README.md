@@ -39,6 +39,57 @@
 カラースキーム
 
 #### [itchyny/lightline.vim](https://github.com/itchyny/lightline.vim)
+ステータスラインの装飾
+```vim
+set laststatus=2  " ステータスラインを常に表示
+set noshowmode    " -- INSERT -- などを非表示にする
+```
+
+```vim
+" カラースキームの設定
+let g:lightline.colorscheme = 'seoul256'
+
+" buffer がアクティブの時の表示内容
+let g:lightline.active.left = []
+let g:lightline.active.right = []
+
+" buffer が非アクティブの時の表示内容
+let g:lightline.inactive.left = []
+let g:lightline.inactive.right = []
+
+" 新しい component を Dictionary で登録し、
+" g:lightline.active などに key を追加して反映させる。
+" 特定の文字列や、カーソル下の文字などを追加できる
+" :h g:lightline.component
+let g:lightline.component = {
+\  'charvaluehex': '0x%B',
+\  'helloworld': 'Hello, world!'
+\}
+
+" String を返す function を Dictionary で登録し、
+" g:lightline.active などに key を追加して反映させる。
+" git branch を表示することなどができる
+" :h g:lightline.component_function
+let g: lightline.component_function = {
+\  'gitbranch': 'FugitiveHead'  " この関数を動かすには tpope/vim-fugitive が必要
+\}
+
+" mode 名を変更
+let g:lightline.mode_map = {
+  \ 'n': 'N',
+  \ 'i': 'I',
+  \ 'R': 'R',
+  \ 'v': 'V',
+  \ 'V': 'VL',
+  \ "\<C-v>": 'VB',
+  \ 'c': 'C',
+  \ 's': 'S',
+  \ 'S': 'SL',
+  \ "\<C-s>": 'SB',
+  \ 't': 'T',
+  \ }
+```
+
 
 #### [tpope/vim-surround](https://github.com/tpope/vim-surround)
 
