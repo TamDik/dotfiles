@@ -38,7 +38,6 @@ ln -snfv ${SCRIPT_DIR}/vim/dein_lazy.toml    ${VIM_DIR}/dein_lazy.toml
 ln -snfv ${SCRIPT_DIR}/vim/deinrc.vim        ${VIM_DIR}/deinrc.vim
 ln -snfv ${SCRIPT_DIR}/vim/gvimrc            ~/.gvimrc
 ln -snfv ${SCRIPT_DIR}/nvim/init.vim         ${NVIM_DIR}/init.vim
-ln -snfv ${SCRIPT_DIR}/nvim/optionrc.vim     ${NVIM_DIR}/optionrc.vim
 ln -snfv ${SCRIPT_DIR}/vim/mappingrc.vim     ${VIM_DIR}/mappingrc.vim
 ln -snfv ${SCRIPT_DIR}/vim/optionrc.vim      ${VIM_DIR}/optionrc.vim
 ln -snfv ${SCRIPT_DIR}/vim/vimrc             ~/.vimrc

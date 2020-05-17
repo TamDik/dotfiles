@@ -11,29 +11,38 @@ set number relativenumber
 filetype plugin indent on
 syntax enable
 
-" backup files and so on
+if has('nvim')
+  let s:root_dir = g:NVIM_ROOT
+else
+  let s:root_dir = g:VIM_ROOT
+endif
+
 if !has('nvim')
-  let s:backup_path = g:VIM_ROOT . '/temp/backup'
-  let s:swap_path   = g:VIM_ROOT . '/temp/swap'
-  let s:undo_path   = g:VIM_ROOT . '/temp/undo'
-  let s:info_path   = g:VIM_ROOT . '/viminfo'
-  if !isdirectory(s:backup_path)
-    call mkdir(s:backup_path, 'p')
-  endif
-  if !isdirectory(s:swap_path)
-    call mkdir(s:swap_path,   'p')
-  endif
-  if !isdirectory(s:undo_path)
-    call mkdir(s:undo_path,   'p')
-  endif
-  set backup
-  set swapfile
-  set undofile
-  execute 'set backupdir=' . s:backup_path
-  execute 'set directory=' . s:swap_path
-  execute 'set undodir='   . s:undo_path
+  let s:info_path   = s:root_dir . '/viminfo'
   execute 'set viminfo+=n' . s:info_path
 endif
+
+" backup files and so on
+set backupext=.bat
+set backup
+set swapfile
+set undofile
+
+let s:backup_path = s:root_dir . '/backup'
+let s:swap_path   = s:root_dir . '/swap'
+let s:undo_path   = s:root_dir . '/undo'
+if !isdirectory(s:backup_path)
+  call mkdir(s:backup_path, 'p')
+endif
+if !isdirectory(s:swap_path)
+  call mkdir(s:swap_path,   'p')
+endif
+if !isdirectory(s:undo_path)
+  call mkdir(s:undo_path,   'p')
+endif
+let &backupdir = s:backup_path
+let &directory = s:swap_path
+let &undodir   = s:undo_path
 
 " tab
 set tabstop=4

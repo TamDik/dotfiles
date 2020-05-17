@@ -13,3 +13,4 @@ JavaFXLib=$JavaFXLib:~/Prog/Java/javafx-sdk-11.0.2/lib/
 export JavaFXLib
 
 export XDG_CONFIG_HOME=${DOTFILES}
+export XDG_DATA_HOME=${XDG_CONFIG_HOME}
