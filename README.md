@@ -90,8 +90,19 @@ let g:lightline.mode_map = {
   \ }
 ```
 
-
 #### [tpope/vim-surround](https://github.com/tpope/vim-surround)
+surroundings マッピングを追加する。
+| key        | effect                       |
+| ---------- | ---------------------------- |
+| `cs"'`     | `"` から `'` に変える        |
+| `cs'<q>`   | `'` から `<p>` タグに変える  |
+| `cst"`     | タグから `"` に変える        |
+| `ds"`      | `"` を削除                   |
+| `ysiw]`    | `word` を `[]` で囲む        |
+| `yss)`     | 1行全体を `()` で囲む        |
+| `ysiw<em>` | `word` を `<em></em>` で囲む |
+* `ys` や `yss` で囲み文字に、開き括弧を指定した場合はスペースを括弧の内側に挿入し、閉じ括弧を指定した場合はスペースを挿入しない。
+* `)` の代わりに `b` を使うこともできる。
 
 #### [tpope/vim-repeat](https://github.com/tpope/vim-repeat)
 
