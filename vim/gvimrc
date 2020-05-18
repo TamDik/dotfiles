@@ -12,3 +12,14 @@ set guioptions-=l
 set guioptions-=L
 set guioptions-=b
 
+augroup TransparentBG
+  autocmd!
+  autocmd ColorScheme * highlight Normal      ctermbg=NONE
+  autocmd ColorScheme * highlight LineNr      ctermbg=NONE
+  autocmd ColorScheme * highlight Folded      ctermbg=NONE
+  autocmd ColorScheme * highlight NonText     ctermbg=NONE
+  autocmd ColorScheme * highlight EndOfBuffer ctermbg=NONE
+  autocmd ColorScheme * highlight SignColumn  ctermbg=NONE
+  autocmd ColorScheme * highlight Conceal     ctermbg=NONE
+augroup END
+syntax on

@@ -1,5 +1,8 @@
 # dotfiles
 
+## zsh
+* abbrev-alias で展開しない場合は `<Ctrl+x><Space>`
+
 ## Vim
 `let mapleader = "\<Space>"`
 

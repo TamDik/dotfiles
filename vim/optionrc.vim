@@ -12,7 +12,7 @@ filetype plugin indent on
 syntax enable
 
 if has('nvim')
-  set viminfo=!,'500,<50,s10,h
+  set shada=!,'500,<50,s10,h
 else
   set viminfo=!,'500,<50,s10,h
   execute 'set viminfo+=n' . g:ROOT_DIR . '/viminfo'
@@ -22,6 +22,10 @@ endif
 set novisualbell
 set t_vb=
 set belloff=all
+
+" conceal
+set conceallevel=2
+set concealcursor=nv
 
 " backup files and so on
 set nobackup
@@ -64,3 +68,7 @@ set splitright
 
 " ctags
 set tags=./tags,tags,./.tags,.tags
+
+if has('nvim')
+  set termguicolors
+endif
