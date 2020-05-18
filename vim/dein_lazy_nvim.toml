@@ -1,0 +1,18 @@
+[[plugins]]
+repo = 'Shougo/neosnippet.vim'
+hook_add = '''
+  imap <tab> <Plug>(neosnippet_expand_or_jump)
+  smap <tab> <Plug>(neosnippet_expand_or_jump)
+  xmap <tab> <Plug>(neosnippet_expand_target)
+
+  imap <expr><c-b>
+  \ pumvisible() ? "\<C-n>" :
+  \ neosnippet#expandable_or_jumpable() ?
+  \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+  smap <expr><c-b> neosnippet#expandable_or_jumpable() ?
+  \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+'''
+
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'

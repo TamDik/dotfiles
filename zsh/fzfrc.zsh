@@ -20,7 +20,7 @@ frc() (
   if [ -z "$rcfile" ]; then
     return
   fi
-  vim "$rcfile"
+  nvim "$rcfile"
 )
 
 # select a tmux session
