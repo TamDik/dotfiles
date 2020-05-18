@@ -42,10 +42,10 @@ repo = 'tpope/vim-commentary'
 [[plugins]]
 repo = 'junegunn/fzf.vim'
 hook_add = '''
-  nnoremap <leader>ff :Files<CR>
-  nnoremap <leader>fb :Buffers<CR>
-  nnoremap <leader>ft :Tags<CR>
-  nnoremap <leader>fh :History<CR>   " Fils
+  nnoremap <leader>ff :<C-u>Files<CR>
+  nnoremap <leader>fb :<C-u>Buffers<CR>
+  nnoremap <leader>ft :<C-u>Tags<CR>
+  nnoremap <leader>fh :<C-u>History<CR>
 '''
 
 
@@ -69,7 +69,7 @@ hook_add = '''
     \}
   nmap <leader>[ <Plug>(ale_previous_wrap)
   nmap <leader>] <Plug>(ale_next_wrap)
-  nnoremap <leader>a :ALEToggle<CR>
+  nnoremap <silent> <leader>a :<C-u>ALEToggle<CR>
 
   if !has('nvim')
     let g:ale_sign_error = ''

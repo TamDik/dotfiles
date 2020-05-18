@@ -1,17 +1,18 @@
 " search
-nnoremap <silent> <leader><Space> :nohl<CR>
+nnoremap <silent> <leader><Space> :<C-u>nohl<CR>
 
 " split 
-nnoremap <silent> <leader>s :sp<CR>
-nnoremap <silent> <leader>v :vs<CR>
-nnoremap <silent> <leader>q :q<CR>
+nnoremap <silent> <leader>s :<C-u>sp<CR>
+nnoremap <silent> <leader>v :<C-u>vs<CR>
+nnoremap <silent> <leader>q :<C-u>q<CR>
 
 " buffer
-nnoremap <silent> <leader>j :bprevious<CR>
-nnoremap <silent> <leader>k :bnext<CR>
+nnoremap <silent> <leader>j :<C-u>bprevious<CR>
+nnoremap <silent> <leader>k :<C-u>bnext<CR>
 
 " other key mapping
 inoremap jj <ESC>
+inoremap j<Space> j
 nnoremap Y y$
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 if executable('compiler')
