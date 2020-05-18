@@ -24,25 +24,15 @@ set t_vb=
 set belloff=all
 
 " backup files and so on
-set backup
+set nobackup
 set backupext=.bat
-set swapfile
+set noswapfile
 set undofile
 
-let s:backup_path = g:ROOT_DIR . '/backup'
-let s:swap_path   = g:ROOT_DIR . '/swap'
 let s:undo_path   = g:ROOT_DIR . '/undo'
-if !isdirectory(s:backup_path)
-  call mkdir(s:backup_path, 'p')
-endif
-if !isdirectory(s:swap_path)
-  call mkdir(s:swap_path,   'p')
-endif
 if !isdirectory(s:undo_path)
   call mkdir(s:undo_path,   'p')
 endif
-let &backupdir = s:backup_path
-let &directory = s:swap_path
 let &undodir   = s:undo_path
 
 " tab
