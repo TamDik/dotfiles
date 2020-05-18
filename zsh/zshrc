@@ -1,6 +1,7 @@
 export LANG=en_US.UTF-8
 setopt no_beep
 setopt ignoreeof
+setopt interactivecomments
 # disable r
 
 

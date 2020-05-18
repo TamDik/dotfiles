@@ -1,5 +1,6 @@
 scriptencoding utf-8
 set encoding=utf-8
+let g:mapleader = "\<Space>"
 let g:VIM_ROOT  = $DOTFILES . '/vim'
 let g:NVIM_ROOT = $DOTFILES . '/nvim'
 
@@ -15,10 +16,10 @@ endfunction
 call s:source_file(g:VIM_ROOT . '/optionrc.vim')
 
 " dein
-" call s:source_file(g:VIM_ROOT . '/deinrc.vim')
+call s:source_file(g:VIM_ROOT . '/deinrc.vim')
 
 " color
-" call s:source_file(g:VIM_ROOT . '/colorrc.vim')
+call s:source_file(g:VIM_ROOT . '/colorrc.vim')
 
 " mapping
 call s:source_file(g:VIM_ROOT . '/mappingrc.vim')

@@ -38,29 +38,6 @@ repo = 'tpope/vim-repeat'
 [[plugins]]
 repo = 'tpope/vim-commentary'
 
-[[plugins]]
-repo = 'Shougo/neocomplete.vim'
-hook_add = '''
-  let g:neocomplete#enable_at_startup = 1
-  let g:neocomplete#enable_smart_case = 1
-  let g:neocomplete#enable_underbar_completion = 1
-  let g:neocomplete#enable_camel_case_completion = 1
-  let g:neocomplete#enable_auto_close_preview = 1
-'''
-
-# [[plugins]]
-# repo = 'SirVer/ultisnips'
-# hook_add = '''
-#   let g:UltiSnipsExpandTrigger = "<tab>"
-#   let g:UltiSnipsJumpForwardTrigger  = "<c-b>"
-#   let g:UltiSnipsJumpBackwardTrigger = "<c-z>"
-#   let g:UltiSnipsEditSplit = "vertical"
-# '''
-
-
-# [[plugins]]
-# repo = 'honza/vim-snippets'
-
 
 [[plugins]]
 repo = 'junegunn/fzf.vim'
@@ -92,9 +69,12 @@ hook_add = '''
     \}
   nmap <leader>[ <Plug>(ale_previous_wrap)
   nmap <leader>] <Plug>(ale_next_wrap)
+  nnoremap <leader>a :ALEToggle<CR>
 
-  let g:ale_sign_error = ''
-  let g:ale_sign_warning = ''
+  if !has('nvim')
+    let g:ale_sign_error = ''
+    let g:ale_sign_warning = ''
+  endif
   let g:ale_echo_msg_error_str = 'E'
   let g:ale_echo_msg_warning_str = 'W'
   let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'

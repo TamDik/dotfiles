@@ -17,6 +17,7 @@
 | `<leader>q`       | `:q<CR>`                    |
 | `<leader>j`       | `:bprevious<CR>`            |
 | `<leader>k`       | `:bnext<CR>`                |
+| `<leader>a`       | `:ALEToggle<CR>`            |
 | `<leader>[`       | `<Plug>(ale_previous_wrap)` |
 | `<leader>]`       | `<Plug>(ale_next_wrap)`     |
 | `<F5>`            | `:w<CR>:!compiler %<CR>`    |
@@ -35,6 +36,17 @@
 
 
 ### Plugins
+#### [Shougo/dein.vim](https://github.com/Shougo/dein.vim)
+# プラグインマネージャ
+
+キャッシュのリセット。
+
+このコマンドを実行後、vim を起動する度にプラグインを繰り返し読み込むようになっていしまった。(20200518)
+原因は分からないが、deinrc.vim 内の `dein#check_clean()` のパラグラフを一度コメントアウトすると正常に動作するようになった。
+```vim
+:call dein#recache_runtimepath()
+```
+
 #### [cocopon/iceberg.vim](https://github.com/cocopon/iceberg.vim)
 カラースキーム
 
@@ -133,8 +145,27 @@ silent! call repeat#set("\<Plug>MyWonderfulMap", v:count)
 autocmd FileType apache setlocal commentstring=#\ %s
 ```
 
+#### [Shougo/deoplete.nvim](https://github.com/Shougo/deoplete.nvim)
+nvim で has('python3') == 0 の場合はインストール。
+```zsh
+# zsh
+pip install neovim
+# pip3 install neovim
+```
+上記で python3 を使えるようにしたら以下で deoplete.nvim をアップデート。
+```vim
+" nvim
+:UpdateRemotePlugins
+:q
+```
+
+deoplete.nvim を使用可能にする。
+```
+let g:deoplete#enable_at_startup = 1
+```
+
 #### [Shougo/neocomplete.vim](https://github.com/Shougo/neocomplete.vim)
-([Shougo/deoplete](https://github.com/Shougo/deoplete.nvim)に移行したい。)
+([Shougo/deoplete](https://github.com/Shougo/deoplete.nvim)に移行したい。neovim は移行済み。)
 
 #### [SirVer/ultisnips](https://github.com/SirVer/ultisnips)
 
@@ -214,6 +245,9 @@ bind C-l send-keys 'C-l'
 
 
 #### [dense-analysis/ale](https://github.com/dense-analysis/ale)
+linter で解析。
+
+nvim で `ale_sign_error` や `ale_sign_warning` に全角文字を設定すると、エディタ部分の表示が左にずれる。signcolumn が全角文字に対応していないのかもしれない。
 ```vim
 " :ALEFix で使用される Function を設定する
 b:ale_fixers = ['prettier', 'eslint']  " ftplugin file 内に記述
@@ -236,6 +270,9 @@ let g:ale_completion_enabled = 1
 set omnifunc=ale#completion#OmniFunc
 
 let g:ale_completion_tsserver_autoimport = 1
+
+" ale の有効無効のトグル
+:ALEToggle
 
 " カーソル下の単語の定義にジャンプする
 :ALEGoToDefinition
