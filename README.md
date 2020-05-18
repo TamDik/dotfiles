@@ -27,10 +27,11 @@
 | `nnoremap`        | `Y y$`                      |
 
 ### Insert mode
-| map    | effect                            |
-| ------ | --------------------------------- |
-| `jj`   | `<ESC>`                           |
-| `<F5>` | `<ESC>:w<CR>:!compiler %<CR>`     |
+| map     | effect                                             |
+| --------| -------------------------------------------------- |
+| `jj`    | `<ESC>`                                            |
+| `<F5>`  | `<ESC>:w<CR>:!compiler %<CR>`                      |
+| `<tab>` | スニペットの展開 or 次のプレースホルダーにジャンプ |
 
 ### Command-line mode
 | map    | effect                                           |
