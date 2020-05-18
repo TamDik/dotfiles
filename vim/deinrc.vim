@@ -32,8 +32,6 @@ let g:dein#cache_directory = s:dein_cache_path
 call dein#begin(s:dein_repo_path)
 if has('nvim')
   call s:load_dein_toml(g:NVIM_ROOT . '/dein_nvim.toml')
-else
-  call s:load_dein_toml(g:VIM_ROOT . '/neocomplete.toml')
 endif
 
 call s:load_dein_toml(g:VIM_ROOT . '/dein.toml')

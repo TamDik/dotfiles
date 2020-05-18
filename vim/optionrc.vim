@@ -1,36 +1,37 @@
 set shortmess+=I
 set completeopt=menuone
 set spelllang+=cjk
-set visualbell t_vb=
 set backspace=indent,start,eol
 set ambiwidth=double
 set noshowcmd
 set noshowmode
 set hidden
 set number relativenumber
+set wildmenu
 filetype plugin indent on
 syntax enable
 
 if has('nvim')
-  let s:root_dir = g:NVIM_ROOT
+  set viminfo=!,'500,<50,s10,h
 else
-  let s:root_dir = g:VIM_ROOT
+  set viminfo=!,'500,<50,s10,h
+  execute 'set viminfo+=n' . g:ROOT_DIR . '/viminfo'
 endif
 
-if !has('nvim')
-  let s:info_path   = s:root_dir . '/viminfo'
-  execute 'set viminfo+=n' . s:info_path
-endif
+" bell
+set novisualbell
+set t_vb=
+set belloff=all
 
 " backup files and so on
-set backupext=.bat
 set backup
+set backupext=.bat
 set swapfile
 set undofile
 
-let s:backup_path = s:root_dir . '/backup'
-let s:swap_path   = s:root_dir . '/swap'
-let s:undo_path   = s:root_dir . '/undo'
+let s:backup_path = g:ROOT_DIR . '/backup'
+let s:swap_path   = g:ROOT_DIR . '/swap'
+let s:undo_path   = g:ROOT_DIR . '/undo'
 if !isdirectory(s:backup_path)
   call mkdir(s:backup_path, 'p')
 endif

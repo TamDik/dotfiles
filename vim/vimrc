@@ -1,12 +1,20 @@
 scriptencoding utf-8
 set encoding=utf-8
-let g:mapleader = "\<Space>"
-let g:VIM_ROOT = $DOTFILES . '/vim'
-let g:NVIM_ROOT = $DOTFILES . '/nvim'
 
 if &compatible
   set nocompatible
 endif
+
+let g:VIM_ROOT = $DOTFILES . '/vim'
+let g:NVIM_ROOT = $DOTFILES . '/nvim'
+if has('nvim')
+  let g:ROOT_DIR = g:NVIM_ROOT
+else
+  let g:ROOT_DIR = g:VIM_ROOT
+endif
+
+let g:mapleader = "\<Space>"
+
 
 function! s:source_file(filename)
   if !filereadable(a:filename)
@@ -18,6 +26,11 @@ endfunction
 
 " options
 call s:source_file(g:VIM_ROOT . '/optionrc.vim')
+
+" neovim
+if has('nvim')
+  call s:source_file(g:NVIM_ROOT . '/neovimrc.vim')
+endif
 
 " dein
 call s:source_file(g:VIM_ROOT . '/deinrc.vim')
