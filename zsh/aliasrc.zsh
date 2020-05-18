@@ -1,4 +1,5 @@
 # alias
+alias vim='nvim'
 alias ctags="`brew --prefix`/bin/ctags"
 alias tmux="tmux -f ${DOTFILES}/tmux/tmux.conf"
 alias ipython='ipython --pylab'

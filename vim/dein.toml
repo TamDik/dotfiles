@@ -102,14 +102,16 @@ hook_add = '''
   let g:neocomplete#enable_auto_close_preview = 1
 '''
 
-# [[plugins]]
-# repo = 'SirVer/ultisnips'
-# hook_add = '''
-#   let g:UltiSnipsExpandTrigger = "<tab>"
-#   let g:UltiSnipsJumpForwardTrigger  = "<c-b>"
-#   let g:UltiSnipsJumpBackwardTrigger = "<c-z>"
-#   let g:UltiSnipsEditSplit = "vertical"
-# '''
+[[plugins]]
+repo = 'SirVer/ultisnips'
+if = '''!has('nvim')'''
+hook_add = '''
+  let g:UltiSnipsExpandTrigger = "<tab>"
+  let g:UltiSnipsJumpForwardTrigger  = "<c-b>"
+  let g:UltiSnipsJumpBackwardTrigger = "<c-z>"
+  let g:UltiSnipsEditSplit = "vertical"
+'''
 
-# [[plugins]]
-# repo = 'honza/vim-snippets'
+[[plugins]]
+repo = 'honza/vim-snippets'
+if = '''!has('nvim')'''
