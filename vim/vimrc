@@ -2,7 +2,7 @@ scriptencoding utf-8
 set encoding=utf-8
 let g:mapleader = "\<Space>"
 let g:VIM_ROOT = $DOTFILES . '/vim'
-
+let g:NVIM_ROOT = $DOTFILES . '/nvim'
 
 if &compatible
   set nocompatible
