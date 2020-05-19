@@ -31,6 +31,7 @@
 | `jj`    | `<ESC>`                                            |
 | `<F5>`  | `<ESC>:w<CR>:!compiler %<CR>`                      |
 | `<tab>` | スニペットの展開 or 次のプレースホルダーにジャンプ |
+| `<C-z>` | 前のプレースホルダーにジャンプ                     |
 
 ### Command-line mode
 | map    | effect                                           |
@@ -148,6 +149,8 @@ autocmd FileType apache setlocal commentstring=#\ %s
 ```
 
 #### [Shougo/deoplete.nvim](https://github.com/Shougo/deoplete.nvim)(neovim で使用中)
+入力補完。
+
 > vim では以下が必要
 > * `has("python3") == 1`
 > ** `0` の時は `pip3 install --user pynvim` を実行
@@ -199,16 +202,16 @@ let g:deoplete#enable_at_startup = 1
 <!-- ``` -->
 
 #### [Shougo/neocomplete.vim](https://github.com/Shougo/neocomplete.vim)(vim で使用中)
-([Shougo/deoplete](https://github.com/Shougo/deoplete.nvim)に移行したい。neovim は移行済み。)
+入力補完。
+* [Shougo/deoplete](https://github.com/Shougo/deoplete.nvim)に移行したい。neovim は移行済み。
 
-
-#### [SirVer/ultisnips](https://github.com/SirVer/ultisnips)(vim で使用中)
-スニペット。deoplete との連携中。neocomplete では代わりに neosnippet.vim を使用している。(deoplete.vim でも neosnippet.vim が使えるかもしれない。)
+#### [SirVer/ultisnips](https://github.com/SirVer/ultisnips)
+スニペットエンジン。deoplete との連携中。neocomplete では代わりに neosnippet.vim を使用している。(deoplete.vim でも neosnippet.vim が使えるかもしれない。)
 ```
 " スニペット展開するときのキー
 let g:UltiSnipsExpandTrigger="<tab>"
 " 前の編集箇所にジャンプするときのキー
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
 " 後ろの編集箇所にジャンプするときのキー
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
@@ -218,7 +221,7 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsEditSplit="vertical"
 ```
 
-#### [honza/vim-snippets](https://github.com/honza/vim-snippets)(vim で使用中)
+#### [honza/vim-snippets](https://github.com/honza/vim-snippets)
 スニペットを追加する
 * snippets/*: snipMate format のスニペット
 * UltiSnips/*: UltiSnips format のスニペット
@@ -226,6 +229,39 @@ let g:UltiSnipsEditSplit="vertical"
 #### [junegunn/fzf.vim](https://github.com/junegunn/fzf.vim)
 
 #### [junegunn/fzf](https://github.com/junegunn/fzf)
+fzf を vim でも使用可能にする。
+```vim
+" カレントディレクトリ以下のファイル
+" '~' を指定したり、オプションを指定したりできる
+:FZF
+
+" ファイルを開く時の開き方を指定する
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit' }
+
+" 位置とサイズを指定する
+let g:fzf_layout = { 'down': '~40%' }
+" Neovim か Vim8 であれば以下の設定も可能
+let g:fzf_layout = { 'window': 'enew' }
+let g:fzf_layout = { 'window': '-tabnew' }
+let g:fzf_layout = { 'window': '10new' }
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
+
+" カラー設定
+let g:fzf_colors = {'fg': ['fg', 'Normal'], 'bg': ['bg', 'Normal']}
+
+" vim 内で fzf を実行
+" sources: 出力元（パイプの前）
+"   vim の Array でも良い
+" sink: 出力先
+" レイアウト: g:fzf_layout と同じ key:value の組み合わせ
+:call fzf#run({'sink': 'tabedit', 'options': '--multi --reverse'})
+
+" g:fzf_action や g:fzf_layout などを反映する
+:call fzf#run(fzf#wrap({'source': 'ls'}))
+```
 
 #### [christoomey/vim-tmux-navigator](https://github.com/christoomey/vim-tmux-navigator)
 tmux と vim の画面移動を同一キーで行うことを可能にする。

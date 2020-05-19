@@ -33,7 +33,11 @@ if has('nvim')
 endif
 
 " dein
-call s:source_file(g:VIM_ROOT . '/deinrc.vim')
+" FIXME: Snippets are not loaded after opening vim.
+"        I think the cache of dein does some evil deeds.
+if has('nvim')
+  call s:source_file(g:VIM_ROOT . '/deinrc.vim')
+endif
 
 " color
 call s:source_file(g:VIM_ROOT . '/colorrc.vim')

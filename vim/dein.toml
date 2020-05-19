@@ -71,6 +71,27 @@ hook_add = '''
 [[plugins]]
 repo = 'junegunn/fzf'
 merged = '0'
+hook_add = '''
+
+if has('nvim')
+    function! FZFWindow()
+        let l:width = float2nr(&columns * 0.9)
+        let l:height = float2nr(&lines * 0.8)
+        let l:opts = {
+             \ 'relative': 'editor',
+             \ 'row': (&lines - l:height) / 2,
+             \ 'col': (&columns - l:width) / 2,
+             \ 'width': l:width,
+             \ 'height': l:height,
+             \ 'style': 'minimal'
+             \}
+        let l:win = nvim_open_win(nvim_create_buf(v:false, v:true), v:true, l:opts)
+        call setwinvar(l:win, '&winhighlight', 'NormalFloat:TabLine')
+    endfunction
+
+    let g:fzf_layout = { 'window': 'call FZFWindow()' }
+endif
+'''
  
 
 [[plugins]]
