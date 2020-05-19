@@ -18,11 +18,7 @@ function! s:load_dein_toml(filename, ...)
 endfunction
 
 let s:dein_repo_path = expand('~/repos/dein.vim')
-if has('nvim')
-  let s:dein_cache_path = expand('~/.cache/dein/nvim')
-else
-  let s:dein_cache_path = expand('~/.cache/dein/vim')
-endif
+let s:dein_cache_path = expand('~/.cache/dein')
 
 if !dein#load_state(s:dein_repo_path)
   finish
@@ -31,9 +27,11 @@ endif
 let g:dein#cache_directory = s:dein_cache_path
 call dein#begin(s:dein_repo_path)
 call s:load_dein_toml(g:VIM_ROOT . '/dein.toml')
-call s:load_dein_toml(g:VIM_ROOT . '/dein_lazy.toml', 1)
 if has('nvim')
   call s:load_dein_toml(g:NVIM_ROOT . '/dein_nvim.toml')
+endif
+call s:load_dein_toml(g:VIM_ROOT . '/dein_lazy.toml', 1)
+if has('nvim')
   call s:load_dein_toml(g:NVIM_ROOT . '/dein_lazy_nvim.toml')
 endif
 call dein#end()
