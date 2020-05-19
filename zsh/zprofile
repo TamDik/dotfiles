@@ -4,9 +4,12 @@ if [ -d ~/bin ]; then
 fi
 export PATH
 
+export EDITOR='nvim'
+export VISUAL='nvim'
+export PAGER='less'
+
 export LSCOLORS=ExFxCxdxBxegedabagacad
 export LESSHISTFILE=${DOTFILES}/less_history
-
 
 export JAVA_HOME=$(/usr/libexec/java_home)
 JavaFXLib=$JavaFXLib:~/Prog/Java/javafx-sdk-11.0.2/lib/
