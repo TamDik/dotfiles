@@ -41,7 +41,7 @@
 
 ### Plugins
 #### [Shougo/dein.vim](https://github.com/Shougo/dein.vim)
-# プラグインマネージャ
+プラグインマネージャ
 
 キャッシュのリセット。
 

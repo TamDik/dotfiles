@@ -18,16 +18,32 @@ hook_add = '''
     \ 'colorscheme': 'seoul256',
     \ 'active': {
     \   'left':  [['mode'],
-    \             ['filename']],
+    \             ['filename'],
+    \             ['ale_active'],
+    \            ],
     \   'right': [['filetype'],
     \             ['fileencoding'],
-    \             ['fileformat']]
+    \             ['fileformat'],
+    \            ]
     \ },
     \ 'inactive': {
     \   'left':  [['filename']],
     \   'right': []
     \ },
+    \ 'component_function': {
+    \   'ale_active': 'LLAleActive'
+    \ },
     \ }
+  function LLAleActive()
+    if !g:ale_enabled 
+      return ''
+    endif
+
+    let l:counts = ale#statusline#Count(bufnr(''))
+    let l:num_errors = l:counts.error + l:counts.style_error
+    let l:num_warnings = l:counts.total - l:num_errors
+    return printf('E%dW%d', l:num_errors, l:num_warnings)
+  endfunction
 '''
 
 
