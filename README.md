@@ -10,6 +10,7 @@
 | ----------------- | --------------------------- |
 | `<leader>ff`      | `:Files<CR>`                |
 | `<leader>fb`      | `:Buffers<CR>`              |
+| `<leader>fl`      | `:Lines<CR>`                |
 | `<leader>ft`      | `:Tags<CR>`                 |
 | `<leader>fh`      | `:History<CR>`              |
 | `<leader>g`       | `:Goyo<CR>`                 |
@@ -26,12 +27,15 @@
 | `nnoremap`        | `Y y$`                      |
 
 ### Insert mode
-| map     | effect                                             |
-| --------| -------------------------------------------------- |
-| `jj`    | `<ESC>`                                            |
-| `<F5>`  | `<ESC>:w<CR>:!compiler %<CR>`                      |
-| `<tab>` | スニペットの展開 or 次のプレースホルダーにジャンプ |
-| `<C-z>` | 前のプレースホルダーにジャンプ                     |
+| map          | effect                                             |
+| ------------ | -------------------------------------------------- |
+| `jj`         | `<ESC>`                                            |
+| `<F5>`       | `<ESC>:w<CR>:!compiler %<CR>`                      |
+| `<tab>`      | スニペットの展開 or 次のプレースホルダーにジャンプ |
+| `<C-z>`      | 前のプレースホルダーにジャンプ                     |
+| `<c-x><c-k>` | `<plug>(fzf-complete-word)`                        |
+| `<c-x><c-f>` | `<plug>(fzf-complete-path)`                        |
+| `<c-x><c-l>` | `<plug>(fzf-complete-line)`                        |
 
 ### Command-line mode
 | map    | effect                                           |
@@ -226,8 +230,6 @@ let g:UltiSnipsEditSplit="vertical"
 * snippets/*: snipMate format のスニペット
 * UltiSnips/*: UltiSnips format のスニペット
 
-#### [junegunn/fzf.vim](https://github.com/junegunn/fzf.vim)
-
 #### [junegunn/fzf](https://github.com/junegunn/fzf)
 fzf を vim でも使用可能にする。
 ```vim
@@ -261,6 +263,88 @@ let g:fzf_colors = {'fg': ['fg', 'Normal'], 'bg': ['bg', 'Normal']}
 
 " g:fzf_action や g:fzf_layout などを反映する
 :call fzf#run(fzf#wrap({'source': 'ls'}))
+```
+
+#### [junegunn/fzf.vim](https://github.com/junegunn/fzf.vim)
+fzf の便利なコマンド集。
+| command           | effect                                                                |
+| ----------------- | --------------------------------------------------------------------- |
+| `:Files: [PATH]`  | `FZF_DEFAULT_COMMAND`で定義された動作（デフォルトはファイルリスト）   |
+| `:GFiles [OPTS]`  | `git ls-files`                                                        |
+| `:GFiles?`        | `git status`                                                          |
+| `:Buffers`        | バッファー                                                            |
+| `:Colors`         | カラースキーム                                                        |
+| `:Ag [PATTERN]`   | `ag`コマンドが必要                                                    |
+| `:Rg [PATTERN]`   | `rg`                                                                  |
+| `:Lines [QUERY]`  | 全バッファ内の行                                                      |
+| `:BLines [QUERY]` | 現在のバッファ内の行                                                  |
+| `:Tags [QUERY]`   | `ctags -R`                                                            |
+| `:BTags [QUERY]`  | 現在のバッファないのタグ？？                                          |
+| `:Marks`          | マーク                                                                |
+| `:Windows`        | ウィンドウ                                                            |
+| `:Locate PATTERN` | `locate`                                                              |
+| `:History`        | `v:oldfiles`                                                          |
+| `:History:`       | `:`の履歴                                                             |
+| `:History/`       | `/`の履歴                                                             |
+| `:Snippets`       | スニペット                                                            |
+| `:Commits`        | [tpope/vim-fugitive](https://github.com/tpope/vim-fugitive)が必要？？ |
+| `:BCommits`       | 現在のバッファーに対するコミット                                      |
+| `:Commands`       | コマンド                                                              |
+| `:Maps`           | キーバインド                                                          |
+| `:Helptags`       | Help tags???                                                          |
+| `:Filetypes`      | ファイルタイプ                                                        |
+
+```vim
+" 全てのコマンドにプリフィックスをつける
+g:fzf_command_prefix
+
+" プレビューウィンドウのサイズ
+let g:fzf_preview_window = ''
+let g:fzf_preview_window = 'right:60%'
+```
+
+特定のコマンドに対するオプション
+```vim
+" [Buffers] Jump to the existing window if possible
+let g:fzf_buffers_jump = 1
+
+" [[B]Commits] Customize the options used by 'git log':
+let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
+
+" [Tags] Command to generate tags file
+let g:fzf_tags_command = 'ctags -R'
+
+" [Commands] --expect expression for directly executing the command
+let g:fzf_commands_expect = 'alt-enter,ctrl-x'
+```
+
+マッピング
+```vim
+" Mapping selecting mappings
+nmap <leader><tab> <plug>(fzf-maps-n)
+xmap <leader><tab> <plug>(fzf-maps-x)
+omap <leader><tab> <plug>(fzf-maps-o)
+
+" Insert mode completion
+imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-l> <plug>(fzf-complete-line)
+```
+
+補完 Function
+```vim
+fzf#vim#complete#path(command, [spec]) " パス
+fzf#vim#complete#word([spec])          " 単語
+fzf#vim#complete#line([spec])          " 全てのバッファー内の行
+fzf#vim#complete#buffer_line([spec])   " 現在のバッファー内の行
+
+" 例
+inoremap <expr> <c-x><c-f> fzf#vim#complete#path('fd')
+inoremap <expr> <c-x><c-f> fzf#vim#complete#path('rg --files')
+inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'window': { 'width': 0.2, 'height': 0.9, 'xoffset': 1 }})
+
+" カスタム
+inoremap <expr> <c-x><c-k> fzf#vim#complete('cat /usr/share/dict/words')
 ```
 
 #### [christoomey/vim-tmux-navigator](https://github.com/christoomey/vim-tmux-navigator)

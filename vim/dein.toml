@@ -63,8 +63,15 @@ repo = 'junegunn/fzf.vim'
 hook_add = '''
   nnoremap <leader>ff :<C-u>Files<CR>
   nnoremap <leader>fb :<C-u>Buffers<CR>
+  nnoremap <leader>fl :<C-u>Lines<CR>
+  "nnoremap <leader>fr :<C-u>Rg<CR>
   nnoremap <leader>ft :<C-u>Tags<CR>
   nnoremap <leader>fh :<C-u>History<CR>
+  let g:fzf_commits_log_options = '--graph --decorate --pretty=oneline --all --abbrev-commit'
+
+  imap <c-x><c-k> <plug>(fzf-complete-word)
+  imap <c-x><c-f> <plug>(fzf-complete-path)
+  imap <c-x><c-l> <plug>(fzf-complete-line)
 '''
 
 
@@ -72,25 +79,24 @@ hook_add = '''
 repo = 'junegunn/fzf'
 merged = '0'
 hook_add = '''
-
-if has('nvim')
+  if has('nvim')
     function! FZFWindow()
-        let l:width = float2nr(&columns * 0.9)
-        let l:height = float2nr(&lines * 0.8)
-        let l:opts = {
-             \ 'relative': 'editor',
-             \ 'row': (&lines - l:height) / 2,
-             \ 'col': (&columns - l:width) / 2,
-             \ 'width': l:width,
-             \ 'height': l:height,
-             \ 'style': 'minimal'
-             \}
-        let l:win = nvim_open_win(nvim_create_buf(v:false, v:true), v:true, l:opts)
-        call setwinvar(l:win, '&winhighlight', 'NormalFloat:TabLine')
+      let l:width = float2nr(&columns * 0.9)
+      let l:height = float2nr(&lines * 0.8)
+      let l:opts = {
+         \ 'relative': 'editor',
+         \ 'row': (&lines - l:height) / 2,
+         \ 'col': (&columns - l:width) / 2,
+         \ 'width': l:width,
+         \ 'height': l:height,
+         \ 'style': 'minimal'
+         \}
+      let l:win = nvim_open_win(nvim_create_buf(v:false, v:true), v:true, l:opts)
+      call setwinvar(l:win, '&winhighlight', 'NormalFloat:TabLine')
     endfunction
-
-    let g:fzf_layout = { 'window': 'call FZFWindow()' }
-endif
+  
+    let g:fzf_layout = {'window': 'call FZFWindow()'}
+  endif
 '''
  
 
