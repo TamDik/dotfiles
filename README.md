@@ -174,7 +174,7 @@ pip install neovim
 ```
 
 deoplete.nvim を使用可能にする。
-```
+```vim
 let g:deoplete#enable_at_startup = 1
 ```
 
@@ -207,7 +207,7 @@ let g:deoplete#enable_at_startup = 1
 
 #### [SirVer/ultisnips](https://github.com/SirVer/ultisnips)
 スニペットエンジン。deoplete との連携中。neocomplete では代わりに neosnippet.vim を使用している。(deoplete.vim でも neosnippet.vim が使えるかもしれない。)
-```
+```vim
 " スニペット展開するときのキー
 let g:UltiSnipsExpandTrigger="<tab>"
 " 前の編集箇所にジャンプするときのキー
