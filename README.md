@@ -147,7 +147,15 @@ silent! call repeat#set("\<Plug>MyWonderfulMap", v:count)
 autocmd FileType apache setlocal commentstring=#\ %s
 ```
 
-#### [Shougo/deoplete.nvim](https://github.com/Shougo/deoplete.nvim)
+#### [Shougo/deoplete.nvim](https://github.com/Shougo/deoplete.nvim)(neovim で使用中)
+> vim では以下が必要
+> * `has("python3") == 1`
+> ** `0` の時は `pip3 install --user pynvim` を実行
+> * [roxma/nvim-yarp](https://github.com/roxma/nvim-yarp)
+> * [roxma/vim-hug-neovim-rpc](https://github.com/roxma/vim-hug-neovim-rpc)
+上の条件を満たしているはずなのになぜかエラーが出た。
+解決できなかったので vim では、とりあえず、 neocomplete.vim を使用することにした。(2019\*\*\*\*)
+
 nvim で has('python3') == 0 の場合はインストール。
 ```zsh
 # zsh
@@ -166,12 +174,30 @@ deoplete.nvim を使用可能にする。
 let g:deoplete#enable_at_startup = 1
 ```
 
-#### [Shougo/neocomplete.vim](https://github.com/Shougo/neocomplete.vim)
+### [Shougo/neosnippet.vim](https://github.com/Shougo/neosnippet.vim)(neovim で使用中)
+スニペット。deoplete と連携中。
+
+#### [Shougo/neocomplete.vim](https://github.com/Shougo/neocomplete.vim)(vim で使用中)
 ([Shougo/deoplete](https://github.com/Shougo/deoplete.nvim)に移行したい。neovim は移行済み。)
 
-#### [SirVer/ultisnips](https://github.com/SirVer/ultisnips)
 
-#### [honza/vim-snippets](https://github.com/honza/vim-snippets)
+#### [SirVer/ultisnips](https://github.com/SirVer/ultisnips)(vim で使用中)
+スニペット。deoplete との連携中。neocomplete では代わりに neosnippet.vim を使用している。(deoplete.vim でも neosnippet.vim が使えるかもしれない。)
+```
+" スニペット展開するときのキー
+let g:UltiSnipsExpandTrigger="<tab>"
+" 前の編集箇所にジャンプするときのキー
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+" 後ろの編集箇所にジャンプするときのキー
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" 独自のスニペットを定義する
+:UltiSnipsEdit
+" :UltiSnipsEdit を使用する時の画面分割方法
+let g:UltiSnipsEditSplit="vertical"
+```
+
+#### [honza/vim-snippets](https://github.com/honza/vim-snippets)(vim で使用中)
 
 #### [junegunn/fzf.vim](https://github.com/junegunn/fzf.vim)
 
