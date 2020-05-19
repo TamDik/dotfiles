@@ -175,8 +175,28 @@ deoplete.nvim を使用可能にする。
 let g:deoplete#enable_at_startup = 1
 ```
 
-### [Shougo/neosnippet.vim](https://github.com/Shougo/neosnippet.vim)(neovim で使用中)
+#### [Shougo/neosnippet.vim](https://github.com/Shougo/neosnippet.vim)(neovim で使用中)
+現在開発はストップしていて、[Shougo/deoppet.nvim](https://github.com/Shougo/deoppet.nvim)に移行するらしいが、まだベーパーウェアな状態であるので未移行。
+
 スニペット。deoplete と連携中。
+
+```vim
+" 展開やジャンプをキーバインドする
+<Plug>(neosnippet_expand_or_jump)
+<Plug>(neosnippet_expand)
+<Plug>(neosnippet_jump)
+
+" 展開やジャンプが可能か
+neosnippet#expandable_or_jumpable()
+neosnippet#expandable()
+neosnippet#jumpable()
+
+" 外部のスニペットを読み込む
+let g:neosnippet#enable_snipmate_compatibility = 1
+
+" 外部スニペットのパスをカンマ区切りで指定
+let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
+```
 
 #### [Shougo/neocomplete.vim](https://github.com/Shougo/neocomplete.vim)(vim で使用中)
 ([Shougo/deoplete](https://github.com/Shougo/deoplete.nvim)に移行したい。neovim は移行済み。)
@@ -199,6 +219,9 @@ let g:UltiSnipsEditSplit="vertical"
 ```
 
 #### [honza/vim-snippets](https://github.com/honza/vim-snippets)(vim で使用中)
+スニペットを追加する
+* snippets/*: snipMate format のスニペット
+* UltiSnips/*: UltiSnips format のスニペット
 
 #### [junegunn/fzf.vim](https://github.com/junegunn/fzf.vim)
 

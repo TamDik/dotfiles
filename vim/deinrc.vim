@@ -30,13 +30,12 @@ endif
 
 let g:dein#cache_directory = s:dein_cache_path
 call dein#begin(s:dein_repo_path)
+call s:load_dein_toml(g:VIM_ROOT . '/dein.toml')
+call s:load_dein_toml(g:VIM_ROOT . '/dein_lazy.toml', 1)
 if has('nvim')
   call s:load_dein_toml(g:NVIM_ROOT . '/dein_nvim.toml')
   call s:load_dein_toml(g:NVIM_ROOT . '/dein_lazy_nvim.toml')
 endif
-
-call s:load_dein_toml(g:VIM_ROOT . '/dein.toml')
-call s:load_dein_toml(g:VIM_ROOT . '/dein_lazy.toml', 1)
 call dein#end()
 call dein#save_state()
 
@@ -44,8 +43,8 @@ if dein#check_install()
   call dein#install()
 endif
 
-" let s:removed_plugins = dein#check_clean()
-" if len(s:removed_plugins) > 0
-"   call map(s:removed_plugins, "delete(v:val, 'rf')")
-"   call dein#recache_runtimepath()
-" endif
+let s:removed_plugins = dein#check_clean()
+if len(s:removed_plugins) > 0
+  call map(s:removed_plugins, "delete(v:val, 'rf')")
+  call dein#recache_runtimepath()
+endif

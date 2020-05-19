@@ -1,6 +1,12 @@
 [[plugins]]
+repo = 'honza/vim-snippets'
+
+[[plugins]]
 repo = 'Shougo/neosnippet.vim'
 hook_add = '''
+    let g:neosnippet#enable_snipmate_compatibility = 1
+    let g:neosnippet#snippets_directory='~/repos/dein.vim/repos/github.com/honza/vim-snippets/snippets'
+
     imap <expr><Tab> neosnippet#expandable_or_jumpable() ?
     \ "\<Plug>(neosnippet_expand_or_jump)" : "\<Tab>"
 '''

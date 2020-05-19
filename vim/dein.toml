@@ -75,6 +75,8 @@ merged = '0'
 
 [[plugins]]
 repo = 'christoomey/vim-tmux-navigator'
+hook_add = '''
+'''
 
 
 [[plugins]]
@@ -98,8 +100,3 @@ hook_add = '''
   let g:UltiSnipsJumpBackwardTrigger = "<c-z>"
   let g:UltiSnipsEditSplit = "vertical"
 '''
-
-
-[[plugins]]
-repo = 'honza/vim-snippets'
-if = '''!has('nvim')'''
