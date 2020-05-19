@@ -9,6 +9,7 @@ hook_add = '''
   colorscheme iceberg
 '''
 
+
 [[plugins]]
 repo = 'itchyny/lightline.vim'
 hook_add = '''
@@ -29,11 +30,14 @@ hook_add = '''
     \ }
 '''
 
+
 [[plugins]]
 repo = 'tpope/vim-surround'
 
+
 [[plugins]]
 repo = 'tpope/vim-repeat'
+
 
 [[plugins]]
 repo = 'tpope/vim-commentary'
@@ -59,39 +63,6 @@ repo = 'christoomey/vim-tmux-navigator'
 
 
 [[plugins]]
-repo = 'dense-analysis/ale'
-hook_add = '''
-  let g:ale_enabled = 0
-  let g:ale_linters_explicit = 1  " Only run linters named in ale_linters settings.
-  let g:ale_linters = {
-    \ 'python': ['pylint'],
-    \ 'java':   ['javac']
-    \}
-  nmap <leader>[ <Plug>(ale_previous_wrap)
-  nmap <leader>] <Plug>(ale_next_wrap)
-  nnoremap <silent> <leader>a :<C-u>ALEToggle<CR>
-
-  if !has('nvim')
-    let g:ale_sign_error = ''
-    let g:ale_sign_warning = ''
-  endif
-  let g:ale_echo_msg_error_str = 'E'
-  let g:ale_echo_msg_warning_str = 'W'
-  let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-
-  if isdirectory('src')
-    let g:ale_java_javac_classpath = getcwd() . '/src'
-  endif
-
-  augroup ALEColor
-    autocmd!
-    autocmd ColorScheme * highlight ALEErrorSign   ctermfg=203 ctermbg=none
-    autocmd ColorScheme * highlight ALEWarningSign ctermfg=216 ctermbg=none
-  augroup END
-'''
-
-
-[[plugins]]
 repo = 'Shougo/neocomplete.vim'
 if = '''!has('nvim')'''
 hook_add = '''
@@ -102,6 +73,7 @@ hook_add = '''
   let g:neocomplete#enable_auto_close_preview = 1
 '''
 
+
 [[plugins]]
 repo = 'SirVer/ultisnips'
 if = '''!has('nvim')'''
@@ -111,6 +83,7 @@ hook_add = '''
   let g:UltiSnipsJumpBackwardTrigger = "<c-z>"
   let g:UltiSnipsEditSplit = "vertical"
 '''
+
 
 [[plugins]]
 repo = 'honza/vim-snippets'
