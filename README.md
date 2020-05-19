@@ -43,12 +43,11 @@
 プラグインマネージャ
 
 キャッシュのリセット。
-
-このコマンドを実行後、vim を起動する度にプラグインを繰り返し読み込むようになっていしまった。(20200518)
-原因は分からないが、deinrc.vim 内の `dein#check_clean()` のパラグラフをコメントアウトすると正常に動作するようになった。
 ```vim
 :call dein#recache_runtimepath()
 ```
+このコマンドを実行後、vim を起動する度にプラグインを繰り返し読み込むようになっていしまった。(20200518)
+原因は分からないが、deinrc.vim 内の `dein#check_clean()` のパラグラフをコメントアウトすると正常に動作するようになった。
 
 #### [cocopon/iceberg.vim](https://github.com/cocopon/iceberg.vim)
 カラースキーム
