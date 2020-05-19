@@ -153,6 +153,7 @@ autocmd FileType apache setlocal commentstring=#\ %s
 > ** `0` の時は `pip3 install --user pynvim` を実行
 > * [roxma/nvim-yarp](https://github.com/roxma/nvim-yarp)
 > * [roxma/vim-hug-neovim-rpc](https://github.com/roxma/vim-hug-neovim-rpc)
+
 上の条件を満たしているはずなのになぜかエラーが出た。
 解決できなかったので vim では、とりあえず、 neocomplete.vim を使用することにした。(2019\*\*\*\*)
 
