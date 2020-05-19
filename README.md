@@ -4,8 +4,7 @@
 * abbrev-alias で展開しない場合は `<Ctrl+x><Space>`
 
 ## Vim
-`let mapleader = "\<Space>"`
-
+`let mapleader = "\<Space>"` 
 ### Normal mode
 | map               | effect                      |
 | ----------------- | --------------------------- |
@@ -46,7 +45,7 @@
 キャッシュのリセット。
 
 このコマンドを実行後、vim を起動する度にプラグインを繰り返し読み込むようになっていしまった。(20200518)
-原因は分からないが、deinrc.vim 内の `dein#check_clean()` のパラグラフを一度コメントアウトすると正常に動作するようになった。
+原因は分からないが、deinrc.vim 内の `dein#check_clean()` のパラグラフをコメントアウトすると正常に動作するようになった。
 ```vim
 :call dein#recache_runtimepath()
 ```

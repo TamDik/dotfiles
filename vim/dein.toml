@@ -19,11 +19,10 @@ hook_add = '''
     \ 'active': {
     \   'left':  [['mode'],
     \             ['filename'],
-    \             ['ale_active'],
     \            ],
     \   'right': [['filetype'],
     \             ['fileencoding'],
-    \             ['fileformat'],
+    \             ['aleactive', 'fileformat'],
     \            ]
     \ },
     \ 'inactive': {
@@ -31,7 +30,7 @@ hook_add = '''
     \   'right': []
     \ },
     \ 'component_function': {
-    \   'ale_active': 'LLAleActive'
+    \   'aleactive': 'LLAleActive'
     \ },
     \ }
   function LLAleActive()
