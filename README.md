@@ -13,9 +13,9 @@ export DOTFILES=~/path/to/dotfiles
 
 ## Requirements
 * zsh Run
-    `chsh -s $(which zsh)`
+    * `chsh -s $(which zsh)`
 * powerline patched fonts 
-    See [nerd-fonts](https://github.com/ryanoasis/nerd-fonts/blob/master/readme.md#font-installation)
+    * See [nerd-fonts](https://github.com/ryanoasis/nerd-fonts/blob/master/readme.md#font-installation)
 
 
 ## zsh
