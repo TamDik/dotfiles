@@ -74,12 +74,15 @@ hook_add = '''
 repo = 'junegunn/fzf'
 merged = '0'
 hook_add = '''
+  let $FZF_DEFAULT_OPTS = '--layout=reverse --border'
   if has('nvim')
     function! FZFWindow()
+      setlocal ambiwidth=single  " To prevent a preview window from being disturbed
+
       let l:width = float2nr(&columns * 0.9)
       let l:height = float2nr(&lines * 0.8)
       let l:opts = {
-         \ 'relative': 'editor',
+         \ 'relative': 'win',
          \ 'row': (&lines - l:height) / 2,
          \ 'col': (&columns - l:width) / 2,
          \ 'width': l:width,
@@ -89,11 +92,11 @@ hook_add = '''
       let l:win = nvim_open_win(nvim_create_buf(v:false, v:true), v:true, l:opts)
       call setwinvar(l:win, '&winhighlight', 'NormalFloat:TabLine')
     endfunction
-  
+
     let g:fzf_layout = {'window': 'call FZFWindow()'}
   endif
 '''
- 
+
 
 [[plugins]]
 repo = 'christoomey/vim-tmux-navigator'
