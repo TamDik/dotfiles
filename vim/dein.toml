@@ -111,3 +111,23 @@ hook_add = '''
   let g:neocomplete#enable_camel_case_completion = 1
   let g:neocomplete#enable_auto_close_preview = 1
 '''
+
+
+[[plugins]]
+repo = 'Shougo/deoplete.nvim'
+if = '''has('nvim')'''
+hook_add = '''
+  let g:deoplete#enable_at_startup = 1
+'''
+
+
+[[plugins]]
+repo = 'SirVer/ultisnips'
+hook_add = '''
+  let g:UltiSnipsExpandTrigger="<Tab>"
+  let g:UltiSnipsJumpForwardTrigger="<Tab>"
+  let g:UltiSnipsJumpBackwardTrigger="<C-z>"
+'''
+
+[[plugins]]
+repo = 'honza/vim-snippets'

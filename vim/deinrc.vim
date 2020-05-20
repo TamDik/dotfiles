@@ -27,13 +27,7 @@ endif
 let g:dein#cache_directory = s:dein_cache_path
 call dein#begin(s:dein_repo_path)
 call s:load_dein_toml(g:VIM_ROOT . '/dein.toml')
-if has('nvim')
-  call s:load_dein_toml(g:NVIM_ROOT . '/dein_nvim.toml')
-endif
 call s:load_dein_toml(g:VIM_ROOT . '/dein_lazy.toml', 1)
-if has('nvim')
-  call s:load_dein_toml(g:NVIM_ROOT . '/dein_lazy_nvim.toml')
-endif
 call dein#end()
 call dein#save_state()
 
