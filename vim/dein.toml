@@ -56,12 +56,12 @@ repo = 'tpope/vim-commentary'
 [[plugins]]
 repo = 'junegunn/fzf.vim'
 hook_add = '''
-  nnoremap <leader>ff :<C-u>Files<CR>
-  nnoremap <leader>fb :<C-u>Buffers<CR>
-  nnoremap <leader>fl :<C-u>Lines<CR>
-  "nnoremap <leader>fr :<C-u>Rg<CR>
-  nnoremap <leader>ft :<C-u>Tags<CR>
-  nnoremap <leader>fh :<C-u>History<CR>
+  nnoremap <silent> <leader>ff :<C-u>Files<CR>
+  nnoremap <silent> <leader>fb :<C-u>Buffers<CR>
+  nnoremap <silent> <leader>fl :<C-u>Lines<CR>
+  "nnoremap <silent> <leader>fr :<C-u>Rg<CR>
+  nnoremap <silent> <leader>ft :<C-u>Tags<CR>
+  nnoremap <silent> <leader>fh :<C-u>History<CR>
   let g:fzf_commits_log_options = '--graph --decorate --pretty=oneline --all --abbrev-commit'
 
   imap <c-x><c-k> <plug>(fzf-complete-word)
@@ -76,6 +76,7 @@ merged = '0'
 hook_add = '''
   let $FZF_DEFAULT_OPTS = '--layout=reverse --border'
   if has('nvim')
+    let s:fzf_win = -1
     function! FZFWindow()
       setlocal ambiwidth=single  " To prevent a preview window from being disturbed
 
@@ -89,9 +90,14 @@ hook_add = '''
          \ 'height': l:height,
          \ 'style': 'minimal'
          \}
-      let l:win = nvim_open_win(nvim_create_buf(v:false, v:true), v:true, l:opts)
-      call setwinvar(l:win, '&winhighlight', 'NormalFloat:TabLine')
+      let s:fzf_win = nvim_open_win(nvim_create_buf(v:false, v:true), v:true, l:opts)
+      call setwinvar(s:fzf_win, '&winhighlight', 'NormalFloat:TabLine')
     endfunction
+
+    augroup FZFAmbi
+      autocmd!
+      autocmd BufWinLeave * if win_getid() == s:fzf_win | setlocal ambiwidth=double | endif
+    augroup END
 
     let g:fzf_layout = {'window': 'call FZFWindow()'}
   endif
