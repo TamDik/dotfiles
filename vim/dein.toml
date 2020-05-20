@@ -1,8 +1,3 @@
-# [[plugins]]
-# repo = '~/repos/github.com/TamDik/vim-tags'
-# repo = 'TamDik/vim-tags'
-
-
 [[plugins]]
 repo = 'cocopon/iceberg.vim'
 hook_add = '''
