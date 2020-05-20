@@ -69,6 +69,7 @@ set splitright
 " ctags
 set tags=./tags,tags,./.tags,.tags
 
+" true color
 if has('nvim') && $TERM == 'screen-256color'
   set termguicolors
 endif
