@@ -12,7 +12,7 @@ export DOTFILES=~/path/to/dotfiles
 ```
 
 ## Requirements
-* zsh Run
+* zsh
     * `chsh -s $(which zsh)`
 * powerline patched fonts 
     * See [nerd-fonts](https://github.com/ryanoasis/nerd-fonts/blob/master/readme.md#font-installation)
