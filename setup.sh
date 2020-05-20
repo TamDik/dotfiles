@@ -50,9 +50,11 @@ ln -snfv ${SCRIPT_DIR}/zsh/zprofile            ${ZSH_DIR}/.zprofile
 ln -snfv ${SCRIPT_DIR}/zsh/zshenv              ~/.zshenv
 ln -snfv ${SCRIPT_DIR}/zsh/zshrc               ${ZSH_DIR}/.zshrc
 
+echo '[ Requirements ]'
+if [ $SHELL != '/bin/zsh' ]; then
+    echo '* You need to change shell to zsh. Run `chsh -s $(which zsh)`.'
+fi
 cat << EOF
-
-[ requirements ]
-You need to install the powerline patched fonts to properly display the prompt.
-See 'https://github.com/ryanoasis/nerd-fonts/blob/master/readme.md#font-installation' to install NERD FONTS. 
+* You need to install the powerline patched fonts to properly display the prompt.
+  See 'https://github.com/ryanoasis/nerd-fonts/blob/master/readme.md#font-installation' to install NERD FONTS. 
 EOF
