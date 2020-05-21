@@ -2,7 +2,7 @@ set shortmess+=I
 set completeopt=menuone
 set spelllang+=cjk
 set backspace=indent,start,eol
-set ambiwidth=double
+"set ambiwidth=double
 set noshowcmd
 set noshowmode
 set hidden
@@ -33,11 +33,11 @@ set backupext=.bat
 set noswapfile
 set undofile
 
-let s:undo_path   = g:ROOT_DIR . '/undo'
+let s:undo_path = g:ROOT_DIR . '/undo'
 if !isdirectory(s:undo_path)
   call mkdir(s:undo_path,   'p')
 endif
-let &undodir   = s:undo_path
+let &undodir = s:undo_path
 
 " tab
 set tabstop=4
