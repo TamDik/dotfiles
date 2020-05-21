@@ -4,7 +4,7 @@ DEFAULT_DOTFILES=~/dotfiles
 if [ -n "${DOTFILES}" ] && [ ${DOTFILES} != ${DEFAULT_DOTFILES} ]; then
   tempfile="$(mktemp)"
   sed -E 's|export DOTFILES=[^ ]*|export DOTFILES='${DOTFILES}'|' ${SCRIPT_DIR}/zsh/zshenv > $tempfile
-  cat $tempfile > ${SCRIPT_DIR}/zshenv
+  cat $tempfile > ${SCRIPT_DIR}/zsh/zshenv
   rm $tempfile
 else
   export DOTFILES=$DEFAULT_DOTFILES
