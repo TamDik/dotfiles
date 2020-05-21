@@ -74,7 +74,7 @@ hook_add = '''
 repo = 'junegunn/fzf'
 merged = '0'
 hook_add = '''
-  let $FZF_DEFAULT_OPTS = '--layout=reverse --border'
+  let $FZF_DEFAULT_OPTS = '--layout=reverse --border --inline-info'
   if has('nvim')
     let s:fzf_win = -1
     function! FZFWindow()
@@ -94,10 +94,12 @@ hook_add = '''
       call setwinvar(s:fzf_win, '&winhighlight', 'NormalFloat:TabLine')
     endfunction
 
-    augroup FZFAmbi
-      autocmd!
-      autocmd BufWinLeave * if win_getid() == s:fzf_win | setlocal ambiwidth=double | endif
-    augroup END
+    if &ambiwidth == 'double'
+      augroup FZFAmbi
+        autocmd!
+        autocmd BufWinLeave * if win_getid() == s:fzf_win | setlocal ambiwidth=double | endif
+      augroup END
+    endif
 
     let g:fzf_layout = {'window': 'call FZFWindow()'}
   endif

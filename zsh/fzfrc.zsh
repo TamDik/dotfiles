@@ -12,11 +12,17 @@ FZF_SHELL_DIR=~/repos/zplug/junegunn/fzf/shell
 
 # Open the selected file at ``rcdir'' 
 frc() (
-  local rcdir rcfile
+  local rcdir rcfile preview
   rcdir=~/repos/github.com/TamDik/dotfiles
   cd $rcdir > /dev/null
-  # rcfile=$(find . -name '.git' -prune -o -type f -print | sed '/README/d' | sed -e 's/^.\///' | fzf)
-  rcfile=$(find . -name '.git' -prune -o -type f -print | sed -e 's/^.\///' | fzf)
+
+  if type abbrev-alias > /dev/null 2>&1; then
+      preview="bat --style=numbers --color=always {}"
+  else
+      preview="cat -n {}"
+  fi
+  rcfile=$(find . -name '.git' -prune -o -type f -print | sed '/.DS_Store/d' | sed -e 's/^.\///' | fzf --preview $preview)
+
   if [ -z "$rcfile" ]; then
     return
   fi
@@ -31,6 +37,7 @@ fts () {
 
 # attach the selected session
 fta () {
+  local message_of_creation sessions session
   if [ -n "$TMUX" ]; then
     return
   fi
