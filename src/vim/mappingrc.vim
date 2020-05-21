@@ -21,5 +21,4 @@ nnoremap Y y$
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 if executable('compiler')
   nnoremap <silent> <F5> :w<CR>:!compiler %<CR>
-  inoremap <silent> <F5> <ESC>:w<CR>:!compiler %<CR>
 endif
