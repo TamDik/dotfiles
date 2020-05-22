@@ -18,7 +18,7 @@ gcm() {
 }
 
 alias -s py='~/opt/anaconda3/bin/python3'
-alias -s {tex,md}='vim'
+alias -s {tex,md}=$EDITOR
 alias -s {png,jpg,bmp,pdf}='open -a Preview'
 
 if type abbrev-alias > /dev/null 2>&1; then
