@@ -24,7 +24,7 @@ set t_vb=
 set belloff=all
 
 " conceal
-set conceallevel=2
+set conceallevel=0
 set concealcursor=nv
 
 " backup files and so on
