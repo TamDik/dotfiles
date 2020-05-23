@@ -142,3 +142,26 @@ hook_add = '''
 
 [[plugins]]
 repo = 'honza/vim-snippets'
+
+[[plugins]]
+repo = 'mhinz/vim-startify'
+hook_add = '''
+  let g:startify_files_number = 8
+  let g:startify_lists = [
+    \ { 'type': 'files',     'header': ['   Recent Files']},
+    \ { 'type': 'dir',       'header': ['   Current Directory -- ' . getcwd()] },
+    \ { 'type': 'sessions',  'header': ['   Sessions']},
+    \ { 'type': 'bookmarks', 'header': ['   Bookmarks']},
+    \ { 'type': 'commands',  'header': ['   Commands']},
+    \ ]
+  let g:startify_bookmarks = []
+
+  let s:repos = split(glob('~/repos/github.com/TamDik/*'), '\n')
+  if exists('*HomeToTilde')
+    let s:repos = map(s:repos, 'HomeToTilde(v:val)')
+  endif
+  let g:startify_bookmarks += s:repos
+
+  let g:startify_custom_header=''
+  let g:startify_change_to_vcs_root=1
+'''

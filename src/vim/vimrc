@@ -24,6 +24,11 @@ function! s:source_file(filename)
   execute 'source' . a:filename
 endfunction
 
+function! HomeToTilde(path)
+  let l:escaped_home = escape(expand('~'), '/')
+  return substitute(a:path, '^' . l:escaped_home, '~', '')
+endfunction
+
 " options
 call s:source_file(g:VIM_ROOT . '/optionrc.vim')
 
