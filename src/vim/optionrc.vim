@@ -73,3 +73,29 @@ set tags=./tags,tags,./.tags,.tags
 if has('nvim') && $TERM == 'screen-256color'
   set termguicolors
 endif
+
+" folding
+set foldmethod=indent
+set foldcolumn=1
+set foldlevel=20
+set foldtext=MyFoldText()
+function MyFoldText()
+  let l:ABBREV_MARK = ' ... '
+  let l:num_lines = v:foldend - v:foldstart + 1
+  let l:startline = getline(v:foldstart)
+
+  let l:head = '+' . v:folddashes
+  let l:tail = '(' . l:num_lines . ' lines)'
+  let l:body = getline(v:foldstart)
+
+  let l:num_columns = winwidth(0) - &foldcolumn - (!&number ? 0 : max([&numberwidth, len(line('$'))]))
+  let l:head_length = strdisplaywidth(l:head)
+  let l:tail_length = strdisplaywidth(l:tail)
+  let l:body_length = l:num_columns - l:head_length - l:tail_length
+
+  let l:truncated_body = l:body[(l:head_length):]
+  if strdisplaywidth(l:truncated_body) > l:body_length
+    let l:truncated_body = l:truncated_body[:(l:body_length - strdisplaywidth(l:ABBREV_MARK)) - 1] . l:ABBREV_MARK
+  endif
+  return printf('%s%-*s%s', l:head, l:body_length, l:truncated_body, l:tail)
+endfunction

@@ -26,9 +26,9 @@ hook_add = '''
     \ 'python': ['pylint'],
     \ 'java':   ['javac']
     \}
-  nmap <leader>[ <Plug>(ale_previous_wrap)
-  nmap <leader>] <Plug>(ale_next_wrap)
-  nnoremap <silent> <leader>a :<C-u>ALEToggle<CR>
+  nmap <leader>ak <Plug>(ale_previous_wrap)
+  nmap <leader>aj <Plug>(ale_next_wrap)
+  nnoremap <silent> <leader>aa :<C-u>ALEToggle<CR>
 
   if !has('nvim')
     let g:ale_sign_error = ''
