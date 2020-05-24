@@ -108,10 +108,3 @@ function MyFoldText()
   endif
   return printf('%s%-*s%s', l:head, l:body_length, l:truncated_body, l:tail)
 endfunction
-
-" Save fold settings.
-augroup FoldSaving
-  autocmd BufWritePost * if expand('%') != '' && &buftype == '' | mkview | endif
-  autocmd BufRead * if expand('%') != '' && &buftype == '' | silent! loadview | endif
-augroup END
-"set viewoptions-=options
