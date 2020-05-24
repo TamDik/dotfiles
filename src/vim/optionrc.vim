@@ -35,7 +35,7 @@ set undofile
 
 let s:undo_path = g:ROOT_DIR . '/undo'
 if !isdirectory(s:undo_path)
-  call mkdir(s:undo_path,   'p')
+  call mkdir(s:undo_path, 'p')
 endif
 let &undodir = s:undo_path
 
