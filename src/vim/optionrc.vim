@@ -79,6 +79,15 @@ set foldmethod=indent
 set foldcolumn=1
 set foldlevel=20
 set foldtext=MyFoldText()
+
+function s:buffercolumns(buffer)
+  let l:num_columns = winwidth(a:buffer) - &foldcolumn
+  if &number || &relativenumber
+    let l:num_columns -= max([&numberwidth, len(line('$')) + 1])
+  endif
+  return l:num_columns
+endfunction
+
 function MyFoldText()
   let l:ABBREV_MARK = ' ... '
   let l:num_lines = v:foldend - v:foldstart + 1
@@ -88,7 +97,7 @@ function MyFoldText()
   let l:tail = '(' . l:num_lines . ' lines)'
   let l:body = getline(v:foldstart)
 
-  let l:num_columns = winwidth(0) - &foldcolumn - (!&number ? 0 : max([&numberwidth, len(line('$')) + 1]))
+  let l:num_columns = s:buffercolumns(0)
   let l:head_length = strdisplaywidth(l:head)
   let l:tail_length = strdisplaywidth(l:tail)
   let l:body_length = l:num_columns - l:head_length - l:tail_length
