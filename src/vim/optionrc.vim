@@ -6,8 +6,10 @@ set backspace=indent,start,eol
 set noshowcmd
 set noshowmode
 set hidden
-set number relativenumber
+set number
+set relativenumber
 set wildmenu
+set updatetime=500
 filetype plugin indent on
 syntax enable
 
