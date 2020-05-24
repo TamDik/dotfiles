@@ -44,7 +44,7 @@ hook_add = '''
 
   augroup ALEColor
     autocmd!
-    autocmd ColorScheme * highlight ALEErrorSign   ctermfg=203 ctermbg=none
-    autocmd ColorScheme * highlight ALEWarningSign ctermfg=216 ctermbg=none
+    autocmd ColorScheme * highlight ALEErrorSign   ctermfg=203 ctermbg=NONE guibg=NONE
+    autocmd ColorScheme * highlight ALEWarningSign ctermfg=216 ctermbg=NONE guibg=NONE
   augroup END
 '''
