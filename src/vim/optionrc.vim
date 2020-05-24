@@ -88,7 +88,7 @@ function MyFoldText()
   let l:tail = '(' . l:num_lines . ' lines)'
   let l:body = getline(v:foldstart)
 
-  let l:num_columns = winwidth(0) - &foldcolumn - (!&number ? 0 : max([&numberwidth, len(line('$'))]))
+  let l:num_columns = winwidth(0) - &foldcolumn - (!&number ? 0 : max([&numberwidth, len(line('$')) + 1]))
   let l:head_length = strdisplaywidth(l:head)
   let l:tail_length = strdisplaywidth(l:tail)
   let l:body_length = l:num_columns - l:head_length - l:tail_length
