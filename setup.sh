@@ -50,11 +50,11 @@ ln -snfv ${SCRIPT_DIR}/zsh/zshrc               ${ZSH_DIR}/.zshrc
 
 echo '[ Requirements ]'
 if [ $SHELL != '/bin/zsh' ]; then
-    echo '* You need to change shell to zsh. Run `chsh -s $(which zsh)`.'
+  echo '* You need to change shell to zsh. Run `chsh -s $(which zsh)`.'
 fi
 if type nvim > /dev/null 2>&1; then
-    echo '* The default editor is neovim but nvim command was not found.'
-    echo "  See 'https://github.com/neovim/neovim' or 'https://github.com/neovim/neovim/releases/' to install neovim."
+  echo '* The default editor is neovim but nvim command was not found.'
+  echo "  See 'https://github.com/neovim/neovim' or 'https://github.com/neovim/neovim/releases/' to install neovim."
 fi
 cat << EOF
 * You need to install the powerline patched fonts to properly display the prompt.
