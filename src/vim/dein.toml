@@ -74,7 +74,11 @@ hook_add = '''
 repo = 'junegunn/fzf'
 merged = '0'
 hook_add = '''
-  let $FZF_DEFAULT_OPTS = '--layout=reverse --border --inline-info'
+  let $FZF_DEFAULT_OPTS = '--layout=reverse --border --inline-info '
+  let $FZF_DEFAULT_OPTS .= '--color=fg:#c6c8d1,bg:#161821,hl:#6b7089 '
+  let $FZF_DEFAULT_OPTS .= '--color=fg+:#c6c8d1,bg+:#1e2132,hl+:#84a0c6 '
+  let $FZF_DEFAULT_OPTS .= '--color=info:#b4be82,prompt:#84a0c6,pointer:#84a0c6 '
+  let $FZF_DEFAULT_OPTS .= '--color=marker:#84a0c6,spinner:#84a0c6,header:#6b7089'
   if has('nvim')
     let s:fzf_win = -1
     function! FZFWindow()
@@ -140,8 +144,10 @@ hook_add = '''
   let g:UltiSnipsJumpBackwardTrigger="<C-z>"
 '''
 
+
 [[plugins]]
 repo = 'honza/vim-snippets'
+
 
 [[plugins]]
 repo = 'mhinz/vim-startify'
@@ -165,6 +171,7 @@ hook_add = '''
   let g:startify_custom_header=''
   let g:startify_change_to_vcs_root=1
 '''
+
 
 [[plugins]]
 repo = "cespare/vim-toml"

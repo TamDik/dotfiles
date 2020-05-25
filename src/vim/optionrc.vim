@@ -87,6 +87,7 @@ function s:buffercolumns(buffer)
   if &number || &relativenumber
     let l:num_columns -= max([&numberwidth, len(line('$')) + 1])
   endif
+  " TODO: if sign column is open, then l:num_columns -= 2
   return l:num_columns
 endfunction
 
