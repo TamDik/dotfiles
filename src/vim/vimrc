@@ -46,6 +46,7 @@ endif
 
 " color
 call s:source_file(g:VIM_ROOT . '/colorrc.vim')
+" syntax enable
 
 " mapping
 call s:source_file(g:VIM_ROOT . '/mappingrc.vim')

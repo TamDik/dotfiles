@@ -10,4 +10,3 @@ augroup TransparentBG
   autocmd ColorScheme * highlight Conceal     ctermbg=NONE guibg=NONE
   autocmd ColorScheme * highlight FoldColumn  ctermbg=NONE guibg=NONE
 augroup END
-syntax on

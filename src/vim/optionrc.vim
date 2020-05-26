@@ -11,7 +11,6 @@ set relativenumber
 set wildmenu
 set updatetime=500
 filetype plugin indent on
-syntax enable
 
 if has('nvim')
   set shada=!,'500,<50,s10,h

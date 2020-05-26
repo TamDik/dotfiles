@@ -1,4 +1,3 @@
-syntax on
 set guifont=Hack\ Nerd\ Font:h17
 set transparency=5
 set lines=999
@@ -22,4 +21,3 @@ augroup TransparentBG
   autocmd ColorScheme * highlight SignColumn  ctermbg=NONE
   autocmd ColorScheme * highlight Conceal     ctermbg=NONE
 augroup END
-syntax on
