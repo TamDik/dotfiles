@@ -49,7 +49,7 @@ ln -snfv ${SCRIPT_DIR}/zsh/zshenv              ~/.zshenv
 ln -snfv ${SCRIPT_DIR}/zsh/zshrc               ${ZSH_DIR}/.zshrc
 
 echo '[ Requirements ]'
-if [ $SHELL != '/bin/zsh' ]; then
+if [ $SHELL != $(which zsh) ]; then
   echo '* You need to change shell to zsh. Run `chsh -s $(which zsh)`.'
 fi
 if type nvim > /dev/null 2>&1; then
