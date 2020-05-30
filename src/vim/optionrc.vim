@@ -71,7 +71,7 @@ set splitright
 set tags=./tags,tags,./.tags,.tags
 
 " true color
-if has('nvim') && stridx($TERM, "256color") != -1
+if IsAvailableTureColor()
   set termguicolors
 endif
 
