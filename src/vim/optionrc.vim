@@ -71,7 +71,7 @@ set splitright
 set tags=./tags,tags,./.tags,.tags
 
 " true color
-if has('nvim') && $TERM == 'screen-256color'
+if has('nvim') && stridx($TERM, "256color") != -1
   set termguicolors
 endif
 
@@ -90,8 +90,9 @@ function s:buffercolumns(buffer)
   return l:num_columns
 endfunction
 
+let g:abbrev_fold_mark = '...'
 function MyFoldText()
-  let l:ABBREV_MARK = ' ... '
+  let l:ABBREV_MARK = get(g:, 'abbrev_fold_mark', '...')
   let l:num_lines = v:foldend - v:foldstart + 1
   let l:startline = getline(v:foldstart)
 
