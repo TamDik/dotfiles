@@ -5,11 +5,10 @@
 ```sh
 git clone https://github.com/TamDik/dotfiles.git
 cd dotfiles
+
+# export DOTFILES=~/path/to/dotfiles
+
 ./setup.sh
-```
-Run the following command before you run `./setup.sh`, if you want to change the location of dotfiles directory (which is different from remote repository).
-```sh
-export DOTFILES=~/path/to/dotfiles
 ```
 
 ## Requirements
