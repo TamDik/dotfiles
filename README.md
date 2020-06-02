@@ -6,6 +6,7 @@
 git clone https://github.com/TamDik/dotfiles.git
 cd dotfiles
 
+# if necessary
 # export DOTFILES=~/path/to/dotfiles
 
 ./setup.sh
