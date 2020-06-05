@@ -1,6 +1,7 @@
 " options
 set guifont=Hack\ Nerd\ Font:h17
-set transparency=15
+let s:transparency = 15
+let &transparency = s:transparency
 set lines=999
 set columns=9999
 
@@ -17,7 +18,9 @@ set runtimepath+=~/repos/dein.vim/repos/github.com/cocopon/iceberg.vim
 colorscheme iceberg
 
 " mapping
-nnoremap <silent> <D-u> :<C-u>let &transparency = 15 - &transparency<CR>
+command TransparencyToggle let &transparency = s:transparency - &transparency
+nnoremap <silent> <D-u> :<C-u>TransparencyToggle<CR>
+
 if !exists("g:loaded_tmux_navigator")
   nnoremap <C-h> <C-w>h
   nnoremap <C-j> <C-w>j
