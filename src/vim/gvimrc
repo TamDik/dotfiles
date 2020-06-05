@@ -1,7 +1,6 @@
-set runtimepath+=~/repos/dein.vim/repos/github.com/cocopon/iceberg.vim
-
+" options
 set guifont=Hack\ Nerd\ Font:h17
-set transparency=5
+set transparency=15
 set lines=999
 set columns=9999
 
@@ -13,15 +12,26 @@ set guioptions-=l
 set guioptions-=L
 set guioptions-=b
 
+" color
+set runtimepath+=~/repos/dein.vim/repos/github.com/cocopon/iceberg.vim
 augroup TransparentBG
   autocmd!
-  autocmd ColorScheme * highlight Normal      ctermbg=NONE
-  autocmd ColorScheme * highlight LineNr      ctermbg=NONE
-  autocmd ColorScheme * highlight Folded      ctermbg=NONE
-  autocmd ColorScheme * highlight NonText     ctermbg=NONE
-  autocmd ColorScheme * highlight EndOfBuffer ctermbg=NONE
-  autocmd ColorScheme * highlight SignColumn  ctermbg=NONE
-  autocmd ColorScheme * highlight Conceal     ctermbg=NONE
-  autocmd ColorScheme * highlight FoldColumn  ctermbg=NONE
+  " autocmd ColorScheme * highlight Normal      guibg=NONE
+  autocmd ColorScheme * highlight LineNr      guibg=NONE
+  autocmd ColorScheme * highlight NonText     guibg=NONE
+  autocmd ColorScheme * highlight EndOfBuffer guibg=NONE
+  autocmd ColorScheme * highlight SignColumn  guibg=NONE
+  autocmd ColorScheme * highlight Conceal     guibg=NONE
+  autocmd ColorScheme * highlight Folded      guibg=NONE
+  autocmd ColorScheme * highlight FoldColumn  guibg=NONE
 augroup END
 colorscheme iceberg
+
+" mapping
+nnoremap <silent> <D-u> :<C-u>let &transparency = 15 - &transparency<CR>
+if !exists("g:loaded_tmux_navigator")
+  nnoremap <C-h> <C-w>h
+  nnoremap <C-j> <C-w>j
+  nnoremap <C-k> <C-w>k
+  nnoremap <C-l> <C-w>l
+endif
