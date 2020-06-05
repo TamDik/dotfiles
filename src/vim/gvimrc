@@ -1,17 +1,10 @@
 " options
 set guifont=Hack\ Nerd\ Font:h17
-let s:transparency = 15
-let &transparency = s:transparency
+set guioptions=
 set lines=999
 set columns=9999
-
-set guioptions-=T
-set guioptions-=m
-set guioptions-=r
-set guioptions-=R
-set guioptions-=l
-set guioptions-=L
-set guioptions-=b
+let s:transparency = 15
+let &transparency = s:transparency
 
 " color
 set runtimepath+=~/repos/dein.vim/repos/github.com/cocopon/iceberg.vim
