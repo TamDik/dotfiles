@@ -14,17 +14,6 @@ set guioptions-=b
 
 " color
 set runtimepath+=~/repos/dein.vim/repos/github.com/cocopon/iceberg.vim
-augroup TransparentBG
-  autocmd!
-  " autocmd ColorScheme * highlight Normal      guibg=NONE
-  autocmd ColorScheme * highlight LineNr      guibg=NONE
-  autocmd ColorScheme * highlight NonText     guibg=NONE
-  autocmd ColorScheme * highlight EndOfBuffer guibg=NONE
-  autocmd ColorScheme * highlight SignColumn  guibg=NONE
-  autocmd ColorScheme * highlight Conceal     guibg=NONE
-  autocmd ColorScheme * highlight Folded      guibg=NONE
-  autocmd ColorScheme * highlight FoldColumn  guibg=NONE
-augroup END
 colorscheme iceberg
 
 " mapping

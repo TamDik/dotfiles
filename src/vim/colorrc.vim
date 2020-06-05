@@ -1,7 +1,9 @@
 "color
 augroup TransparentBG
   autocmd!
-  autocmd ColorScheme * highlight Normal      ctermbg=NONE guibg=NONE
+  if !has('gui')
+    autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
+  endif
   autocmd ColorScheme * highlight LineNr      ctermbg=NONE guibg=NONE
   autocmd ColorScheme * highlight NonText     ctermbg=NONE guibg=NONE
   autocmd ColorScheme * highlight EndOfBuffer ctermbg=NONE guibg=NONE
