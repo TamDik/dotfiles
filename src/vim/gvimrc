@@ -1,3 +1,5 @@
+set runtimepath+=~/repos/dein.vim/repos/github.com/cocopon/iceberg.vim
+
 set guifont=Hack\ Nerd\ Font:h17
 set transparency=5
 set lines=999
@@ -20,4 +22,6 @@ augroup TransparentBG
   autocmd ColorScheme * highlight EndOfBuffer ctermbg=NONE
   autocmd ColorScheme * highlight SignColumn  ctermbg=NONE
   autocmd ColorScheme * highlight Conceal     ctermbg=NONE
+  autocmd ColorScheme * highlight FoldColumn  ctermbg=NONE
 augroup END
+colorscheme iceberg

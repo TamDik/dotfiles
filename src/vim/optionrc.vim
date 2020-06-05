@@ -3,6 +3,7 @@ set completeopt=menuone
 set spelllang+=cjk
 set backspace=indent,start,eol
 "set ambiwidth=double
+set background=dark
 set noshowcmd
 set noshowmode
 set hidden
