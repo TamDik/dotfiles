@@ -1,11 +1,8 @@
 "color
 let s:transparent = 1
 function s:is_transparent()
-  if !s:transparent
-    return 0
-  endif
   let l:color_schemes = ['iceberg']
-  return match(l:color_schemes, g:colors_name) != -1
+  return s:transparent && match(l:color_schemes, g:colors_name) != -1
 endfunction
 command TransparencyToggle let s:transparent = 1 - s:transparent | execute "colorscheme " . g:colors_name
 
