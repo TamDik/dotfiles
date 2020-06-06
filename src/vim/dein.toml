@@ -10,7 +10,7 @@ repo = 'itchyny/lightline.vim'
 hook_add = '''
   set laststatus=2
   let g:lightline = {
-    \ 'colorscheme': 'seoul256',
+    \ 'colorscheme': 'iceberg',
     \ 'active': {
     \   'left':  [['mode'],
     \             ['filename'],

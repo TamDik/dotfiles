@@ -11,8 +11,8 @@ set runtimepath+=~/repos/dein.vim/repos/github.com/cocopon/iceberg.vim
 colorscheme iceberg
 
 " mapping
-command TransparencyToggle let &transparency = s:transparency - &transparency
-nnoremap <silent> <D-u> :<C-u>TransparencyToggle<CR>
+command GVIMTransparencyToggle let &transparency = s:transparency - &transparency
+nnoremap <silent> <D-u> :<C-u>GVIMTransparencyToggle<CR>
 
 if !exists("g:loaded_tmux_navigator")
   nnoremap <C-h> <C-w>h
