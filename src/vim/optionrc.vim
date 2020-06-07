@@ -91,9 +91,9 @@ function s:buffercolumns(buffer)
   return l:num_columns
 endfunction
 
-let g:abbrev_fold_mark = '...'
+let s:abbrev_fold_mark = '...'
 function MyFoldText()
-  let l:ABBREV_MARK = get(g:, 'abbrev_fold_mark', '...')
+  let l:ABBREV_MARK = get(s:, 'abbrev_fold_mark', '...')
   let l:num_lines = v:foldend - v:foldstart + 1
   let l:startline = getline(v:foldstart)
 
