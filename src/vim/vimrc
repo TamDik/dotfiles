@@ -5,7 +5,7 @@ if &compatible
   set nocompatible
 endif
 
-let g:VIM_ROOT = $DOTFILES . '/vim'
+let g:VIM_ROOT  = $DOTFILES . '/vim'
 let g:NVIM_ROOT = $DOTFILES . '/nvim'
 if has('nvim')
   let g:ROOT_DIR = g:NVIM_ROOT
@@ -18,7 +18,9 @@ let g:mapleader = "\<Space>"
 
 function! s:source_file(filename)
   if !filereadable(a:filename)
-    echo 'File Not Found : ' . a:filename
+    echohl ErrorMsg
+    echomsg '[dotfiles] File Not Found : ' . a:filename
+    echohl None
     return
   endif
   execute 'source' . a:filename
