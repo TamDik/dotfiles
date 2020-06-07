@@ -18,9 +18,7 @@ let g:mapleader = "\<Space>"
 
 function! s:source_file(filename)
   if !filereadable(a:filename)
-    echohl ErrorMsg
-    echomsg '[dotfiles] File Not Found : ' . a:filename
-    echohl None
+    echohl ErrorMsg | echomsg '[dotfiles] File Not Found : ' . a:filename | echohl None
     return
   endif
   execute 'source' . a:filename
