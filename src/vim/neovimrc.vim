@@ -1,6 +1,6 @@
 set inccommand=split
 
-if IsAvailableTureColor()
+if IsAvailableTrueColor()
   set pumblend=10
   set winblend=10
 else

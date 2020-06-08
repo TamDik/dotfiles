@@ -29,7 +29,7 @@ function! HomeToTilde(path)
   return substitute(a:path, '^' . l:escaped_home, '~', '')
 endfunction
 
-function! IsAvailableTureColor()
+function! IsAvailableTrueColor()
   return has('nvim') && stridx($TERM, "256color") != -1
 endfunction
 

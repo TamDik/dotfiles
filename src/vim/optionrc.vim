@@ -72,7 +72,7 @@ set splitright
 set tags=./tags,tags,./.tags,.tags
 
 " true color
-if IsAvailableTureColor()
+if IsAvailableTrueColor()
   set termguicolors
 endif
 
