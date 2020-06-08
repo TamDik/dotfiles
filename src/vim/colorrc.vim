@@ -6,14 +6,20 @@ function s:is_transparent()
 endfunction
 command TransparencyToggle let s:transparent = 1 - s:transparent | execute "colorscheme " . g:colors_name
 
+function s:bg_to_transparent()
+  if !has('gui')
+    highlight Normal ctermbg=NONE guibg=NONE
+  endif
+  highlight LineNr      ctermbg=NONE guibg=NONE
+  highlight NonText     ctermbg=NONE guibg=NONE
+  highlight EndOfBuffer ctermbg=NONE guibg=NONE
+  highlight SignColumn  ctermbg=NONE guibg=NONE
+  highlight Conceal     ctermbg=NONE guibg=NONE
+  highlight Folded      ctermbg=NONE guibg=NONE
+  highlight FoldColumn  ctermbg=NONE guibg=NONE
+endfunction
+
 augroup TransparentBG
   autocmd!
-  autocmd ColorScheme * if s:is_transparent() && !has('gui') | highlight Normal      ctermbg=NONE guibg=NONE | endif
-  autocmd ColorScheme * if s:is_transparent()                | highlight LineNr      ctermbg=NONE guibg=NONE | endif
-  autocmd ColorScheme * if s:is_transparent()                | highlight NonText     ctermbg=NONE guibg=NONE | endif
-  autocmd ColorScheme * if s:is_transparent()                | highlight EndOfBuffer ctermbg=NONE guibg=NONE | endif
-  autocmd ColorScheme * if s:is_transparent()                | highlight SignColumn  ctermbg=NONE guibg=NONE | endif
-  autocmd ColorScheme * if s:is_transparent()                | highlight Conceal     ctermbg=NONE guibg=NONE | endif
-  autocmd ColorScheme * if s:is_transparent()                | highlight Folded      ctermbg=NONE guibg=NONE | endif
-  autocmd ColorScheme * if s:is_transparent()                | highlight FoldColumn  ctermbg=NONE guibg=NONE | endif
+  autocmd ColorScheme * if s:is_transparent() | call s:bg_to_transparent() | endif
 augroup END
