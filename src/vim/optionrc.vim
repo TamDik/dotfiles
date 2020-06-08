@@ -49,7 +49,7 @@ augroup TabSetting
   autocmd!
   let s:file_types = ['vim', 'toml', 'markdown', 'xml', 'html', 'sh', 'zsh']
   for s:file_type in s:file_types
-    execute 'autocmd FileType ' . s:file_type ' setlocal tabstop=2'
+    execute 'autocmd FileType ' . s:file_type . ' setlocal tabstop=2'
   endfor
 augroup END
 
