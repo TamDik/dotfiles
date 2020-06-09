@@ -31,7 +31,6 @@ set concealcursor=nv
 
 " backup files and so on
 set nobackup
-set backupext=.bat
 set noswapfile
 set undofile
 
