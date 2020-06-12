@@ -5,15 +5,43 @@ setopt interactivecomments
 # disable r
 
 
+# key bind
+export KEYTIMEOUT=20
+bindkey -v
+bindkey -M viins 'jj' vi-cmd-mode
+
+
 # prompt
 setopt prompt_subst
 autoload -Uz vcs_info
-export PROMPT='
+export PS2='%F{248}❱%f '
+export PS1='
 %~
 %F{110}❱%f '
 precmd() {
   vcs_info
 }
+
+function zle-line-init zle-keymap-select {
+  case $KEYMAP in
+    vicmd)
+      COLOR1=180
+      COLOR2=180
+      ;;
+    viins|main)
+      COLOR1=110
+      COLOR2=248
+      ;;
+  esac
+  PS2="%F{$COLOR2}❱%f "
+  PS1="
+%~
+%F{${COLOR1}}❱%f "
+  zle reset-prompt
+}
+zle -N zle-line-init
+zle -N zle-keymap-select
+
 RF=0
 RK=102
 UNSTAGEDCOLOR=210
@@ -24,14 +52,7 @@ zstyle ':vcs_info:git:*' unstagedstr "%F{${UNSTAGEDCOLOR}}%K{${UNSTAGEDCOLOR}}"
 zstyle ':vcs_info:*' formats "%F{${RK}}%f%K{${RK}}%F{${RF}} %s  %b %k%f"
 zstyle ':vcs_info:git:*' formats "%F{${RK}}%c%u%k%f%K{${RK}}%c%u%F{${RF}}  %b %k%f"
 export RPROMPT='${vcs_info_msg_0_}'
-export PS2='%F{248}❱%f '
 unset RK RF UNSTAGEDCOLOR STAGEDCOLOR
-
-
-# key bind
-export KEYTIMEOUT=1
-bindkey -v
-# bindkey -M viins 'jj' vi-cmd-mode
 
 
 # zplug
@@ -88,6 +109,7 @@ autoload -Uz compinit
 compinit -d ${DOTFILES}/zsh/zcompdump
 setopt correct
 zmodload zsh/complist
+zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}'
 zstyle ':completion:*' menu select
 bindkey -M menuselect '^h' vi-backward-char
 bindkey -M menuselect '^k' vi-up-line-or-history
