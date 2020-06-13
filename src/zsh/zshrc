@@ -2,6 +2,7 @@ export LANG=en_US.UTF-8
 setopt no_beep
 setopt ignoreeof
 setopt interactivecomments
+setopt correct
 # disable r
 
 
@@ -105,9 +106,9 @@ chpwd() {
 
 
 # completion
+setopt menu_complete
 autoload -Uz compinit
 compinit -d ${DOTFILES}/zsh/zcompdump
-setopt correct
 zmodload zsh/complist
 zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}'
 zstyle ':completion:*' menu select
