@@ -13,12 +13,20 @@ bindkey -M viins 'jj' vi-cmd-mode
 
 
 # prompt
+function _set_p1 {
+  local color=$1
+  export PS1="
+%~
+%F{${color}}❱%f "
+}
+function _set_p2 {
+  local color=$1
+  export PS2="%F{${color}}❱%f "
+}
 setopt prompt_subst
 autoload -Uz vcs_info
-export PS2='%F{248}❱%f '
-export PS1='
-%~
-%F{110}❱%f '
+_set_p2 248
+_set_p1 110
 precmd() {
   vcs_info
 }
@@ -26,18 +34,14 @@ precmd() {
 function zle-line-init zle-keymap-select {
   case $KEYMAP in
     vicmd)
-      COLOR1=180
-      COLOR2=180
+      _set_p1 180
+      _set_p2 180
       ;;
     viins|main)
-      COLOR1=110
-      COLOR2=248
+      _set_p1 110
+      _set_p2 248
       ;;
   esac
-  PS2="%F{$COLOR2}❱%f "
-  PS1="
-%~
-%F{${COLOR1}}❱%f "
   zle reset-prompt
 }
 zle -N zle-line-init
