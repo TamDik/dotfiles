@@ -121,7 +121,6 @@ chpwd() {
 
 # completion
 setopt list_types
-setopt menu_complete
 setopt complete_in_word
 autoload -Uz compinit && compinit -d ${DOTFILES}/zsh/zcompdump
 zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}'
