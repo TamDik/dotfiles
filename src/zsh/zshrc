@@ -26,10 +26,10 @@ function _set_ps_mode {
       color2=180
       ;;
   esac
-  export PS1="
+  PS1="
 %~
 %F{${color1}}❱%f "
-  export PS2="%F{${color2}}❱%f "
+  PS2="%F{${color2}}❱%f "
 }
 
 setopt prompt_subst
