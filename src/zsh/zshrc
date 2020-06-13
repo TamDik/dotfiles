@@ -11,6 +11,12 @@ export KEYTIMEOUT=20
 bindkey -v
 bindkey -M viins 'jj' vi-cmd-mode
 
+zmodload zsh/complist
+bindkey -M menuselect 'H' vi-backward-char
+bindkey -M menuselect 'K' vi-up-line-or-history
+bindkey -M menuselect 'L' vi-forward-char
+bindkey -M menuselect 'J' vi-down-line-or-history
+
 
 # prompt
 function _set_ps_mode {
@@ -114,16 +120,14 @@ chpwd() {
 
 
 # completion
+setopt list_types
 setopt menu_complete
-autoload -Uz compinit
-compinit -d ${DOTFILES}/zsh/zcompdump
-zmodload zsh/complist
+setopt complete_in_word
+autoload -Uz compinit && compinit -d ${DOTFILES}/zsh/zcompdump
 zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}'
 zstyle ':completion:*' menu select
-bindkey -M menuselect '^h' vi-backward-char
-bindkey -M menuselect '^k' vi-up-line-or-history
-bindkey -M menuselect '^l' vi-forward-char
-bindkey -M menuselect '^j' vi-down-line-or-history
+zstyle ':completion:*' list-colors $LS_COLORS
+
 
 # python
 [ -f ${DOTFILES}/python/pythonrc.zsh ] && source ${DOTFILES}/python/pythonrc.zsh
