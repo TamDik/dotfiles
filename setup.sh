@@ -16,6 +16,7 @@ PYTHON_DIR=${DOTFILES}/python
 VIM_DIR=${DOTFILES}/vim
 NVIM_DIR=${DOTFILES}/nvim
 GIT_DIR=${DOTFILES}/git
+mkdir -p ~/repos
 mkdir -p ${ZSH_DIR}
 mkdir -p ${TMUX_DIR}
 mkdir -p ${PYTHON_DIR}

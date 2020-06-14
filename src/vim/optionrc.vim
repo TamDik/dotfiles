@@ -77,7 +77,7 @@ endif
 
 " folding
 set foldmethod=indent
-set foldcolumn=1
+set foldcolumn=0
 set foldlevel=20
 set foldtext=MyFoldText()
 
