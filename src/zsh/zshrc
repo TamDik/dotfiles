@@ -111,11 +111,7 @@ cdpath=(
 )
 
 chpwd() {
-  if [ $(pwd) = $HOME ]; then
-    ls -aGF
-  else
-    ls -alGF
-  fi
+  ls -aGF
 }
 
 
