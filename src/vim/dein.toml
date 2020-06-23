@@ -137,6 +137,12 @@ hook_add = '''
   endif
 '''
 
+[[plugins]]
+repo = 'roxma/nvim-yarp'
+
+[[plugins]]
+repo = 'roxma/vim-hug-neovim-rpc'
+
 
 [[plugins]]
 repo = 'SirVer/ultisnips'
