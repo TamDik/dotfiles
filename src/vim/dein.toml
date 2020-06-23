@@ -118,9 +118,10 @@ hook_add = '''
 
 [[plugins]]
 repo = 'Shougo/neocomplete.vim'
-if = '''!has('nvim')'''
 hook_add = '''
-  let g:neocomplete#enable_at_startup = 1
+  if !has('nvim')
+    let g:neocomplete#enable_at_startup = 1
+  endif
   let g:neocomplete#enable_smart_case = 1
   let g:neocomplete#enable_underbar_completion = 1
   let g:neocomplete#enable_camel_case_completion = 1
@@ -130,9 +131,10 @@ hook_add = '''
 
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
-if = '''has('nvim')'''
 hook_add = '''
-  let g:deoplete#enable_at_startup = 1
+  if has('nvim')
+    let g:deoplete#enable_at_startup = 1
+  endif
 '''
 
 

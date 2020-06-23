@@ -4,11 +4,7 @@ set guioptions=
 set lines=999
 set columns=9999
 let s:transparency = 15
-let &transparency = s:transparency
-
-" color
-set runtimepath+=~/repos/dein.vim/repos/github.com/cocopon/iceberg.vim
-colorscheme iceberg
+let &transparency = 0
 
 " mapping
 command GVIMTransparencyToggle let &transparency = s:transparency - &transparency
@@ -20,3 +16,4 @@ if !exists("g:loaded_tmux_navigator")
   nnoremap <C-k> <C-w>k
   nnoremap <C-l> <C-w>l
 endif
+syntax enable
