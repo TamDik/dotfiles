@@ -76,9 +76,9 @@ merged = '0'
 hook_add = '''
   let $FZF_DEFAULT_OPTS = '--layout=reverse --border --inline-info '
   let $FZF_DEFAULT_OPTS .= '--color=fg:#c6c8d1,bg:#161821,hl:#6b7089'
-  "let $FZF_DEFAULT_OPTS .= ',fg+:#c6c8d1,bg+:#1e2132,hl+:#84a0c6'
-  "let $FZF_DEFAULT_OPTS .= ',info:#b4be82,prompt:#84a0c6,pointer:#84a0c6'
-  "let $FZF_DEFAULT_OPTS .= ',marker:#84a0c6,spinner:#84a0c6,header:#6b7089'
+  let $FZF_DEFAULT_OPTS .= ',fg+:#c6c8d1,bg+:#1e2132,hl+:#84a0c6'
+  let $FZF_DEFAULT_OPTS .= ',info:#b4be82,prompt:#84a0c6,pointer:#84a0c6'
+  let $FZF_DEFAULT_OPTS .= ',marker:#84a0c6,spinner:#84a0c6,header:#6b7089'
   if has('nvim')
     let s:fzf_win = -1
     function! FZFWindow()
