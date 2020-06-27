@@ -1,4 +1,4 @@
-set inccommand=split
+set inccommand=
 
 if IsAvailableTrueColor()
   set pumblend=10
