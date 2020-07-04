@@ -29,7 +29,7 @@ hook_add = '''
     \ },
     \ }
   function LLAleActive()
-    if !g:ale_enabled 
+    if !exists('g:ale_enabled') || !g:ale_enabled 
       return ''
     endif
 
