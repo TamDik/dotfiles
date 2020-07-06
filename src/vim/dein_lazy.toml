@@ -21,7 +21,7 @@ repo = 'dense-analysis/ale'
 hook_add = '''
   let g:ale_enabled = 0
   let g:ale_lint_on_text_changed = 'always'
-  let g:ale_linters_explicit = 1  " Only run linters named in ale_linters settings.
+  let g:ale_linters_explicit = 1
   let g:ale_linters = {
     \ 'python': ['pylint'],
     \ 'java':   ['javac']
