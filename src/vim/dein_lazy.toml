@@ -19,12 +19,12 @@ hook_add = '''
 [[plugins]]
 repo = 'dense-analysis/ale'
 hook_add = '''
-  let g:ale_enabled = 0
+  let g:ale_enabled = 1
   let g:ale_lint_on_text_changed = 'always'
-  let g:ale_linters_explicit = 1
+  let g:ale_linters_explicit = 0
   let g:ale_linters = {
-    \ 'python': ['pylint'],
-    \ 'java':   ['javac']
+    \ 'python':     ['pylint'],
+    \ 'java':       ['javac'],
     \}
   nmap <leader>ak <Plug>(ale_previous_wrap)
   nmap <leader>aj <Plug>(ale_next_wrap)

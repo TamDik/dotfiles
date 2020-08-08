@@ -1,5 +1,10 @@
 #!/bin/zsh
 
+# pylint
+export PYLINTRC="${DOTFILES}/python/pylintrc"
+export PYLINTHOME="${DOTFILES}/python/pylint.d"
+
+
 # anaconda
 CONDA_DIR=~/opt/anaconda3
 CONDARC=$CONDA_DIR/.condarc
@@ -29,8 +34,3 @@ else
   fi
 fi
 unset __conda_setup
-
-
-# pylint
-export PYLINTRC="${DOTFILES}/python/pylintrc"
-export PYLINTHOME="${DOTFILES}/python/pylint.d"
