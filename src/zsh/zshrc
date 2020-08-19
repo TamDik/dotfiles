@@ -64,10 +64,13 @@ STAGEDCOLOR=150
 zstyle ':vcs_info:git:*' check-for-changes true
 zstyle ':vcs_info:git:*' stagedstr "%F{${STAGEDCOLOR}}%K{${STAGEDCOLOR}}"
 zstyle ':vcs_info:git:*' unstagedstr "%F{${UNSTAGEDCOLOR}}%K{${UNSTAGEDCOLOR}}"
-zstyle ':vcs_info:*' formats "%F{${RK}}%f%K{${RK}}%F{${RF}} %s  %b %k%f"
-zstyle ':vcs_info:git:*' formats "%F{${RK}}%c%u%k%f%K{${RK}}%c%u%F{${RF}}  %b %k%f"
-export RPROMPT='${vcs_info_msg_0_}'
-unset RK RF UNSTAGEDCOLOR STAGEDCOLOR
+zstyle ':vcs_info:*' formats "%F{${RK}}%f%K{${RK}}%F{${RF}} %s  %b "
+zstyle ':vcs_info:git:*' formats "%F{${RK}}%c%u%k%f%K{${RK}}%c%u%F{${RF}}  %b "
+
+JOBSCOLOR=3
+JOBSPS="%1(j.%F{${JOBSCOLOR}}%K{${JOBSCOLOR}}%F{${RF}}%j Job%2(j.s.) .)"
+export RPROMPT='${vcs_info_msg_0_}'${JOBSPS}'%k%f'
+unset RK RF UNSTAGEDCOLOR STAGEDCOLOR JOBSPS JOBSCOLOR
 
 
 # zplug
