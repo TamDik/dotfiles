@@ -6,6 +6,7 @@ set backspace=indent,start,eol
 set background=dark
 set noshowcmd
 set noshowmode
+set noruler
 set hidden
 set number
 set relativenumber

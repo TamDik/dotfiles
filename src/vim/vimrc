@@ -37,7 +37,7 @@ endfunction
 call s:source_file(g:VIM_ROOT . '/optionrc.vim')
 
 " neovim
-if has('nvim')
+if has('nvim') && !exists('g:gui_oni')
   call s:source_file(g:NVIM_ROOT . '/neovimrc.vim')
 endif
 
@@ -49,3 +49,7 @@ call s:source_file(g:VIM_ROOT . '/colorrc.vim')
 
 " mapping
 call s:source_file(g:VIM_ROOT . '/mappingrc.vim')
+
+if exists('g:gui_oni')
+  set laststatus=0
+endif
