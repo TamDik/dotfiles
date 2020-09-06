@@ -14,6 +14,11 @@ nnoremap <silent> <leader>k :<C-u>bnext<CR>
 command WrapToggle let &wrap = !&wrap
 nnoremap <silent> <leader>w :<C-u>WrapToggle<CR>
 
+" break undo sequence
+inoremap <C-h> <C-g>u<C-h>
+inoremap <C-w> <C-g>u<C-w>
+inoremap <C-u> <C-g>u<C-u>
+
 " other key mapping
 inoremap jj <ESC>
 inoremap j<Space> j

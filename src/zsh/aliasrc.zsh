@@ -13,9 +13,7 @@ alias tree='tree -NC -l'
 alias gst='git status'
 alias gdf='git diff'
 alias gaa='git add .'
-gcm() {
-    git commit --allow-empty-message -m "$1"
-}
+alias gcm='git commit'
 
 alias -s py='~/opt/anaconda3/bin/python3'
 alias -s {tex,md}=$EDITOR
