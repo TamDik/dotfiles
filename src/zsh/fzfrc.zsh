@@ -16,7 +16,7 @@ frc() (
   rcdir=~/repos/github.com/TamDik/dotfiles
   cd $rcdir > /dev/null
 
-  if type abbrev-alias > /dev/null 2>&1; then
+  if type bat > /dev/null 2>&1; then
       preview="bat --style=numbers --color=always {}"
   else
       preview="cat -n {}"
@@ -71,4 +71,3 @@ fbr() {
   branch=$(echo "$branches" | fzf +m) &&
   git checkout $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
 }
-
