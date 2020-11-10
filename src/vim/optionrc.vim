@@ -10,6 +10,7 @@ set noruler
 set hidden
 set number
 set relativenumber
+set scrolloff=3
 set wildmenu
 set updatetime=500
 filetype plugin indent on
