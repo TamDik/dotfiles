@@ -96,7 +96,6 @@ let s:abbrev_fold_mark = '...'
 function MyFoldText()
   let l:ABBREV_MARK = get(s:, 'abbrev_fold_mark', '...')
   let l:num_lines = v:foldend - v:foldstart + 1
-  let l:startline = getline(v:foldstart)
 
   let l:head = '+' . v:folddashes
   let l:tail = '(' . l:num_lines . ' lines)'
