@@ -1,31 +1,22 @@
 #!/bin/bash
 
 battery_info=$(pmset -g ps | awk 'NR==2{print $3 $4}')
-
-
-if [ ${battery_info#*;} = 'charging;' ]; then
-  icons=('' '' '' '' '' '' '')
-  charging=1
-else
-  icons=('' '' '' '' '' '' '' '' '' '')
-fi
-
 remain=${battery_info%%%*}
+
+[ ! ${battery_info#*;} = 'charging;' ]; charging=$?
+
+[ $charging -eq 1 ] && icons=('' '' '' '' '' '' '') || icons=('' '' '' '' '' '' '' '' '' '')
+
 icons_cnt=${#icons[@]}
+[ $remain -ge 100 ] && icon=${icons[$((icons_cnt - 1))]} || icon=${icons[$((remain * icons_cnt / 100))]}
 
-if [ $remain -ge 100 ]; then
-  i=$((icons_cnt-1))
-else
-  i=$((remain*icons_cnt/100))
-fi
-
-if [ $charging ]; then
-  icon_col='#[fg=colour36]'
+icon_color=''
+if [ $charging -eq 1 ]; then
+  icon_color='#[fg=colour36]'
 elif [ $remain -le 15 ]; then
-  icon_col='#[fg=colour196]'
+  icon_color='#[fg=colour196]'
 elif [ $remain -le 30 ]; then
-  icon_col='#[fg=colour226]'
+  icon_color='#[fg=colour226]'
 fi
 
-echo " #[bg=colour239 fg=colour255] ${remain}% $icon_col${icons[$i]} #[default]"
-
+echo " #[bg=colour239 fg=colour255] $remain% $icon_color$icon #[default]"
