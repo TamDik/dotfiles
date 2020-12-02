@@ -30,7 +30,7 @@ function! HomeToTilde(path)
 endfunction
 
 function! IsAvailableTrueColor()
-  return has('nvim') && stridx($TERM, "256color") != -1
+  return $COLORTERM == 'truecolor' || $COLORTERM == '24bit'
 endfunction
 
 " options
