@@ -22,6 +22,11 @@ else
   execute 'set viminfo+=n' . g:ROOT_DIR . '/viminfo'
 endif
 
+" indent
+set autoindent
+set smartindent
+set cindent
+
 " bell
 set novisualbell
 set t_vb=
