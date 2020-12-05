@@ -86,7 +86,8 @@ endif
 set foldmethod=indent
 set foldcolumn=0
 set foldlevel=20
-set foldtext=MyFoldText()
+set foldlevelstart=-1
+" set foldtext=MyFoldText()
 
 function s:buffercolumns(buffer)
   let l:num_columns = winwidth(a:buffer) - &foldcolumn
@@ -94,6 +95,9 @@ function s:buffercolumns(buffer)
     let l:num_columns -= max([&numberwidth, len(line('$')) + 1])
   endif
   " TODO: if sign column is open, then l:num_columns -= 2
+  " if len(sign_getplaced()) != 0
+  "   l:num_columns -= 2
+  " endif
   return l:num_columns
 endfunction
 
