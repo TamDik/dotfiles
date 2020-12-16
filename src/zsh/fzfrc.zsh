@@ -29,12 +29,6 @@ frc() (
   nvim "$rcfile"
 )
 
-# select a tmux session
-fts () {
-  tmux list-sessions 2> /dev/null | fzf --exit-0 | awk -F: '{print $1}'
-}
-
-
 # attach the selected session
 fta () {
   local message_of_creation sessions session
@@ -70,4 +64,11 @@ fbr() {
   branches=$(git --no-pager branch -vv) &&
   branch=$(echo "$branches" | fzf +m) &&
   git checkout $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
+}
+
+# fshow - git commit browser
+fshow() {
+  git log --graph --color=always --decorate --pretty=oneline --all --abbrev-commit |
+  fzf --ansi --no-sort --reverse --tiebreak=index --bind=tab:toggle-sort \
+      --bind "ctrl-m:execute:echo {} | grep -o '[a-f0-9]\{7\}' | head -1 | xargs -I % sh -c 'git show --color=always % | less -R'"
 }
