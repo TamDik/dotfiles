@@ -63,12 +63,13 @@ repo = 'tpope/vim-commentary'
 [[plugins]]
 repo = 'junegunn/fzf.vim'
 hook_add = '''
+  let $FZF_DEFAULT_COMMAND = 'grep -rlI . *'
   nnoremap <silent> <leader>ff :<C-u>Files<CR>
   nnoremap <silent> <leader>fb :<C-u>Buffers<CR>
-  nnoremap <silent> <leader>fl :<C-u>Lines<CR>
-  "nnoremap <silent> <leader>fr :<C-u>Rg<CR>
-  nnoremap <silent> <leader>ft :<C-u>Tags<CR>
-  nnoremap <silent> <leader>fh :<C-u>History<CR>
+  " nnoremap <silent> <leader>fl :<C-u>Lines<CR>
+  nnoremap <silent> <leader>fr :<C-u>Rg<CR>
+  " nnoremap <silent> <leader>ft :<C-u>Tags<CR>
+  " nnoremap <silent> <leader>fh :<C-u>History<CR>
   let g:fzf_commits_log_options = '--graph --decorate --pretty=oneline --all --abbrev-commit'
 
   imap <c-x><c-k> <plug>(fzf-complete-word)
