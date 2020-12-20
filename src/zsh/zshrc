@@ -81,6 +81,8 @@ if [ ! -d $ZPLUG_HOME ]; then
   curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
 fi
 source $ZPLUG_HOME/init.zsh
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
+zplug "zsh-users/zsh-autosuggestions"
 zplug "momo-lab/zsh-abbrev-alias"
 # now installed with ``brew''
 # zplug "universal-ctags/ctags"
@@ -125,6 +127,10 @@ autoload -Uz compinit && compinit -d ${DOTFILES}/zsh/zcompdump
 zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}'
 zstyle ':completion:*' menu select
 zstyle ':completion:*' list-colors $LS_COLORS
+
+
+# zsh-users/zsh-syntax-highlighting
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 
 
 # python
