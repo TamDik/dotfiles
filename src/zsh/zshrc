@@ -82,7 +82,6 @@ if [ ! -d $ZPLUG_HOME ]; then
 fi
 source $ZPLUG_HOME/init.zsh
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
-zplug "zsh-users/zsh-autosuggestions"
 zplug "momo-lab/zsh-abbrev-alias"
 # now installed with ``brew''
 # zplug "universal-ctags/ctags"
