@@ -28,4 +28,3 @@ if type abbrev-alias > /dev/null 2>&1; then
   abbrev-alias -g A='| awk'
   abbrev-alias -g and='|'
 fi
-

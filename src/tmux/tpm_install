@@ -9,4 +9,3 @@ if [ -d $TPMDIR ]; then
   exit 0
 fi
 git clone 'https://github.com/tmux-plugins/tpm.git' $TPMDIR >/dev/null 2>&1
-
