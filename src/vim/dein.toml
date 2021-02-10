@@ -1,7 +1,7 @@
 [[plugins]]
-repo = 'cocopon/iceberg.vim'
+repo = 'sainnhe/edge'
 hook_add = '''
-  colorscheme iceberg
+  colorscheme edge
 '''
 
 
@@ -63,7 +63,8 @@ repo = 'tpope/vim-commentary'
 [[plugins]]
 repo = 'junegunn/fzf.vim'
 hook_add = '''
-  let $FZF_DEFAULT_COMMAND = 'grep -rlI . *'
+  let s:fzf_ignores = ['node_module']
+  let $FZF_DEFAULT_COMMAND = 'grep -rlI . *' . join(map(s:fzf_ignores, '" | grep -v \"" .v:val . "\""'), '')
   nnoremap <silent> <leader>ff :<C-u>Files<CR>
   nnoremap <silent> <leader>fb :<C-u>Buffers<CR>
   " nnoremap <silent> <leader>fl :<C-u>Lines<CR>

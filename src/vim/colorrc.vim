@@ -1,7 +1,7 @@
 "color
 let s:transparent = 0
 function s:is_transparent()
-  let l:color_schemes = ['iceberg']
+  let l:color_schemes = ['iceberg', 'edge']
   return s:transparent
   " return s:transparent && match(l:color_schemes, g:colors_name) != -1
 endfunction
