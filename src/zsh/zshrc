@@ -103,6 +103,20 @@ setopt hist_verify
 export HISTFILE=${DOTFILES}/zsh/history
 export HISTSIZE=10000
 export SAVEHIST=10000
+HISTIGNORE="exit:rm *"
+
+zshaddhistory() {
+  local line pattern patterns
+  line=${1%%$'\n'}
+  patterns=($(echo ${HISTIGNORE} | sed 's/ /[space]/g' | sed 's/:/\n/g'));
+  for pattern in $patterns; do
+    pattern=$(echo $pattern | sed 's/\[space\]/ /g')
+    if [[ $line == $~pattern ]]; then
+      return 1
+    fi
+  done
+  return 0
+}
 
 
 # cd
