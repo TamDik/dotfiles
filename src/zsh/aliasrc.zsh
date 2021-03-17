@@ -3,7 +3,7 @@ alias vim='nvim'
 alias ctags="`brew --prefix`/bin/ctags"
 alias tmux="tmux -f ${DOTFILES}/tmux/tmux.conf"
 alias ipython='ipython --pylab'
-alias python='~/opt/anaconda3/bin/python3'
+[ -f ~/opt/anaconda3/bin/python3 ] && alias python='~/opt/anaconda3/bin/python3'
 alias ls='ls -GF'
 alias la='ls -aGF'
 alias ll='ls -lhGF'
@@ -15,7 +15,7 @@ alias gdf='git diff'
 alias gaa='git add .'
 alias gcm='git commit'
 
-alias -s py='~/opt/anaconda3/bin/python3'
+[ -f ~/opt/anaconda3/bin/python3 ] && alias -s py='~/opt/anaconda3/bin/python3'
 alias -s {tex,md}=$EDITOR
 alias -s {png,jpg,bmp,pdf}='open -a Preview'
 
