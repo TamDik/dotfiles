@@ -108,7 +108,7 @@ HISTIGNORE="exit:rm *"
 zshaddhistory() {
   local line pattern patterns
   line=${1%%$'\n'}
-  patterns=($(echo ${HISTIGNORE} | sed 's/ /[space]/g' | sed 's/:/\n/g'));
+  patterns=($(echo ${HISTIGNORE} | sed 's/ /[space]/g' | sed 's/:/ /g'));
   for pattern in $patterns; do
     pattern=$(echo $pattern | sed 's/\[space\]/ /g')
     if [[ $line == $~pattern ]]; then
