@@ -7,19 +7,21 @@ export PYLINTHOME="${DOTFILES}/python/pylint.d"
 
 # anaconda
 CONDA_DIR=~/opt/anaconda3
-CONDARC=$CONDA_DIR/.condarc
-PYTHON_DIR=${DOTFILES}/python
-export JUPYTER_CONFIG_DIR=$PYTHON_DIR/jupyter
-export PYTHONSTARTUP=$PYTHON_DIR/pythonrc.py
-export MPLCONFIGDIR=$PYTHON_DIR/matpltlib
-export IPYTHONDIR=$PYTHON_DIR/ipython
+if [ -d $CONDA_DIR ]; then
+  CONDARC=$CONDA_DIR/.condarc
+  PYTHON_DIR=${DOTFILES}/python
+  export JUPYTER_CONFIG_DIR=$PYTHON_DIR/jupyter
+  export PYTHONSTARTUP=$PYTHON_DIR/pythonrc.py
+  export MPLCONFIGDIR=$PYTHON_DIR/matpltlib
+  export IPYTHONDIR=$PYTHON_DIR/ipython
 
 
-if [ ! -f $CONDARC ]; then
-  cat > $CONDARC << EOF
+  if [ ! -f $CONDARC ]; then
+    cat > $CONDARC << EOF
 changeps1: false
 
 EOF
+  fi
 fi
 
 

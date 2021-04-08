@@ -53,7 +53,14 @@ echo '[ Requirements ]'
 if [ $SHELL != $(which zsh) ]; then
   echo '* You need to change shell to zsh. Run `chsh -s $(which zsh)`.'
 fi
+if type curl > /dev/null 2>&1; then
+  :
+else
+  echo '* You need to install curl.'
+fi
 if type nvim > /dev/null 2>&1; then
+  :
+else
   echo '* The default editor is neovim but nvim command was not found.'
   echo "  See 'https://github.com/neovim/neovim' or 'https://github.com/neovim/neovim/releases/' to install neovim."
 fi
