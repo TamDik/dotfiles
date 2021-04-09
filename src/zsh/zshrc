@@ -20,7 +20,7 @@ bindkey -M menuselect 'J' vi-down-line-or-history
 
 # prompt
 function _set_ps_mode {
-  local mode color1 color2
+  local mode color1 color2 br sp
   mode=$1
   case $mode in
     insert)
@@ -32,10 +32,10 @@ function _set_ps_mode {
       color2=180
       ;;
   esac
-  PS1="
-%~
-%F{${color1}}❱%f "
-  PS2="%F{${color2}}❱%f "
+  br=$'\n'
+  sp=' '
+  PS1=$br%~$br%F{$color1}❱%f$sp
+  PS2=%F{$color2}❱%f$sp
 }
 
 setopt prompt_subst
