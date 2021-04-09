@@ -121,8 +121,6 @@ hook_add = '''
 
 [[plugins]]
 repo = 'christoomey/vim-tmux-navigator'
-hook_add = '''
-'''
 
 
 [[plugins]]
