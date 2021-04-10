@@ -49,3 +49,8 @@ call s:source_file(g:VIM_ROOT . '/colorrc.vim')
 
 " mapping
 call s:source_file(g:VIM_ROOT . '/mappingrc.vim')
+
+
+" default plugins
+let g:loaded_netrw = 1
+let g:loaded_netrwPlugin = 1
