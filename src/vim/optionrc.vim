@@ -89,7 +89,7 @@ set foldlevel=20
 set foldlevelstart=-1
 " set foldtext=MyFoldText()
 
-function s:buffercolumns(buffer)
+function! s:buffercolumns(buffer)
   let l:num_columns = winwidth(a:buffer) - &foldcolumn
   if &number || &relativenumber
     let l:num_columns -= max([&numberwidth, len(line('$')) + 1])
@@ -102,7 +102,7 @@ function s:buffercolumns(buffer)
 endfunction
 
 let s:abbrev_fold_mark = '...'
-function MyFoldText()
+function! MyFoldText()
   let l:ABBREV_MARK = get(s:, 'abbrev_fold_mark', '...')
   let l:num_lines = v:foldend - v:foldstart + 1
 

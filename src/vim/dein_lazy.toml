@@ -65,9 +65,20 @@ hook_add = '''
     \ defx#do_action('change_vim_cwd')
   endfunction
 
+  function! s:open_defx_if_directory()
+    try
+      let l:full_path = expand(expand('%:p'))
+      if isdirectory(l:full_path)
+        execute "Defx `expand('%:p')` -listed | bd " . expand('%:r')
+      endif
+    catch
+    endtry
+  endfunction
+
   augroup DefxConfig
     autocmd!
     autocmd FileType defx call s:defx_my_settings()
+    autocmd BufEnter * call s:open_defx_if_directory()
   augroup END
 
   nnoremap <silent> <leader>d :<C-u>Defx -listed -resume<CR>
