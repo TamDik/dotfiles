@@ -129,7 +129,11 @@ cdpath=(
 )
 
 chpwd() {
-  ls -aGF
+  if [ `uname` = 'Darwin' ]; then
+    ls -aGF
+  elif [ `uname` = 'Linux' ]; then
+    ls -aF --color=always
+  fi
 }
 
 
