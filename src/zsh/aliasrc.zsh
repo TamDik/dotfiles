@@ -6,10 +6,17 @@ fi
 alias tmux="tmux -f ${DOTFILES}/tmux/tmux.conf"
 alias ipython='ipython --pylab'
 [ -x ~/opt/anaconda3/bin/python3 ] && alias python='~/opt/anaconda3/bin/python3'
-alias ls='ls -GF'
-alias la='ls -aGF'
-alias ll='ls -lhGF'
-alias lla='ls -alhGF'
+if [ `uname` = 'Darwin' ]; then
+  alias ls='ls -FG'
+  alias la='ls -aFG'
+  alias ll='ls -lhFG'
+  alias lla='ls -alhFG'
+elif [ `uname` = 'Linux' ]; then
+  alias ls='ls -F --color=always'
+  alias la='ls -aF --color=always'
+  alias ll='ls -lhF --color=always'
+  alias lla='ls -alhF --color=always'
+fi
 alias tree='tree -NC -l'
 
 alias gst='git status'
