@@ -25,8 +25,9 @@ mkdir -p ${NVIM_DIR}
 mkdir -p ${GIT_DIR}
 
 echo '[ links ]'
-ln -snfv ${SCRIPT_DIR}/commit_template         ${GIT_DIR}/commit_template
-ln -snfv ${SCRIPT_DIR}/ignore_global           ${GIT_DIR}/ignore_global
+ln -snfv ${SCRIPT_DIR}/git/gitconfig           ~/.gitconfig
+ln -snfv ${SCRIPT_DIR}/git/commit_template     ${GIT_DIR}/commit_template
+ln -snfv ${SCRIPT_DIR}/git/ignore_global       ${GIT_DIR}/ignore_global
 ln -snfv ${SCRIPT_DIR}/pylintrc                ${PYTHON_DIR}/pylintrc
 ln -snfv ${SCRIPT_DIR}/pythonrc.py             ${PYTHON_DIR}/pythonrc.py
 ln -snfv ${SCRIPT_DIR}/tmux/battery            ${TMUX_DIR}/battery
@@ -48,6 +49,22 @@ ln -snfv ${SCRIPT_DIR}/zsh/pythonrc.zsh        ${PYTHON_DIR}/pythonrc.zsh
 ln -snfv ${SCRIPT_DIR}/zsh/zprofile            ${ZSH_DIR}/.zprofile
 ln -snfv ${SCRIPT_DIR}/zsh/zshenv              ~/.zshenv
 ln -snfv ${SCRIPT_DIR}/zsh/zshrc               ${ZSH_DIR}/.zshrc
+
+
+GIT_USER_CONFIG=${GIT_DIR}/user_config
+if [ ! -f $GIT_USER_CONFIG ]; then
+  echo '[ gitconfig ]'
+  echo -n "git config user.name > "
+  read user_name
+  echo -n "git config user.email > "
+  read user_email
+  cat > $GIT_USER_CONFIG << EOF
+[user]
+	name = $user_name
+	email = $user_email
+EOF
+fi
+
 
 echo '[ Requirements ]'
 if [ $SHELL != $(which zsh) ]; then
