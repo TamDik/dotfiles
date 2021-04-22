@@ -20,5 +20,7 @@ if [ -x /usr/libexec/java_home ]; then
   export JavaFXLib
 fi
 
+export SUMO_HOME=/usr/share/sumo
+
 export XDG_CONFIG_HOME=${DOTFILES}
 export XDG_DATA_HOME=${XDG_CONFIG_HOME}
