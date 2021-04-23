@@ -2,7 +2,7 @@
 
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 
-FZF_SHELL_DIR=~/repos/zplug/junegunn/fzf/shell
+FZF_SHELL_DIR=$ZPLUG_REPOS/junegunn/fzf/shell
 [ -f $FZF_SHELL_DIR/completion.zsh ] && source $FZF_SHELL_DIR/completion.zsh
 [ -f $FZF_SHELL_DIR/key-bindings.zsh ] && source $FZF_SHELL_DIR/key-bindings.zsh
 # CTRL-T - Paste the selected files and directories onto the command-line
