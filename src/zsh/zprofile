@@ -1,3 +1,5 @@
+[ -x /opt/homebrew/bin/brew ] && eval "$(/opt/homebrew/bin/brew shellenv)"
+
 [ -d /Applications/MacVim.app/Contents/bin ] && PATH=$PATH:/Applications/MacVim.app/Contents/bin
 [ -d ~/bin ] && PATH=$PATH:~/bin
 [ -d ~/opt/apache-jena-3.16.0/bin ] && PATH=$PATH:~/opt/apache-jena-3.16.0/bin
