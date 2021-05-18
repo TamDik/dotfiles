@@ -34,8 +34,8 @@ function _set_ps_mode {
   esac
   br=$'\n'
   sp=' '
-  PS1=$br%~$br%F{$color1}❱%f$sp
-  PS2=%F{$color2}❱%f$sp
+  PS1=$br%~$br%F{$color1}$%f$sp
+  PS2=%F{$color2}$%f$sp
 }
 
 setopt prompt_subst
@@ -57,20 +57,13 @@ function zle-line-init zle-keymap-select {
 zle -N zle-line-init
 zle -N zle-keymap-select
 
-RF=0
-RK=102
-UNSTAGEDCOLOR=210
-STAGEDCOLOR=150
 zstyle ':vcs_info:git:*' check-for-changes true
-zstyle ':vcs_info:git:*' stagedstr "%F{${STAGEDCOLOR}}%K{${STAGEDCOLOR}}"
-zstyle ':vcs_info:git:*' unstagedstr "%F{${UNSTAGEDCOLOR}}%K{${UNSTAGEDCOLOR}}"
-zstyle ':vcs_info:*' formats "%F{${RK}}%f%K{${RK}}%F{${RF}} %s  %b "
-zstyle ':vcs_info:git:*' formats "%F{${RK}}%c%u%k%f%K{${RK}}%c%u%F{${RF}}  %b "
+zstyle ':vcs_info:git:*' stagedstr "%F{150}"
+zstyle ':vcs_info:git:*' unstagedstr "%F{210}"
+zstyle ':vcs_info:git:*' formats " %c%u%b"
+zstyle ':vcs_info:*' formats " %s(%b)"
 
-JOBSCOLOR=3
-JOBSPS="%1(j.%F{${JOBSCOLOR}}%K{${JOBSCOLOR}}%F{${RF}}%j Job%2(j.s.) .)"
-export RPROMPT='${vcs_info_msg_0_}'${JOBSPS}'%k%f'
-unset RK RF UNSTAGEDCOLOR STAGEDCOLOR JOBSPS JOBSCOLOR
+export RPROMPT='%1(j.%j-job.)${vcs_info_msg_0_}'
 
 
 # zplug

@@ -20,7 +20,9 @@ if [ -x /usr/libexec/java_home ]; then
   export JavaFXLib
 fi
 
-export SUMO_HOME=/usr/share/sumo
-
 export XDG_CONFIG_HOME=${DOTFILES}
 export XDG_DATA_HOME=${XDG_CONFIG_HOME}
+
+[ -f ~/.cargo/env ] && source ~/.cargo/env
+[ -d /usr/share/sumo ] && export SUMO_HOME=/usr/share/sumo
+[ -d /opt/homebrew/opt/sumo/share/sumo ] && export SUMO_HOME=/opt/homebrew/opt/sumo/share/sumo
