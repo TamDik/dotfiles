@@ -18,6 +18,7 @@ elif [ `uname` = 'Linux' ]; then
   alias lla='ls -alhF --color=always'
 fi
 alias tree='tree -NC -l'
+alias history-all='history -E 1 '
 
 alias gst='git status'
 alias gdf='git diff'
