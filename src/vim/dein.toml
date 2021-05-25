@@ -190,3 +190,6 @@ hook_add = '''
 
 [[plugins]]
 repo = "cespare/vim-toml"
+
+[[plugins]]
+repo = "aklt/plantuml-syntax"
