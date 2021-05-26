@@ -50,7 +50,7 @@ fta () {
       echo -n '\n\e[031mNEW SESSION NAME ❱\e[m '
       read session_name
       if [ -n "$session_name" ]; then
-        tmux -f ${DOTFILES}/tmux/tmux.conf new -s $session_name
+        tmux new -s $session_name
       fi;;
 
     '' ) ;;

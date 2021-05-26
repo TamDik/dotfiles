@@ -31,14 +31,14 @@ ln -snfv ${SCRIPT_DIR}/git/ignore_global       ${GIT_DIR}/ignore_global
 ln -snfv ${SCRIPT_DIR}/pylintrc                ${PYTHON_DIR}/pylintrc
 ln -snfv ${SCRIPT_DIR}/pythonrc.py             ${PYTHON_DIR}/pythonrc.py
 ln -snfv ${SCRIPT_DIR}/tmux/battery            ${TMUX_DIR}/battery
-ln -snfv ${SCRIPT_DIR}/tmux/tmux.conf          ${TMUX_DIR}/tmux.conf
+ln -snfv ${SCRIPT_DIR}/tmux/tmux.conf          ~/.tmux.conf
 ln -snfv ${SCRIPT_DIR}/tmux/tpm_install        ${TMUX_DIR}/tpm_install
 ln -snfv ${SCRIPT_DIR}/vim/colorrc.vim         ${VIM_DIR}/colorrc.vim
 ln -snfv ${SCRIPT_DIR}/vim/dein.toml           ${VIM_DIR}/dein.toml
 ln -snfv ${SCRIPT_DIR}/vim/dein_lazy.toml      ${VIM_DIR}/dein_lazy.toml
 ln -snfv ${SCRIPT_DIR}/vim/deinrc.vim          ${VIM_DIR}/deinrc.vim
 ln -snfv ${SCRIPT_DIR}/vim/gvimrc              ~/.gvimrc
-ln -snfv ${SCRIPT_DIR}/vim/init.vim            ${NVIM_DIR}/init.vim
+ln -snfv ${SCRIPT_DIR}/vim/init.vim            ~/.config/nvim/init.vim
 ln -snfv ${SCRIPT_DIR}/vim/neovimrc.vim        ${NVIM_DIR}/neovimrc.vim
 ln -snfv ${SCRIPT_DIR}/vim/mappingrc.vim       ${VIM_DIR}/mappingrc.vim
 ln -snfv ${SCRIPT_DIR}/vim/optionrc.vim        ${VIM_DIR}/optionrc.vim

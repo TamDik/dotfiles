@@ -3,7 +3,6 @@ alias vim='nvim'
 if type brew > /dev/null 2>&1; then
   alias ctags="`brew --prefix`/bin/ctags"
 fi
-alias tmux="tmux -f ${DOTFILES}/tmux/tmux.conf"
 alias ipython='ipython --pylab'
 [ -x ~/opt/anaconda3/bin/python3 ] && alias python='~/opt/anaconda3/bin/python3'
 if [ `uname` = 'Darwin' ]; then

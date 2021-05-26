@@ -19,7 +19,6 @@ if has('nvim')
   set shada=!,'500,<50,s10,h
 else
   set viminfo=!,'500,<50,s10,h
-  execute 'set viminfo+=n' . g:ROOT_DIR . '/viminfo'
 endif
 
 " indent
