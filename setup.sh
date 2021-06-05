@@ -23,6 +23,8 @@ mkdir -p ${PYTHON_DIR}
 mkdir -p ${VIM_DIR}
 mkdir -p ${NVIM_DIR}
 mkdir -p ${GIT_DIR}
+mkdir -p ~/.config/nvim
+mkdir -p ~/.config/tmux
 
 echo '[ links ]'
 ln -snfv ${SCRIPT_DIR}/git/gitconfig           ~/.gitconfig
@@ -31,7 +33,7 @@ ln -snfv ${SCRIPT_DIR}/git/ignore_global       ${GIT_DIR}/ignore_global
 ln -snfv ${SCRIPT_DIR}/pylintrc                ${PYTHON_DIR}/pylintrc
 ln -snfv ${SCRIPT_DIR}/pythonrc.py             ${PYTHON_DIR}/pythonrc.py
 ln -snfv ${SCRIPT_DIR}/tmux/battery            ${TMUX_DIR}/battery
-ln -snfv ${SCRIPT_DIR}/tmux/tmux.conf          ~/.tmux.conf
+ln -snfv ${SCRIPT_DIR}/tmux/tmux.conf          ~/.config/tmux/tmux.conf
 ln -snfv ${SCRIPT_DIR}/tmux/tpm_install        ${TMUX_DIR}/tpm_install
 ln -snfv ${SCRIPT_DIR}/vim/colorrc.vim         ${VIM_DIR}/colorrc.vim
 ln -snfv ${SCRIPT_DIR}/vim/dein.toml           ${VIM_DIR}/dein.toml
