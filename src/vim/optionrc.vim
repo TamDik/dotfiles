@@ -36,15 +36,21 @@ set conceallevel=0
 set concealcursor=nv
 
 " backup files and so on
-set nobackup
+set backup
+set backupext=~
 set noswapfile
 set undofile
 
+let s:backup_path = g:ROOT_DIR . '/backup'
 let s:undo_path = g:ROOT_DIR . '/undo'
 if !isdirectory(s:undo_path)
   call mkdir(s:undo_path, 'p')
 endif
+if !isdirectory(s:backup_path)
+  call mkdir(s:backup_path, 'p')
+endif
 let &undodir = s:undo_path
+let &backupdir = s:backup_path
 
 " tab
 set tabstop=4
