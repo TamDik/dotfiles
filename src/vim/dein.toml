@@ -202,7 +202,30 @@ hook_add = '''
 
 
 [[plugins]]
+repo = "tyru/eskk.vim"
+hook_add = '''
+  imap <C-j> <Plug>(eskk:toggle)
+  cmap <C-j> <Plug>(eskk:toggle)
+
+  let s:aqua_skk = expand('~/Library/Application Support/AquaSKK')
+  if isdirectory(s:aqua_skk)
+    let g:eskk#dictionary = {
+      \ 'path': s:aqua_skk . '/skk-jisyo.utf8',
+      \ 'sorted': 0,
+      \ 'encoding': 'utf-8',
+      \}
+    let g:eskk#large_dictionary = {
+      \ 'path': s:aqua_skk . '/SKK-JISYO.L',
+      \ 'sorted': 1,
+      \ 'encoding': 'euc-jp',
+      \}
+  endif
+'''
+
+
+[[plugins]]
 repo = "cespare/vim-toml"
+
 
 [[plugins]]
 repo = "aklt/plantuml-syntax"
