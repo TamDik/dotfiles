@@ -9,22 +9,7 @@ hook_add = '''
 repo = 'itchyny/lightline.vim'
 hook_add = '''
   set laststatus=2
-  let g:lightline = {
-    \ 'colorscheme': 'seoul256',
-    \ 'active': {
-    \   'left':  [['mode'],
-    \             ['filename'],
-    \            ],
-    \   'right': [['filetype'],
-    \             ['fileencoding'],
-    \             ['aleactive', 'fileformat'],
-    \            ]
-    \ },
-    \ 'inactive': {
-    \   'left':  [['filename']],
-    \   'right': []
-    \ },
-    \ 'mode_map': {
+  let s:mode_map = {
     \   'n': 'N',
     \   'i': 'I',
     \   'R': 'R',
@@ -36,11 +21,36 @@ hook_add = '''
     \   'S': 'SL',
     \   "\<C-s>": 'SB',
     \   't': 'T',
+    \}
+  let g:lightline = {
+    \ 'colorscheme': 'seoul256',
+    \ 'active': {
+    \   'left':  [['modewitheskk'],
+    \             ['filename'],
+    \            ],
+    \   'right': [['filetype'],
+    \             ['fileencoding'],
+    \             ['aleactive', 'fileformat'],
+    \            ]
     \ },
+    \ 'inactive': {
+    \   'left':  [['filename']],
+    \   'right': []
+    \ },
+    \ 'mode_map': s:mode_map,
     \ 'component_function': {
-    \   'aleactive': 'LLAleActive'
+    \   'aleactive': 'LLAleActive',
+    \   'modewitheskk': 'ModeWithEskk'
     \ },
     \ }
+
+  function! ModeWithEskk()
+    let l:mode = mode()
+    if !(exists('g:loaded_eskk') && g:loaded_eskk && eskk#is_enabled() && l:mode == 'i')
+      return get(s:mode_map, l:mode, l:mode)
+    end
+    return g:eskk#statusline_mode_strings[eskk#get_mode()]
+  endfunction
 
   function! LLAleActive()
     if !exists('g:ale_enabled')
@@ -207,6 +217,7 @@ hook_add = '''
   imap <C-j> <Plug>(eskk:toggle)
   cmap <C-j> <Plug>(eskk:toggle)
 
+  let g:eskk#directory = expand('~/.cache/eskk')
   let s:aqua_skk = expand('~/Library/Application Support/AquaSKK')
   if isdirectory(s:aqua_skk)
     let g:eskk#dictionary = {
