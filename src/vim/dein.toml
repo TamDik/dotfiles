@@ -46,10 +46,12 @@ hook_add = '''
 
   function! ModeWithEskk()
     let l:mode = mode()
-    if !(exists('g:loaded_eskk') && g:loaded_eskk && eskk#is_enabled() && l:mode == 'i')
-      return get(s:mode_map, l:mode, l:mode)
+    let l:mode_str = get(s:mode_map, l:mode, l:mode)
+    if !(exists('g:loaded_eskk') && g:loaded_eskk && eskk#is_enabled())
+      return l:mode_str
     end
-    return g:eskk#statusline_mode_strings[eskk#get_mode()]
+    let l:eskk_mode_str = g:eskk#statusline_mode_strings[eskk#get_mode()]
+    return l:mode_str . '-' . l:eskk_mode_str
   endfunction
 
   function! LLAleActive()
