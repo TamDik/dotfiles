@@ -5,6 +5,10 @@ nnoremap <silent> <leader><Space> :<C-u>nohlsearch<CR>
 nnoremap <silent> <leader>s :<C-u>split<CR>
 nnoremap <silent> <leader>v :<C-u>vsplit<CR>
 nnoremap <silent> <leader>q :<C-u>close<CR>
+nnoremap <silent> <C-h> <C-w>h
+nnoremap <silent> <C-j> <C-w>j
+nnoremap <silent> <C-k> <C-w>k
+nnoremap <silent> <C-l> <C-w>l
 
 " buffer
 nnoremap <silent> <leader>j :<C-u>bprevious<CR>

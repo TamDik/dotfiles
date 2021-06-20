@@ -145,10 +145,6 @@ hook_add = '''
 
 
 [[plugins]]
-repo = 'christoomey/vim-tmux-navigator'
-
-
-[[plugins]]
 repo = 'Shougo/neocomplete.vim'
 hook_add = '''
   if !has('nvim')
@@ -220,13 +216,13 @@ hook_add = '''
   cmap <C-j> <Plug>(eskk:toggle)
 
   let g:eskk#directory = expand('~/.cache/eskk')
+  let g:eskk#dictionary = {
+    \ 'path': expand('~/.cache/skk-jisyo.utf8'),
+    \ 'sorted': 0,
+    \ 'encoding': 'utf-8',
+    \}
   let s:aqua_skk = expand('~/Library/Application Support/AquaSKK')
   if isdirectory(s:aqua_skk)
-    let g:eskk#dictionary = {
-      \ 'path': s:aqua_skk . '/skk-jisyo.utf8',
-      \ 'sorted': 0,
-      \ 'encoding': 'utf-8',
-      \}
     let g:eskk#large_dictionary = {
       \ 'path': s:aqua_skk . '/SKK-JISYO.L',
       \ 'sorted': 1,

@@ -20,7 +20,8 @@ if [ -x /usr/libexec/java_home ]; then
 fi
 
 export XDG_CONFIG_HOME=~/.config
-export XDG_DATA_HOME=${XDG_CONFIG_HOME}
+export XDG_CACHE_HOME=~/.cache
+export XDG_DATA_HOME=~/.local/share
 
 [ -f ~/.cargo/env ] && source ~/.cargo/env
 [ -d /usr/share/sumo ] && export SUMO_HOME=/usr/share/sumo
