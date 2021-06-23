@@ -9,6 +9,10 @@ nnoremap <silent> <C-h> <C-w>h
 nnoremap <silent> <C-j> <C-w>j
 nnoremap <silent> <C-k> <C-w>k
 nnoremap <silent> <C-l> <C-w>l
+nnoremap <silent> <Up> :<C-u>resize +1<CR>
+nnoremap <silent> <Down> :<C-u>resize -1<CR>
+nnoremap <silent> <Left> :<C-u>vertical resize +1<CR>
+nnoremap <silent> <Right> :<C-u>vertical resize -1<CR>
 
 " buffer
 nnoremap <silent> <leader>j :<C-u>bprevious<CR>
