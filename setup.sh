@@ -25,8 +25,10 @@ mkdir -p ${NVIM_DIR}
 mkdir -p ${GIT_DIR}
 mkdir -p ~/.config/nvim
 mkdir -p ~/.config/tmux
+mkdir -p ~/.config/alacritty
 
 echo '[ links ]'
+ln -snfv ${SCRIPT_DIR}/alacritty.yml           ~/.config/alacritty/alacritty.yml
 ln -snfv ${SCRIPT_DIR}/git/gitconfig           ~/.gitconfig
 ln -snfv ${SCRIPT_DIR}/git/commit_template     ${GIT_DIR}/commit_template
 ln -snfv ${SCRIPT_DIR}/git/ignore_global       ${GIT_DIR}/ignore_global
