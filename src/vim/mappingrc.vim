@@ -35,4 +35,3 @@ cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 if executable('compiler')
   nnoremap <silent> <F5> :w<CR>:!compiler %<CR>
 endif
-tnoremap <Esc> <C-\><C-n>
