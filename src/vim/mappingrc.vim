@@ -19,9 +19,17 @@ inoremap <C-h> <C-g>u<C-h>
 inoremap <C-w> <C-g>u<C-w>
 inoremap <C-u> <C-g>u<C-u>
 
-" other key mapping
+" escape
 inoremap jj <ESC>
 inoremap j<Space> j
+if has('nvim')
+  tnoremap jj <C-\><C-n>
+else
+  tnoremap jj <C-w>N
+endif
+tnoremap j<Space> j
+
+" other key mapping
 nnoremap Y y$
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 if executable('compiler')

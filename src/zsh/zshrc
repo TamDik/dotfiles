@@ -8,14 +8,14 @@ setopt correct
 
 # key bind
 export KEYTIMEOUT=20
-bindkey -v
-bindkey -M viins 'jj' vi-cmd-mode
 
-zmodload zsh/complist
-bindkey -M menuselect 'H' vi-backward-char
-bindkey -M menuselect 'K' vi-up-line-or-history
-bindkey -M menuselect 'L' vi-forward-char
-bindkey -M menuselect 'J' vi-down-line-or-history
+bindkey -e
+autoload history-search-end
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+bindkey "^p" history-beginning-search-backward-end
+bindkey "^n" history-beginning-search-forward-end
+bindkey "^u" backward-kill-line
 
 
 # prompt
