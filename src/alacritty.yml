@@ -65,4 +65,4 @@ key_bindings:
   - { key: Down,   mods: Alt,       chars: "\x1b[1;3B" }
   - { key: Right,  mods: Alt,       chars: "\x1b[1;3C" }
   - { key: Left,   mods: Alt,       chars: "\x1b[1;3D" }
-  - { key: Return, mods: Command,   action: ToggleSimpleFullscreen }
+  # - { key: Return, mods: Command,   action: ToggleSimpleFullscreen }
