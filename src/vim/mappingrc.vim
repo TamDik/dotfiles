@@ -29,6 +29,12 @@ else
 endif
 tnoremap j<Space> j
 
+" command line
+cnoremap <C-a> <Home>
+cnoremap <C-b> <Left>
+cnoremap <C-f> <Right>
+cnoremap <C-d> <Del>
+
 " other key mapping
 nnoremap Y y$
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
