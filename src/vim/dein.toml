@@ -1,4 +1,8 @@
 [[plugins]]
+repo = 'vim-jp/vimdoc-ja'
+
+
+[[plugins]]
 repo = 'sainnhe/edge'
 hook_add = '''
   colorscheme edge

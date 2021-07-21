@@ -21,6 +21,8 @@ else
   set viminfo=!,'500,<50,s10,h
 endif
 
+set helplang=ja,en
+
 " indent
 set autoindent
 set smartindent
