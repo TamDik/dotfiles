@@ -50,6 +50,10 @@ call s:source_file(g:VIM_ROOT . '/colorrc.vim')
 " mapping
 call s:source_file(g:VIM_ROOT . '/mappingrc.vim')
 
+" local vimrc
+if filereadable('.vimrc.local')
+  call s:source_file('.vimrc.local')
+endif
 
 " default plugins
 let g:loaded_netrw = 1
