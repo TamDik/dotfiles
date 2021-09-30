@@ -116,8 +116,8 @@ hook_add = '''
 
   let g:ale_linters_explicit = 0
   let g:ale_linters = {
-    \ 'python':     ['pylint'],
-    \ 'java':       ['javac'],
+    \ 'python': ['pylint'],
+    \ 'java': ['javac'],
     \}
   nmap <leader>ak <Plug>(ale_previous_wrap)
   nmap <leader>aj <Plug>(ale_next_wrap)
