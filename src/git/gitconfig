@@ -21,3 +21,5 @@
 	default = simple
 [credential]
 	helper = store
+[diff]
+	tool = nvimdiff
