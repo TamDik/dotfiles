@@ -10,10 +10,4 @@ let &transparency = 0
 command GVIMTransparencyToggle let &transparency = s:transparency - &transparency
 nnoremap <silent> <D-u> :<C-u>GVIMTransparencyToggle<CR>
 
-if !exists("g:loaded_tmux_navigator")
-  nnoremap <C-h> <C-w>h
-  nnoremap <C-j> <C-w>j
-  nnoremap <C-k> <C-w>k
-  nnoremap <C-l> <C-w>l
-endif
 syntax enable
