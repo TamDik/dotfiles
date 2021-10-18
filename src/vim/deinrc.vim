@@ -24,6 +24,7 @@ if !dein#load_state(s:dein_repo_path)
   finish
 endif
 
+let g:dein#auto_recache = !has('win32')
 let g:dein#cache_directory = s:dein_cache_path
 call dein#begin(s:dein_repo_path)
 call s:load_dein_toml(g:VIM_ROOT . '/dein.toml')
