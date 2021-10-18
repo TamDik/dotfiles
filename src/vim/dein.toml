@@ -250,7 +250,7 @@ repo = "aklt/plantuml-syntax"
 
 [[plugins]]
 repo = 'Shougo/defx.nvim'
-hook_add = '''
+hook_post_source = '''
   function! s:open_defx_if_directory()
     try
       let l:full_path = expand(expand('%:p'))
@@ -265,6 +265,9 @@ hook_add = '''
     autocmd!
     autocmd BufEnter * call s:open_defx_if_directory()
   augroup END
+
+  " at VimEnter
+  call s:open_defx_if_directory()
 
   nnoremap <silent> <leader>d :<C-u>Defx -listed -resume<CR>
 '''
