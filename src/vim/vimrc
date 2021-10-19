@@ -15,10 +15,13 @@ endif
 
 let g:mapleader = "\<Space>"
 
+function! _error(msg)
+  echohl WarningMsg | echomsg '[dotfiles] ' . a:msg | echohl None
+endfunction
 
 function! s:source_file(filename)
   if !filereadable(a:filename)
-    echohl ErrorMsg | echomsg '[dotfiles] File Not Found : ' . a:filename | echohl None
+    call _error(printf('file %s is not found.', a:filename))
     return
   endif
   execute 'source' . a:filename

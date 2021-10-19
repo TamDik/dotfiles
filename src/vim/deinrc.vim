@@ -11,7 +11,7 @@ endif
 
 function! s:load_dein_toml(filename, ...)
   if !filereadable(a:filename)
-    echo 'File Not Found : ' . a:filename
+    call _error(printf('file %s is not found.', a:filename))
     return
   endif
   let lazy = get(a:000, 0, 0)
