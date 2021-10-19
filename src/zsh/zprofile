@@ -1,17 +1,21 @@
-[ -x /opt/homebrew/bin/brew ] && eval "$(/opt/homebrew/bin/brew shellenv)"
-
-[ -d /Applications/MacVim.app/Contents/bin ] && PATH=$PATH:/Applications/MacVim.app/Contents/bin
-[ -d ~/bin ] && PATH=$PATH:~/bin
-[ -d ~/opt/apache-jena-3.16.0/bin ] && PATH=$PATH:~/opt/apache-jena-3.16.0/bin
-[ -d ~/opt/basex/bin ] && PATH=$PATH:~/opt/basex/bin
-export PATH
-
 export EDITOR='nvim'
 export VISUAL='nvim'
 export PAGER='less'
-
 export LSCOLORS=exfxcxdxbxegedabagacad
 export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
+export XDG_CONFIG_HOME=~/.config
+export XDG_CACHE_HOME=~/.cache
+export XDG_DATA_HOME=~/.local/share
+export PATH
+
+[ -d ~/bin ] && PATH=$PATH:~/bin
+
+[ -x /opt/homebrew/bin/brew ] && eval "$(/opt/homebrew/bin/brew shellenv)"
+
+if [ -d ~/.deno ]; then
+  export DENO_INSTALL=~/.deno
+  PATH=$PATH:$DENO_INSTALL/bin
+fi
 
 if [ -x /usr/libexec/java_home ]; then
   export JAVA_HOME=$(/usr/libexec/java_home)
@@ -19,9 +23,6 @@ if [ -x /usr/libexec/java_home ]; then
   export JavaFXLib
 fi
 
-export XDG_CONFIG_HOME=~/.config
-export XDG_CACHE_HOME=~/.cache
-export XDG_DATA_HOME=~/.local/share
 
 [ -f ~/.cargo/env ] && source ~/.cargo/env
 [ -d /usr/share/sumo ] && export SUMO_HOME=/usr/share/sumo

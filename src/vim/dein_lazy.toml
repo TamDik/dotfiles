@@ -1,4 +1,20 @@
 [[plugins]]
+repo = 'vim-denops/denops.vim'
+
+
+[[plugins]]
+repo = 'tpope/vim-surround'
+
+
+[[plugins]]
+repo = 'tpope/vim-repeat'
+
+
+[[plugins]]
+repo = 'tpope/vim-commentary'
+
+
+[[plugins]]
 repo = 'junegunn/goyo.vim'
 hook_add = '''
   let g:goyo_width = 80
@@ -53,4 +69,173 @@ hook_add = '''
     autocmd ColorScheme * highlight ALEErrorSign   ctermfg=203 ctermbg=NONE guibg=NONE
     autocmd ColorScheme * highlight ALEWarningSign ctermfg=216 ctermbg=NONE guibg=NONE
   augroup END
+'''
+
+
+[[plugins]]
+repo = 'honza/vim-snippets'
+
+
+[[plugins]]
+repo = 'Shougo/defx.nvim'
+hook_post_source = '''
+  function! s:open_defx_if_directory()
+    try
+      let l:full_path = expand(expand('%:p'))
+      if isdirectory(l:full_path)
+        execute "Defx `expand('%:p')` -listed | bd " . expand('%:r')
+      endif
+    catch
+    endtry
+  endfunction
+
+  augroup DefxConfig
+    autocmd!
+    autocmd BufEnter * call s:open_defx_if_directory()
+  augroup END
+
+  " at VimEnter
+  call s:open_defx_if_directory()
+
+  nnoremap <silent> <leader>d :<C-u>Defx -listed -resume<CR>
+'''
+[plugins.ftplugin]
+defx = '''
+  nnoremap <silent><buffer><expr> <CR>
+  \ defx#do_action('open')
+  nnoremap <silent><buffer><expr> c
+  \ defx#do_action('copy')
+  nnoremap <silent><buffer><expr> m
+  \ defx#do_action('move')
+  nnoremap <silent><buffer><expr> p
+  \ defx#do_action('paste')
+  nnoremap <silent><buffer><expr> l
+  \ defx#do_action('open')
+  nnoremap <silent><buffer><expr> E
+  \ defx#do_action('open', 'vsplit')
+  nnoremap <silent><buffer><expr> P
+  \ defx#do_action('preview')
+  nnoremap <silent><buffer><expr> o
+  \ defx#do_action('open_tree', 'toggle')
+  nnoremap <silent><buffer><expr> K
+  \ defx#do_action('new_directory')
+  nnoremap <silent><buffer><expr> N
+  \ defx#do_action('new_file')
+  nnoremap <silent><buffer><expr> M
+  \ defx#do_action('new_multiple_files')
+  nnoremap <silent><buffer><expr> C
+  \ defx#do_action('toggle_columns',
+  \                'mark:indent:icon:filename:type:size:time')
+  nnoremap <silent><buffer><expr> S
+  \ defx#do_action('toggle_sort', 'time')
+  nnoremap <silent><buffer><expr> d
+  \ defx#do_action('remove')
+  nnoremap <silent><buffer><expr> r
+  \ defx#do_action('rename')
+  nnoremap <silent><buffer><expr> !
+  \ defx#do_action('execute_command')
+  nnoremap <silent><buffer><expr> x
+  \ defx#do_action('execute_system')
+  nnoremap <silent><buffer><expr> yy
+  \ defx#do_action('yank_path')
+  nnoremap <silent><buffer><expr> .
+  \ defx#do_action('toggle_ignored_files')
+  nnoremap <silent><buffer><expr> ;
+  \ defx#do_action('repeat')
+  nnoremap <silent><buffer><expr> h
+  \ defx#do_action('cd', ['..'])
+  nnoremap <silent><buffer><expr> ~
+  \ defx#do_action('cd')
+  nnoremap <silent><buffer><expr> q
+  \ defx#do_action('quit')
+  nnoremap <silent><buffer><expr> <Space>
+  \ defx#do_action('toggle_select') . 'j'
+  nnoremap <silent><buffer><expr> *
+  \ defx#do_action('toggle_select_all')
+  nnoremap <silent><buffer><expr> j
+  \ line('.') == line('$') ? 'gg' : 'j'
+  nnoremap <silent><buffer><expr> k
+  \ line('.') == 1 ? 'G' : 'k'
+  nnoremap <silent><buffer><expr> <C-l>
+  \ defx#do_action('redraw')
+  nnoremap <silent><buffer><expr> <C-g>
+  \ defx#do_action('print')
+  nnoremap <silent><buffer><expr> cd
+  \ defx#do_action('change_vim_cwd')
+'''
+
+
+[[plugins]]
+repo = 'Shougo/ddc.vim'
+depends = ['denops.vim']
+on_event = 'InsertEnter'
+hook_source = '''
+  inoremap <silent><expr> <C-l> ddc#complete_common_string()
+
+  call ddc#custom#patch_global('sources', ['around', 'skkeleton', 'file'])
+
+  call ddc#custom#patch_global('sourceOptions', {
+      \ '_': {
+      \   'ignoreCase': v:true,
+      \   'matchers': [],
+      \   'sorters': ['sorter_rank'],
+      \   'converters': [],
+      \ },
+      \ 'around': {
+      \   'mark': 'A',
+      \ },
+      \ 'skkeleton': {
+      \   'mark': 'skk',
+      \   'matchers': ['skkeleton'],
+      \   'sorters': [],
+      \   'minAutoCompleteLength': 2,
+      \ },
+      \ 'file': {
+	    \   'mark': 'F',
+	    \   'isVolatile': v:true,
+	    \   'forceCompletionPattern': '\S/\S*',
+	    \ },
+      \ })
+  call ddc#enable()
+'''
+
+
+[[plugins]]
+repo = 'Shougo/ddc-sorter_rank'
+on_source = 'ddc.vim'
+
+
+[[plugins]]
+repo = 'Shougo/ddc-around'
+on_source = 'ddc.vim'
+
+
+[[plugins]]
+repo = 'LumaKernel/ddc-file'
+on_source = 'ddc.vim'
+
+
+[[plugins]]
+repo = 'vim-skk/skkeleton'
+depends = ['ddc.vim']
+on_map = {ic = '<Plug>'}
+hook_add = '''
+  imap <C-j> <Plug>(skkeleton-toggle)
+  cmap <C-j> <Plug>(skkeleton-toggle)
+'''
+hook_source = '''
+  let s:global_jisyo = ''
+  if isdirectory(expand('~/Library/Application Support/AquaSKK'))
+    let s:global_jisyo = expand('~/Library/Application Support/AquaSKK/SKK-JISYO.L')
+  elseif isdirectory('/usr/share/skk')
+    let s:global_jisyo = '/usr/share/skk/SKK-JISYO.L'
+  endif
+
+  call skkeleton#config({
+      \ 'globalJisyo': s:global_jisyo,
+      \ 'eggLikeNewline': v:true,
+      \ 'registerConvertResult': v:true,
+      \ })
+
+  call skkeleton#register_kanatable('rom', {'jj': 'escape'})
 '''
