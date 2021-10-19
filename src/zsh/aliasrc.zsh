@@ -25,10 +25,6 @@ alias gdf='git diff'
 alias gaa='git add .'
 alias gcm='git commit'
 
-[ -x ~/opt/anaconda3/bin/python3 ] && alias -s py='~/opt/anaconda3/bin/python3'
-alias -s {tex,md}=$EDITOR
-alias -s {png,jpg,bmp,pdf}='open -a Preview'
-
 if type abbrev-alias > /dev/null 2>&1; then
   abbrev-alias -g G='| grep'
   abbrev-alias -g L='| less'
