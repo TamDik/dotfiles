@@ -4,9 +4,19 @@ repo = 'vim-jp/vimdoc-ja'
 
 [[plugins]]
 repo = 'sainnhe/edge'
-hook_add = '''
-  colorscheme edge
-'''
+merged = '0'
+
+
+[[plugins]]
+repo = 'tpope/vim-surround'
+
+
+[[plugins]]
+repo = 'tpope/vim-repeat'
+
+
+[[plugins]]
+repo = 'tpope/vim-commentary'
 
 
 [[plugins]]
@@ -116,7 +126,7 @@ hook_add = '''
   function! ModeWithSkk() abort
     let l:mode = mode()
     let l:mode_str = get(s:mode_map, l:mode, l:mode)
-    if !(exists('g:loaded_skkeleton') && g:loaded_skkeleton && skkeleton#is_enabled())
+    if !(exists('g:loaded_skkeleton') && dein#is_sourced('skkeleton') && skkeleton#is_enabled())
       return l:mode_str
     end
     let l:skk_mode = skkeleton#mode()
@@ -125,7 +135,7 @@ hook_add = '''
   endfunction
 
   function! LLAleActive() abort
-    if !exists('g:ale_enabled')
+    if !dein#is_sourced('ale')
       return ''
     endif
     if !g:ale_enabled

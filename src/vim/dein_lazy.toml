@@ -3,36 +3,6 @@ repo = 'vim-denops/denops.vim'
 
 
 [[plugins]]
-repo = 'tpope/vim-surround'
-
-
-[[plugins]]
-repo = 'tpope/vim-repeat'
-
-
-[[plugins]]
-repo = 'tpope/vim-commentary'
-
-
-[[plugins]]
-repo = 'junegunn/goyo.vim'
-hook_add = '''
-  let g:goyo_width = 80
-  let g:goyo_height = '100%'
-  nnoremap <silent> <leader>g :Goyo<CR>
-  augroup Goyo
-    autocmd!
-    autocmd User GoyoEnter :nnoremap j gj
-    autocmd User GoyoEnter :nnoremap k gk
-    autocmd User GoyoEnter :nnoremap J gJ
-    autocmd User GoyoLeave :nnoremap j j
-    autocmd User GoyoLeave :nnoremap k k
-    autocmd User GoyoLeave :nnoremap J J
-  augroup END
-'''
-
-
-[[plugins]]
 repo = 'dense-analysis/ale'
 hook_add = '''
   let g:ale_enabled = 1
@@ -78,6 +48,11 @@ repo = 'honza/vim-snippets'
 
 [[plugins]]
 repo = 'Shougo/defx.nvim'
+on_event = 'BufEnter'
+on_if = 'isdirectory(expand(expand("%:p")))'
+hook_add = '''
+  "nnoremap <silent> <leader>d :<C-u>Defx -listed -resume<CR>
+'''
 hook_post_source = '''
   function! s:open_defx_if_directory()
     try
@@ -96,8 +71,6 @@ hook_post_source = '''
 
   " at VimEnter
   call s:open_defx_if_directory()
-
-  nnoremap <silent> <leader>d :<C-u>Defx -listed -resume<CR>
 '''
 [plugins.ftplugin]
 defx = '''
@@ -173,16 +146,16 @@ hook_source = '''
   inoremap <silent><expr> <C-l> ddc#complete_common_string()
 
   call ddc#custom#patch_global('sources', ['around', 'skkeleton', 'file'])
-
   call ddc#custom#patch_global('sourceOptions', {
       \ '_': {
       \   'ignoreCase': v:true,
-      \   'matchers': [],
+      \   'matchers': ['matcher_head'],
       \   'sorters': ['sorter_rank'],
       \   'converters': [],
       \ },
       \ 'around': {
       \   'mark': 'A',
+      \   'matchers': ['matcher_head', 'matcher_length']
       \ },
       \ 'skkeleton': {
       \   'mark': 'skk',
@@ -196,12 +169,23 @@ hook_source = '''
 	    \   'forceCompletionPattern': '\S/\S*',
 	    \ },
       \ })
+  call ddc#custom#patch_global('backspaceCompletion', v:true)
   call ddc#enable()
 '''
 
 
 [[plugins]]
 repo = 'Shougo/ddc-sorter_rank'
+on_source = 'ddc.vim'
+
+
+[[plugins]]
+repo = 'Shougo/ddc-matcher_head'
+on_source = 'ddc.vim'
+
+
+[[plugins]]
+repo = 'Shougo/ddc-matcher_length'
 on_source = 'ddc.vim'
 
 
