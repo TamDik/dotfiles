@@ -160,7 +160,6 @@ hook_source = '''
       \ 'skkeleton': {
       \   'mark': 'skk',
       \   'matchers': ['skkeleton'],
-      \   'sorters': [],
       \   'minAutoCompleteLength': 2,
       \ },
       \ 'file': {
