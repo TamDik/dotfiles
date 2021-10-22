@@ -4,6 +4,7 @@ repo = 'vim-denops/denops.vim'
 
 [[plugins]]
 repo = 'dense-analysis/ale'
+on_if = 'g:ale_enabled'
 hook_add = '''
   let g:ale_enabled = 1
 
