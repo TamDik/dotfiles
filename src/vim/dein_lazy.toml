@@ -141,7 +141,7 @@ defx = '''
 
 [[plugins]]
 repo = 'Shougo/ddc.vim'
-depends = ['denops.vim']
+depends = ['denops.vim', 'skkeleton']
 on_event = 'InsertEnter'
 hook_source = '''
   inoremap <silent><expr> <C-l> ddc#complete_common_string()
@@ -201,7 +201,7 @@ on_source = 'ddc.vim'
 
 [[plugins]]
 repo = 'vim-skk/skkeleton'
-on_source = 'ddc.vim'
+on_map = {ic = '<Plug>'}
 hook_add = '''
   imap <C-j> <Plug>(skkeleton-toggle)
   cmap <C-j> <Plug>(skkeleton-toggle)
