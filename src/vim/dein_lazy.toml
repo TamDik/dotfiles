@@ -235,8 +235,22 @@ on_event = 'VimEnter'
 hook_source = '''
   call olppet#config({
       \ 'snippet': ['honza/vim-snippets'],
-      \ 'expand': ['<Tab>'],
-      \ 'jump_forward': '<C-f>',
-      \ 'jump_backward': ['<C-b>', '<S-Tab>'],
+      \ 'expand': ['<Tab>', '<c-e>'],
+      \ 'jump_forward': ['<Tab>', '<c-f>'],
+      \ 'jump_backward': ['<S-Tab>', '<c-b>'],
       \ })
+'''
+
+
+[plugins.ftplugin]
+help = '''
+  if &l:buftype !=# 'help'
+    setlocal list tabstop=8 shiftwidth=8 softtabstop=8 noexpandtab textwidth=78
+    if exists('+colorcolumn')
+      setlocal colorcolumn=+1
+    endif
+    if has('conceal')
+      setlocal conceallevel=0
+    endif
+  endif
 '''
