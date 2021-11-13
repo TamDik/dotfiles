@@ -1,4 +1,8 @@
 [[plugins]]
+repo = 'Shougo/dein.vim'
+
+
+[[plugins]]
 repo = 'vim-jp/vimdoc-ja'
 
 
@@ -30,53 +34,20 @@ repo = "aklt/plantuml-syntax"
 [[plugins]]
 repo = 'junegunn/fzf'
 merged = '0'
-hook_add = '''
-  let $FZF_DEFAULT_OPTS = '--layout=reverse --border --inline-info '
-  let $FZF_DEFAULT_OPTS .= '--color=fg:#c6c8d1,bg:#161821,hl:#6b7089'
-  let $FZF_DEFAULT_OPTS .= ',fg+:#c6c8d1,bg+:#1e2132,hl+:#84a0c6'
-  let $FZF_DEFAULT_OPTS .= ',info:#b4be82,prompt:#84a0c6,pointer:#84a0c6'
-  let $FZF_DEFAULT_OPTS .= ',marker:#84a0c6,spinner:#84a0c6,header:#6b7089'
-  if has('nvim')
-    let s:fzf_win = -1
-    function! FZFWindow()
-      setlocal ambiwidth=single  " To prevent a preview window from being disturbed
-
-      let l:width = float2nr(&columns * 0.9)
-      let l:height = float2nr(&lines * 0.8)
-      let l:opts = {
-         \ 'relative': 'win',
-         \ 'row': (&lines - l:height) / 2,
-         \ 'col': (&columns - l:width) / 2,
-         \ 'width': l:width,
-         \ 'height': l:height,
-         \ 'style': 'minimal'
-         \}
-      let s:fzf_win = nvim_open_win(nvim_create_buf(v:false, v:true), v:true, l:opts)
-      call setwinvar(s:fzf_win, '&winhighlight', 'NormalFloat:TabLine')
-    endfunction
-
-    if &ambiwidth == 'double'
-      augroup FZFAmbi
-        autocmd!
-        autocmd BufWinLeave * if win_getid() == s:fzf_win | setlocal ambiwidth=double | endif
-      augroup END
-    endif
-
-    let g:fzf_layout = {'window': 'call FZFWindow()'}
-  endif
-'''
 
 
 [[plugins]]
 repo = 'junegunn/fzf.vim'
+depends = 'fzf'
 hook_add = '''
+  let g:fzf_layout = {'down': '50%'}
+  let g:fzf_commits_log_options = '--graph --decorate --pretty=oneline --all --abbrev-commit'
+
   nnoremap <silent> <leader>ff :<C-u>Files<CR>
   nnoremap <silent> <leader>fb :<C-u>Buffers<CR>
-  " nnoremap <silent> <leader>fl :<C-u>Lines<CR>
   nnoremap <silent> <leader>fr :<C-u>Rg<CR>
-  " nnoremap <silent> <leader>ft :<C-u>Tags<CR>
-  " nnoremap <silent> <leader>fh :<C-u>History<CR>
-  let g:fzf_commits_log_options = '--graph --decorate --pretty=oneline --all --abbrev-commit'
+  nnoremap <silent> <leader>fg :<C-u>GFiles?<CR>
+  nnoremap <silent> <leader>fh :<C-u>Helptags<CR>
 
   imap <c-x><c-k> <plug>(fzf-complete-word)
   imap <c-x><c-f> <plug>(fzf-complete-path)

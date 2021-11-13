@@ -30,6 +30,7 @@ let g:dein#cache_directory = s:dein_cache_path
 call dein#begin(s:dein_repo_path)
 call s:load_dein_toml(g:VIM_ROOT . '/dein.toml')
 call s:load_dein_toml(g:VIM_ROOT . '/dein_lazy.toml', 1)
+call s:load_dein_toml(g:VIM_ROOT . '/dein_ft.toml')
 call dein#end()
 call dein#save_state()
 

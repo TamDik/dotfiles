@@ -40,6 +40,7 @@ ln -snfv ${SCRIPT_DIR}/tmux/tpm_install        ${TMUX_DIR}/tpm_install
 ln -snfv ${SCRIPT_DIR}/vim/colorrc.vim         ${VIM_DIR}/colorrc.vim
 ln -snfv ${SCRIPT_DIR}/vim/dein.toml           ${VIM_DIR}/dein.toml
 ln -snfv ${SCRIPT_DIR}/vim/dein_lazy.toml      ${VIM_DIR}/dein_lazy.toml
+ln -snfv ${SCRIPT_DIR}/vim/dein_ft.toml        ${VIM_DIR}/dein_ft.toml
 ln -snfv ${SCRIPT_DIR}/vim/deinrc.vim          ${VIM_DIR}/deinrc.vim
 ln -snfv ${SCRIPT_DIR}/vim/gvimrc              ~/.gvimrc
 ln -snfv ${SCRIPT_DIR}/vim/init.vim            ~/.config/nvim/init.vim
