@@ -10,6 +10,8 @@ set noruler
 set hidden
 set number
 set relativenumber
+set list
+set listchars=tab:>-,trail:-
 set scrolloff=3
 set wildmenu
 set updatetime=500
