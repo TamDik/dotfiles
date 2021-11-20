@@ -41,3 +41,35 @@ cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 if executable('compiler')
   nnoremap <silent> <F5> :w<CR>:!compiler %<CR>
 endif
+
+" sticky shift
+inoremap <expr> ; <SID>sticky_func()
+cnoremap <expr> ; <SID>sticky_func()
+snoremap <expr> ; <SID>sticky_func()
+function! s:sticky_func() abort
+  let sticky_table = {
+        \',' : '<', '.' : '>', '/' : '?',
+        \'1' : '!', '2' : '@', '3' : '#', '4' : '$', '5' : '%',
+        \'6' : '^', '7' : '&', '8' : '*', '9' : '(', '0' : ')',
+        \ '-' : '_', '=' : '+',
+        \';' : ':', '[' : '{', ']' : '}', '`' : '~', "'" : "\"", '\' : '|',
+        \}
+  let special_table = {
+        \ "\<ESC>": "\<ESC>", "\<Space>": ';', "\<CR>": ";\<CR>",
+        \ }
+  let char = ''
+  while 1
+    silent! let char = nr2char(getchar())
+    if char =~# '\l'
+      let char = toupper(char)
+      break
+    elseif has_key(sticky_table, char)
+      let char = sticky_table[char]
+      break
+    elseif has_key(special_table, char)
+      let char = special_table[char]
+      break
+    endif
+  endwhile
+  return char
+endfunction

@@ -139,6 +139,29 @@ zstyle ':completion:*' menu select
 zstyle ':completion:*' list-colors $LS_COLORS
 
 
+# sticky shift
+function _sticky_shift () {
+  local char
+  typeset -A sticky_table
+  sticky_table=(
+    '`' '~' '1' '!' '2' '@' '3' '#' '4' '$' '5' '%' '6' '^' '7' '&' '8' '*' '9' '(' '0' ')' '-' '_' '=' '+'
+    '[' '{' ']' '}' '\' '|' ';' ':' "'" '"' ',' '<' '.' '>' '/' '?'
+    'a' 'A' 'b' 'B' 'c' 'C' 'd' 'D' 'e' 'E' 'f' 'F' 'g' 'G' 'h' 'H' 'i' 'I' 'j' 'J' 'k' 'K' 'l' 'L' 'm' 'M'
+    'n' 'N' 'o' 'O' 'p' 'P' 'q' 'Q' 'r' 'R' 's' 'S' 't' 'T' 'u' 'U' 'v' 'V' 'w' 'W' 'x' 'X' 'y' 'Y' 'z' 'Z'
+    ' ' ';'
+  )
+  read -k 1 -t 0.3 char
+  if [[ -n "${sticky_table[$char]}" ]]; then
+    char="${sticky_table[$char]}"
+  else
+    char=';'
+  fi
+  LBUFFER="$LBUFFER$char"
+}
+zle -N _sticky_shift
+bindkey ';' _sticky_shift
+
+
 # zsh-users/zsh-syntax-highlighting
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 
