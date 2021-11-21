@@ -6,17 +6,13 @@ nvim_repo=$nvim_user/neovim
 
 if [[ ! -d $nvim_user ]]; then
   mkdir -p $nvim_user
-  echo "mkdir -p ${nvim_user}"
 fi
 cd $nvim_user
-if [[ ! -d $nvim_user/neovim ]]; then
+if [[ ! -d $nvim_repo ]]; then
   git clone https://github.com/neovim/neovim.git
-  echo 'git clone'
-else
-  git pull
-  echo 'git pull'
 fi
 cd $nvim_repo
+git pull
 
 make CMAKE_BUILD_TYPE=RelWithDebInfo
 make -j$(nproc)
