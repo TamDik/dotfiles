@@ -23,3 +23,5 @@
 	helper = store
 [diff]
 	tool = nvimdiff
+[pull]
+	ff = only
