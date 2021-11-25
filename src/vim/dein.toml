@@ -43,11 +43,11 @@ hook_add = '''
   let g:fzf_layout = {'down': '50%'}
   let g:fzf_commits_log_options = '--graph --decorate --pretty=oneline --all --abbrev-commit'
 
-  nnoremap <silent> <leader>ff :<C-u>Files<CR>
-  nnoremap <silent> <leader>fb :<C-u>Buffers<CR>
-  nnoremap <silent> <leader>fr :<C-u>Rg<CR>
-  nnoremap <silent> <leader>fg :<C-u>GFiles?<CR>
-  nnoremap <silent> <leader>fh :<C-u>Helptags<CR>
+  nnoremap <silent> <leader>ff <Cmd>Files<CR>
+  nnoremap <silent> <leader>fb <Cmd>Buffers<CR>
+  nnoremap <silent> <leader>fr <Cmd>Rg<CR>
+  nnoremap <silent> <leader>fg <Cmd>GFiles?<CR>
+  nnoremap <silent> <leader>fh <Cmd>Helptags<CR>
 
   imap <c-x><c-k> <plug>(fzf-complete-word)
   imap <c-x><c-f> <plug>(fzf-complete-path)

@@ -21,7 +21,7 @@ hook_add = '''
     \}
   nmap <leader>ak <Plug>(ale_previous_wrap)
   nmap <leader>aj <Plug>(ale_next_wrap)
-  nnoremap <silent> <leader>aa :<C-u>ALEToggle<CR>
+  nnoremap <silent> <leader>aa <Cmd>ALEToggle<CR>
 
   if !has('nvim')
     let g:ale_sign_error = ''
@@ -48,7 +48,7 @@ repo = 'Shougo/defx.nvim'
 on_event = 'BufEnter'
 on_if = 'isdirectory(expand(expand("%:p")))'
 hook_add = '''
-  "nnoremap <silent> <leader>d :<C-u>Defx -listed -resume<CR>
+  "nnoremap <silent> <leader>d <Cmd>Defx -listed -resume<CR>
 '''
 hook_post_source = '''
   function! s:open_defx_if_directory()

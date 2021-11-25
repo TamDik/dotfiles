@@ -10,6 +10,7 @@ set noruler
 set hidden
 set number
 set relativenumber
+set nowrap
 set list
 set listchars=tab:>-,trail:-
 set scrolloff=3
