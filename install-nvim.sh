@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/zsh
 # See build prerequisites (https://github.com/neovim/neovim/wiki/Building-Neovim#build-prerequisites)
 
 nvim_user=~/repos/github.com/neovim
