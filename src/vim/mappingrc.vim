@@ -34,7 +34,6 @@ cnoremap <C-b> <Left>
 cnoremap <C-f> <Right>
 cnoremap <C-d> <Del>
 
-" other key mapping
 nnoremap Y y$
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 if executable('compiler')

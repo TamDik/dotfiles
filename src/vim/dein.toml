@@ -24,10 +24,6 @@ repo = 'tpope/vim-commentary'
 
 
 [[plugins]]
-repo = "cespare/vim-toml"
-
-
-[[plugins]]
 repo = "aklt/plantuml-syntax"
 
 
