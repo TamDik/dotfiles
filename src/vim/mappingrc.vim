@@ -40,6 +40,9 @@ if executable('compiler')
   nnoremap <silent> <F5> :w<CR>:!compiler %<CR>
 endif
 
+nnoremap <silent><expr> * v:count ? '*'
+      \: ':silent execute "keepjumps normal! *" <Bar> call winrestview(' . string(winsaveview()) . ')<CR>'
+
 " sticky shift
 inoremap <expr> ; <SID>sticky_func()
 cnoremap <expr> ; <SID>sticky_func()
