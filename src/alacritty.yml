@@ -9,14 +9,13 @@ shell:
 font:
   size: 17
 
-background_opacity: 1
-
 window:
   padding:
     x: 2
     y: 2
   decorations: Full
   startup_mode: Maximized
+  opacity: 1
 
 mouse:
   hide_when_typing: true
