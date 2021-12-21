@@ -46,9 +46,9 @@ hook_add = '''
 [[plugins]]
 repo = 'Shougo/defx.nvim'
 on_event = 'BufEnter'
-on_if = 'isdirectory(expand(expand("%:p")))'
+on_if = 'isdirectory(expand("%:p"))'
 hook_add = '''
-  "nnoremap <silent> <leader>d <Cmd>Defx -listed -resume<CR>
+  nnoremap <silent> <leader>d <Cmd>Defx -listed -resume<CR>
 '''
 hook_post_source = '''
   function! s:open_defx_if_directory()

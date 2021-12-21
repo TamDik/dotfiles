@@ -10,6 +10,7 @@ set noruler
 set hidden
 set number
 set relativenumber
+set laststatus=2
 set wrap
 set list
 set listchars=tab:>-,trail:-
