@@ -3,43 +3,46 @@ repo = 'vim-denops/denops.vim'
 
 
 [[plugins]]
-repo = 'dense-analysis/ale'
-on_if = 'g:ale_enabled'
+repo = 'prabirshrestha/vim-lsp'
+on_event = 'VimEnter'
+# on_ft = []
 hook_add = '''
-  let g:ale_enabled = 1
+  let g:lsp_diagnostics_signs_error = {'text': 'E '}
+  let g:lsp_diagnostics_signs_warning = {'text': 'W '}
+  let g:lsp_diagnostics_signs_information = {'text': 'I '}
+  let g:lsp_diagnostics_signs_hint = {'text': 'H '}
 
-  let g:ale_lint_on_enter = 1
-  let g:ale_lint_on_filetype_changed = 1
-  let g:ale_lint_on_insert_leave = 1
-  let g:ale_lint_on_save = 1
-  let g:ale_lint_on_text_changed = 'normal'
+  function! s:on_lsp_buffer_enabled() abort
+    nmap <buffer> gd <plug>(lsp-definition)
+    nmap <buffer> <f2> <plug>(lsp-rename)
+    nmap <buffer> <leader>p <plug>(lsp-hover-float)
+    nmap <buffer> <leader>ak <Plug>(lsp-previous-diagnostic)
+    nmap <buffer> <leader>aj <plug>(lsp-next-diagnostic)
+  endfunction
 
-  let g:ale_linters_explicit = 0
-  let g:ale_linters = {
-    \ 'python': ['pylint'],
-    \ 'java': ['javac'],
-    \}
-  nmap <leader>ak <Plug>(ale_previous_wrap)
-  nmap <leader>aj <Plug>(ale_next_wrap)
-  nnoremap <silent> <leader>aa <Cmd>ALEToggle<CR>
-
-  if !has('nvim')
-    let g:ale_sign_error = ''
-    let g:ale_sign_warning = ''
-  endif
-  let g:ale_echo_msg_error_str = 'E'
-  let g:ale_echo_msg_warning_str = 'W'
-  let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-
-  if isdirectory('src')
-    let g:ale_java_javac_classpath = getcwd() . '/src'
-  endif
-
-  augroup ALEColor
+  augroup LSPInstall
     autocmd!
-    autocmd ColorScheme * highlight ALEErrorSign   ctermfg=203 ctermbg=NONE guibg=NONE
-    autocmd ColorScheme * highlight ALEWarningSign ctermfg=216 ctermbg=NONE guibg=NONE
+    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
   augroup END
+'''
+
+
+[[plugins]]
+repo = 'mattn/vim-lsp-settings'
+on_source = 'vim-lsp'
+hook_add = '''
+  let g:lsp_settings = {
+  \  'pylsp-all': {
+  \    'workspace_config': {
+  \      'pylsp': {
+  \        'plugins': {
+  \        'pycodestyle': {'enabled': v:true},
+  \        'pylint': {'enabled': v:false},
+  \        }
+  \      }
+  \    }
+  \  }
+  \}
 '''
 
 

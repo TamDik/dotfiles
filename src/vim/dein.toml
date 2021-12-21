@@ -8,7 +8,7 @@ repo = 'vim-jp/vimdoc-ja'
 
 [[plugins]]
 repo = 'sainnhe/edge'
-merged = '0'
+merged = 0
 
 
 [[plugins]]
@@ -29,7 +29,7 @@ repo = "aklt/plantuml-syntax"
 
 [[plugins]]
 repo = 'junegunn/fzf'
-merged = '0'
+merged = 0
 
 
 [[plugins]]
@@ -73,9 +73,7 @@ hook_add = '''
     \   'left':  [['modewithskk'],
     \             ['filename'],
     \            ],
-    \   'right': [['filetype'],
-    \             ['aleactive'],
-    \            ]
+    \   'right': [['filetype']]
     \ },
     \ 'inactive': {
     \   'left':  [['filename']],
@@ -83,7 +81,6 @@ hook_add = '''
     \ },
     \ 'mode_map': s:mode_map,
     \ 'component_function': {
-    \   'aleactive': 'LLAleActive',
     \   'modewithskk': 'ModeWithSkk'
     \ },
     \ }
@@ -97,22 +94,5 @@ hook_add = '''
     let l:skk_mode = skkeleton#mode()
     let l:eskk_mode_str = get({'hira': 'あ', 'kata': 'ア'}, l:skk_mode, l:skk_mode)
     return l:mode_str . '-' . l:eskk_mode_str
-  endfunction
-
-  function! LLAleActive() abort
-    if !dein#is_sourced('ale')
-      return ''
-    endif
-    if !g:ale_enabled
-      return 'disabled'
-    endif
-    if len(ale#linter#Get(&filetype)) == 0
-      return 'no linter'
-    endif
-
-    let l:counts = ale#statusline#Count(bufnr(''))
-    let l:num_errors = l:counts.error + l:counts.style_error
-    let l:num_warnings = l:counts.total - l:num_errors
-    return printf('E%dW%d', l:num_errors, l:num_warnings)
   endfunction
 '''
