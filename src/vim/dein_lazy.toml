@@ -7,10 +7,10 @@ repo = 'prabirshrestha/vim-lsp'
 on_event = 'VimEnter'
 # on_ft = []
 hook_add = '''
-  let g:lsp_diagnostics_signs_error = {'text': 'E '}
-  let g:lsp_diagnostics_signs_warning = {'text': 'W '}
-  let g:lsp_diagnostics_signs_information = {'text': 'I '}
-  let g:lsp_diagnostics_signs_hint = {'text': 'H '}
+  let g:lsp_diagnostics_signs_error = {'text': 'E'}
+  let g:lsp_diagnostics_signs_warning = {'text': 'W'}
+  let g:lsp_diagnostics_signs_information = {'text': 'I'}
+  let g:lsp_diagnostics_signs_hint = {'text': 'H'}
 
   function! s:on_lsp_buffer_enabled() abort
     nmap <buffer> gd <plug>(lsp-definition)
@@ -145,7 +145,7 @@ on_event = 'InsertEnter'
 hook_source = '''
   inoremap <silent><expr> <C-l> ddc#complete_common_string()
 
-  call ddc#custom#patch_global('sources', ['olppet', 'around', 'skkeleton', 'file'])
+  call ddc#custom#patch_global('sources', ['vim-lsp', 'olppet', 'around', 'skkeleton', 'file'])
   call ddc#custom#patch_global('sourceOptions', {
       \ '_': {
       \   'ignoreCase': v:true,
@@ -169,6 +169,10 @@ hook_source = '''
       \ },
       \ 'olppet': {
       \   'mark': 'pet',
+      \   'minAutoCompleteLength': 1,
+      \ },
+      \ 'vim-lsp': {
+      \   'mark': 'lsp',
       \   'minAutoCompleteLength': 1,
       \ },
       \ })
@@ -199,6 +203,11 @@ on_source = 'ddc.vim'
 
 [[plugins]]
 repo = 'LumaKernel/ddc-file'
+on_source = 'ddc.vim'
+
+
+[[plugins]]
+repo = 'shun/ddc-vim-lsp'
 on_source = 'ddc.vim'
 
 
