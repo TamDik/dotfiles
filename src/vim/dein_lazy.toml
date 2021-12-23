@@ -7,6 +7,7 @@ repo = 'prabirshrestha/vim-lsp'
 on_event = 'VimEnter'
 # on_ft = []
 hook_add = '''
+  let g:lsp_diagnostics_virtual_text_prefix = ' ‣ '
   let g:lsp_diagnostics_signs_error = {'text': 'E'}
   let g:lsp_diagnostics_signs_warning = {'text': 'W'}
   let g:lsp_diagnostics_signs_information = {'text': 'I'}
