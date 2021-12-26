@@ -20,6 +20,9 @@ window:
 mouse:
   hide_when_typing: true
 
+scrolling:
+  multiplier: 0
+
 # Colors (Iceberg Dark)
 colors:
   # Default colors

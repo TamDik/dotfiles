@@ -1,6 +1,12 @@
 " search
 nnoremap <silent> <leader><Space> <Cmd>nohlsearch<CR>
 
+" window resizing
+nnoremap <Left> <C-w>>
+nnoremap <Right> <C-w><
+nnoremap <Up> <C-w>+
+nnoremap <Down> <C-w>-
+
 " split
 nnoremap <silent> <leader>s <Cmd>split<CR>
 nnoremap <silent> <leader>v <Cmd>vsplit<CR>

@@ -7,7 +7,8 @@ repo = 'prabirshrestha/vim-lsp'
 on_event = 'VimEnter'
 # on_ft = []
 hook_add = '''
-  let g:lsp_diagnostics_virtual_text_prefix = ' ‣ '
+  let g:lsp_document_code_action_signs_enabled = 0
+  let g:lsp_diagnostics_virtual_text_prefix = '‣ '
   let g:lsp_diagnostics_signs_error = {'text': 'E'}
   let g:lsp_diagnostics_signs_warning = {'text': 'W'}
   let g:lsp_diagnostics_signs_information = {'text': 'I'}
@@ -248,8 +249,8 @@ on_event = 'VimEnter'
 hook_source = '''
   call olppet#config({
       \ 'snippet': ['honza/vim-snippets'],
-      \ 'expand': ['<Tab>', '<c-e>'],
-      \ 'jump_forward': ['<Tab>', '<c-f>'],
-      \ 'jump_backward': ['<S-Tab>', '<c-b>'],
+      \ 'expand': '<Tab>',
+      \ 'jump_forward': '<Tab>',
+      \ 'jump_backward': '<S-Tab>',
       \ })
 '''
