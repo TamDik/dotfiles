@@ -142,12 +142,12 @@ defx = '''
 
 [[plugins]]
 repo = 'Shougo/ddc.vim'
-depends = ['denops.vim', 'skkeleton']
+depends = ['denops.vim']
 on_event = 'InsertEnter'
 hook_source = '''
   inoremap <silent><expr> <C-l> ddc#complete_common_string()
 
-  call ddc#custom#patch_global('sources', ['vim-lsp', 'olppet', 'around', 'skkeleton', 'file'])
+  call ddc#custom#patch_global('sources', ['vim-lsp', 'olppet', 'around', 'file'])
   call ddc#custom#patch_global('sourceOptions', {
       \ '_': {
       \   'ignoreCase': v:true,
@@ -235,6 +235,20 @@ hook_source = '''
       \ })
 
   call skkeleton#register_kanatable('rom', {'jj': 'escape'})
+
+  autocmd User skkeleton-enable-pre call s:skkeleton_pre()
+  autocmd User skkeleton-disable-pre call s:skkeleton_post()
+  function! s:skkeleton_pre() abort
+    if dein#is_sourced('ddc.vim')
+      let s:prev_buffer_config = ddc#custom#get_buffer()
+      call ddc#custom#patch_buffer('sources', ['skkeleton'])
+    end
+  endfunction
+  function! s:skkeleton_post() abort
+    if dein#is_sourced('ddc.vim')
+      call ddc#custom#set_buffer(s:prev_buffer_config)
+    end
+  endfunction
 '''
 
 
