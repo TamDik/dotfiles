@@ -1,5 +1,4 @@
 # dotfiles
-[wiki](https://github.com/TamDik/dotfiles/wiki)
 
 ## Install
 ```sh
