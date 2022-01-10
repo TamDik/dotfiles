@@ -1,8 +1,8 @@
 #!/bin/bash
 
-if pmset > /dev/null 2>&1; then
+if type pmset > /dev/null 2>&1; then
   battery_info=$(pmset -g ps | awk 'NR==2{print $3 $4}')
-elif acpi > /dev/null 2>&1; then
+elif type acpi > /dev/null 2>&1; then
   battery_info=$(acpi -b | awk '{print $4 $3}' | tr ',[:upper:]' ';[:lower:]')
 else
   exit 1
