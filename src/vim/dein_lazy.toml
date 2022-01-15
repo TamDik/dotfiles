@@ -275,5 +275,5 @@ hook_source = '''
   endfunction
 
   inoremap <Tab> <Cmd>call <SID>smart_tab()<CR>
-  inoremap <S-Tab> <Plug>(olppet-jump-backward)
+  imap <S-Tab> <Plug>(olppet-jump-backward)
 '''
