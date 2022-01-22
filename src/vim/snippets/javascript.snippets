@@ -1,0 +1,70 @@
+snippet if "if (condition) { ... }"
+	if (${1:true}) {
+		${0:${VISUAL}}
+	}
+snippet ife "if (condition) { ... } else { ... }"
+	if (${1:true}) {
+		${0:${VISUAL}}
+	} else {
+		${2}
+	}
+snippet for "for (...) {...}"
+	for (let ${1:i} = 0, ${2:len} = ${3:Things.length}; $1 < $2; $1++) {
+		${0:${VISUAL}}
+	}
+snippet foro "for (const prop of object}) { ... }"
+	for (const ${1:prop} of ${2:object}) {
+		${0:$1}
+	}
+snippet forl "for (let prop of object}) { ... }"
+	for (let ${1:prop} of ${2:object}) {
+		${0:$1}
+	}
+snippet fori
+	for (let ${1:prop} in ${2:object}) {
+		${0:$2[$1]}
+	}
+snippet wh "(condition) { ... }"
+	while (${1:/* condition */}) {
+		${0:${VISUAL}}
+	}
+snippet fun "function"
+	function ${1:function_name}(${2}) {
+		${0:${VISUAL}}
+	}
+snippet asf "async function"
+	async function ${1:function_name}(${2}) {
+		${0:${VISUAL}}
+	}
+snippet try "try { ... } catch(e) { ... }"
+	try {
+		${0:${VISUAL}}
+	} catch (${1:e}) {
+		${2:/* handle error */}
+	}
+snippet ret
+	return ${0:result};
+snippet cl "console.log"
+	console.log(${0});
+snippet ce "console.error"
+	console.error(${0});
+snippet const
+	const ${1} = ${0};
+snippet constn
+	const ${1} = new ${0};
+snippet let
+	let ${1} = ${0};
+snippet cla
+	class ${1:ClassName} {
+		${0:${VISUAL}}
+	}
+snippet clac
+	class ${1:ClassName} {
+		constructor(${2}) {
+			${0:${VISUAL}}
+		}
+	}
+snippet as "async"
+	async ${0}
+snippet aw "await"
+	await ${0:${VISUAL}}

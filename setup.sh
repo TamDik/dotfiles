@@ -42,6 +42,7 @@ ln -snfv ${SCRIPT_DIR}/vim/neovimrc.vim        ${NVIM_DIR}/neovimrc.vim
 ln -snfv ${SCRIPT_DIR}/vim/mappingrc.vim       ${VIM_DIR}/mappingrc.vim
 ln -snfv ${SCRIPT_DIR}/vim/optionrc.vim        ${VIM_DIR}/optionrc.vim
 ln -snfv ${SCRIPT_DIR}/vim/vimrc               ~/.vimrc
+ln -snfv ${SCRIPT_DIR}/vim/snippets            ${VIM_DIR}/snippets
 ln -snfv ${SCRIPT_DIR}/zsh/aliasrc.zsh         ${ZSH_DIR}/aliasrc.zsh
 ln -snfv ${SCRIPT_DIR}/zsh/fzfrc.zsh           ${ZSH_DIR}/fzfrc.zsh
 ln -snfv ${SCRIPT_DIR}/zsh/pythonrc.zsh        ${PYTHON_DIR}/pythonrc.zsh

@@ -253,16 +253,13 @@ hook_source = '''
 
 
 [[plugins]]
-repo = 'honza/vim-snippets'
-
-
-[[plugins]]
 # repo = 'TamDik/olppet.vim'
 repo = '~/repos/github.com/TamDik/olppet.vim'
-depends = ['denops.vim', 'vim-snippets']
+depends = ['denops.vim']
 on_event = 'VimEnter'
 hook_source = '''
-  call olppet#register_snippets(['honza/vim-snippets', g:VIM_ROOT])
+  call olppet#register_snippet(g:VIM_ROOT, 'SnipMate')
+  call olppet#enable()
 
   function s:smart_tab() abort
     if olppet#expand()
@@ -276,5 +273,6 @@ hook_source = '''
 
   inoremap <Tab> <Cmd>call <SID>smart_tab()<CR>
   imap <S-Tab> <Plug>(olppet-jump-backward)
-  call olppet#enable()
+  snoremap <Tab> <Esc>i<Cmd>call <SID>smart_tab()<CR>
+  snoremap <S-Tab> <Esc>i<Cmd>call olppet#jump_backward()<CR>
 '''
