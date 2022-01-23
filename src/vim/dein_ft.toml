@@ -2,7 +2,7 @@
 
 help = '''
   if &l:buftype !=# 'help'
-    setlocal list tabstop=8 shiftwidth=8 softtabstop=8 noexpandtab textwidth=78
+    setlocal list tabstop=8 shiftwidth=8 softtabstop=8 expandtab textwidth=78
     if exists('+colorcolumn')
       setlocal colorcolumn=+1
     endif
