@@ -245,7 +245,7 @@ hook_source = '''
     end
   endfunction
   function! s:skkeleton_post() abort
-    if dein#is_sourced('ddc.vim')
+    if dein#is_sourced('ddc.vim') && exists('s:prev_buffer_config')
       call ddc#custom#set_buffer(s:prev_buffer_config)
     end
   endfunction
