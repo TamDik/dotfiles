@@ -71,15 +71,14 @@ hook_add = '''
     \ 'colorscheme': 'seoul256',
     \ 'active': {
     \   'left':  [['modewithskk'],
-    \             ['filename'],
+    \             ['filename', 'modified'],
     \            ],
-    \   'right': [['filetype']]
+    \   'right': [['filetype'], ['lineinfo']]
     \ },
     \ 'inactive': {
     \   'left':  [['filename']],
     \   'right': []
     \ },
-    \ 'mode_map': s:mode_map,
     \ 'component_function': {
     \   'modewithskk': 'ModeWithSkk'
     \ },
