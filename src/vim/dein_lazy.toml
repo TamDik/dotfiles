@@ -253,8 +253,7 @@ hook_source = '''
 
 
 [[plugins]]
-# repo = 'TamDik/olppet.vim'
-repo = '~/repos/github.com/TamDik/olppet.vim'
+repo = 'TamDik/olppet.vim'
 depends = ['denops.vim']
 on_event = 'InsertEnter'
 hook_source = '''
