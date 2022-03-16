@@ -71,7 +71,7 @@ hook_add = '''
     \ 'colorscheme': 'seoul256',
     \ 'active': {
     \   'left':  [['modewithskk'],
-    \             ['filename', 'modified'],
+    \             ['filename', 'modifiedbuffers'],
     \            ],
     \   'right': [['filetype'], ['lineinfo']]
     \ },
@@ -80,7 +80,8 @@ hook_add = '''
     \   'right': []
     \ },
     \ 'component_function': {
-    \   'modewithskk': 'ModeWithSkk'
+    \   'modewithskk': 'ModeWithSkk',
+    \   'modifiedbuffers' : 'ModifiedBuffers'
     \ },
     \ }
 
@@ -93,5 +94,25 @@ hook_add = '''
     let l:skk_mode = skkeleton#mode()
     let l:eskk_mode_str = get({'hira': 'あ', 'kata': 'ア'}, l:skk_mode, l:skk_mode)
     return l:mode_str . '-' . l:eskk_mode_str
+  endfunction
+
+
+  function! ModifiedBuffers() abort
+    let modified_buffers = filter(
+        \ range(1, bufnr('$')), { _, bufnr -> bufexists(bufnr)
+        \                                  && buflisted(bufnr)
+        \                                  && getbufvar(bufnr, 'buftype') ==# ''
+        \                                  && filereadable(expand('#' . bufnr . ':p'))
+        \                                  && getbufvar(bufnr, '&modified') == 1 }
+        \ )
+    if len(modified_buffers) == 0
+      return ''
+    endif
+
+    if &modified == 1
+      return len(modified_buffers) == 1 ? '+' : '+' . len(modified_buffers)
+    else
+      return '(+' . len(modified_buffers) . ')'
+    endif
   endfunction
 '''
