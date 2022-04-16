@@ -255,7 +255,7 @@ hook_source = '''
 [[plugins]]
 repo = 'TamDik/olppet.vim'
 depends = ['denops.vim']
-on_event = 'InsertEnter'
+on_source = 'ddc.vim'
 hook_source = '''
   call olppet#register_snippet(g:VIM_ROOT . '/snippets', 'SnipMate')
   call olppet#enable()
