@@ -185,6 +185,9 @@ bar {
         status_command i3status
 }
 
+# browser
+bindsym $mod+F2 exec vivaldi-stable
+
 # gaps
 gaps top 10
 gaps bottom 10
