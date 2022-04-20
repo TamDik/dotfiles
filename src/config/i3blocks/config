@@ -1,0 +1,23 @@
+[click]
+full_text=Click me!
+command=echo "Got clicked with button $button"
+color=#F79494
+
+[weather]
+command=curl -Ss 'https://wttr.in?0&T&Q' | cut -c 16- | head -2 | xargs echo
+interval=3600
+color=#A4C2F4
+
+[ip]
+command=ifconfig | grep broadcast | awk '{print $2}' | tail -n1
+interval=once
+color=#91E78B
+
+[battery]
+command=acpi -b | awk '{print $4}' | tr -d ','
+interval=60
+color=#F4E192
+
+[time]
+command=date +'%Y/%m/%d %H:%M:%S'
+interval=5

@@ -254,6 +254,7 @@ hook_source = '''
 
 [[plugins]]
 repo = 'TamDik/olppet.vim'
+# repo = '~/repos/github.com/TamDik/olppet.vim'
 depends = ['denops.vim']
 on_source = 'ddc.vim'
 hook_source = '''
