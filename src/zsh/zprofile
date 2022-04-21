@@ -17,6 +17,8 @@ if [ -d ~/.deno ]; then
   PATH=$PATH:$DENO_INSTALL/bin
 fi
 
+[ -d ~/.nodebrew/current/bin ] && PATH=$PATH:~/.nodebrew/current/bin
+
 if [ -x /usr/libexec/java_home ]; then
   export JAVA_HOME=$(/usr/libexec/java_home)
   JavaFXLib=$JavaFXLib:~/Prog/Java/javafx-sdk-11.0.2/lib/

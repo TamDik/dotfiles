@@ -1,4 +1,4 @@
-set shortmess+=I
+set shortmess+=Is
 set completeopt=menuone
 set spelllang+=cjk
 set backspace=indent,start,eol
