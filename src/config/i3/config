@@ -191,6 +191,9 @@ bindsym $mod+d exec --no-startup-id dmenu_run -fn 'DejaVu Sans Mono-18'
 # browser
 bindsym $mod+F2 exec --no-startup-id vivaldi-stable
 
+# border
+for_window [class="^.*"] border pixel 3
+
 # gaps
 gaps top 5
 gaps bottom 10
