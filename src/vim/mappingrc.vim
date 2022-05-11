@@ -34,6 +34,10 @@ else
 endif
 tnoremap j<Space> j
 
+" echo
+nnoremap <leader>; <Cmd>echo expand('%:~')<CR>
+nnoremap <leader>el <Cmd>echo line('.') . ':' . col('.')<CR>
+
 " command line
 cnoremap <C-a> <Home>
 cnoremap <C-b> <Left>
@@ -41,7 +45,6 @@ cnoremap <C-f> <Right>
 cnoremap <C-d> <Del>
 
 nnoremap Y y$
-cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 if executable('compiler')
   nnoremap <silent> <F5> :w<CR>:!compiler %<CR>
 endif

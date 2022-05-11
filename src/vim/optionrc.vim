@@ -10,7 +10,7 @@ set noruler
 set hidden
 set nonumber
 set norelativenumber
-set laststatus=2
+set laststatus=0
 set wrap
 set list
 set listchars=tab:>-,trail:-
@@ -129,3 +129,29 @@ function! MyFoldText()
   endif
   return printf('%s%-*s%s', l:head, l:body_length, l:truncated_body, l:tail)
 endfunction
+
+" mode
+function! s:mode_with_skk() abort
+  let l:mode = mode()
+  let s:mode_map = {
+    \   'n': 'N',
+    \   'i': 'I',
+    \   'R': 'R',
+    \   'v': 'V',
+    \   'V': 'VL',
+    \   "\<C-v>": 'VB',
+    \   'c': 'C',
+    \   's': 'S',
+    \   'S': 'SL',
+    \   "\<C-s>": 'SB',
+    \   't': 'T',
+    \}
+  let l:mode_str = get(s:mode_map, l:mode, l:mode)
+  if !(exists('*skkeleton#is_enabled') && skkeleton#is_enabled())
+    return l:mode_str
+  end
+  let l:skk_mode = skkeleton#mode()
+  let l:eskk_mode_str = get({'hira': 'あ', 'kata': 'ア'}, l:skk_mode, l:skk_mode)
+  return l:mode_str . '-' . l:eskk_mode_str
+endfunction
+command ModeWithSkk echo s:mode_with_skk()
