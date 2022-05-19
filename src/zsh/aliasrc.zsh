@@ -1,4 +1,5 @@
 # alias
+alias sudo='sudo '
 alias vim='nvim'
 alias vimdiff='nvim -d'
 if type brew > /dev/null 2>&1; then
