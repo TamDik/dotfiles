@@ -38,7 +38,13 @@ hook_add = '''
   \    'workspace_config': {
   \      'pylsp': {
   \        'plugins': {
-  \        'pycodestyle': {'enabled': v:true},
+  \        'pycodestyle': {
+  \          'enabled': v:true,
+  \          'ignore': [
+  \            'E402',
+  \            'E501',
+  \          ],
+  \        },
   \        'pylint': {'enabled': v:false},
   \        }
   \      }
