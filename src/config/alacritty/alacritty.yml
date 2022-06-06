@@ -15,7 +15,7 @@ window:
     y: 2
   decorations: Full
   startup_mode: Maximized
-  opacity: 1
+  opacity: 0.97
 
 mouse:
   hide_when_typing: true
