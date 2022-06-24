@@ -1,6 +1,8 @@
 #!/bin/zsh
 # See build prerequisites (https://github.com/neovim/neovim/wiki/Building-Neovim#build-prerequisites)
 
+set -e
+
 nvim_user=~/repos/github.com/neovim
 nvim_repo=$nvim_user/neovim
 
