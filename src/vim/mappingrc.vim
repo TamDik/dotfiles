@@ -8,8 +8,8 @@ nnoremap <Up> <C-w>+
 nnoremap <Down> <C-w>-
 
 " split
-nnoremap <silent> <leader>v <Cmd>split<CR>
-nnoremap <silent> <leader>h <Cmd>vsplit<CR>
+nnoremap <silent> <leader>s <Cmd>split<CR>
+nnoremap <silent> <leader>v <Cmd>vsplit<CR>
 nnoremap <silent> <leader>q <Cmd>close<CR>
 
 " buffer

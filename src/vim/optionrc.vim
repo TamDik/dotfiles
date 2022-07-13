@@ -10,7 +10,8 @@ set noruler
 set hidden
 set nonumber
 set norelativenumber
-set laststatus=2
+set laststatus=0
+set cmdheight=0
 set wrap
 set list
 set listchars=tab:>-,trail:-

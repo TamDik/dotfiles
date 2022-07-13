@@ -25,7 +25,7 @@ if !dein#load_state(s:dein_repo_path)
   finish
 endif
 
-let g:dein#install_check_diff = v:true
+let g:dein#install_check_diff = v:false
 " let g:dein#auto_recache = !has('win32')
 let g:dein#cache_directory = s:dein_cache_path
 call dein#begin(s:dein_repo_path)
