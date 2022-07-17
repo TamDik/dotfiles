@@ -12,6 +12,16 @@ merged = 0
 
 
 [[plugins]]
+repo = 'bluz71/vim-nightfly-guicolors'
+merged = 0
+
+
+[[plugins]]
+repo = 'wadackel/vim-dogrun'
+merged = 0
+
+
+[[plugins]]
 repo = 'tpope/vim-surround'
 
 

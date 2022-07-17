@@ -12,20 +12,26 @@ function! s:bg_to_transparent()
   highlight FoldColumn  ctermbg=NONE guibg=NONE
 endfunction
 
-let s:transparent = 1
+let s:transparent = 0
 function! s:is_transparent()
   let l:color_schemes = ['iceberg', 'edge']
   return s:transparent
   " return s:transparent && match(l:color_schemes, g:colors_name) != -1
 endfunction
 
-call s:bg_to_transparent()
-
-command TransparencyToggle let s:transparent = 1 - s:transparent | execute "colorscheme " . g:colors_name
+function! s:my_color_setting()
+  if s:is_transparent()
+    call s:bg_to_transparent()
+  endif
+  highlight Visual guibg=#424550
+  highlight VertSplit ctermfg=232 guifg=#202023 guibg=None
+endfunction
 
 augroup TransparentBG
   autocmd!
-  autocmd ColorScheme * if s:is_transparent() | call s:bg_to_transparent() | endif
+  autocmd ColorScheme * call s:my_color_setting()
 augroup END
 
-highlight Visual guibg=#424550
+command TransparencyToggle let s:transparent = 1 - s:transparent | execute "colorscheme " . g:colors_name
+
+call s:my_color_setting()
