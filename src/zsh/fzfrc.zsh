@@ -82,6 +82,6 @@ fca() {
 fssh() {
     local host
     [ ! -f ~/.ssh/config ] && return 1
-    host=$(cat ~/.ssh/config | grep -i ^host | awk '{print $2}' | fzf)
+    host=$(cat ~/.ssh/config | grep -i ^host | awk '{print $2}' | fzf --preview 'ssh -ttG {} | grep "^\(user\|hostname\)\b"')
     [ -n "$host" ] && ssh "${host}"
 }
