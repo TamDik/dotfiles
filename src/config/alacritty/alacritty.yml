@@ -14,7 +14,7 @@ window:
     x: 2
     y: 2
   decorations: Full
-  startup_mode: Maximized
+  # startup_mode: Maximized
   opacity: 0.97
 
 mouse:
