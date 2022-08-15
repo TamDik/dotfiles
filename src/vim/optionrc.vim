@@ -10,7 +10,7 @@ set noruler
 set hidden
 set nonumber
 set norelativenumber
-set laststatus=3
+set laststatus=0
 set cmdheight=1
 set wrap
 set list

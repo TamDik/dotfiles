@@ -30,3 +30,10 @@ fi
 [ -f ~/.cargo/env ] && source ~/.cargo/env
 [ -d /usr/share/sumo ] && export SUMO_HOME=/usr/share/sumo
 [ -d /opt/homebrew/opt/sumo/share/sumo ] && export SUMO_HOME=/opt/homebrew/opt/sumo/share/sumo
+
+# zlib
+[ -d /opt/homebrew/opt/zlib/lib ] && export LDFLAGS=-L/opt/homebrew/opt/zlib/lib
+[ -d /opt/homebrew/opt/zlib/include ] && export CPPFLAGS=-I/opt/homebrew/opt/zlib/include
+[ -d /opt/homebrew/opt/zlib/lib/pkgconfig ] && export PKG_CONFIG_PATH=/opt/homebrew/opt/zlib/lib/pkgconfig
+
+# vim:ft=zsh

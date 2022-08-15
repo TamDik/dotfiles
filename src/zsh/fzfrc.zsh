@@ -73,12 +73,6 @@ fshow() {
       --bind "ctrl-m:execute:echo {} | grep -o '[a-f0-9]\{7\}' | head -1 | xargs -I % sh -c 'git show --color=always % | less -R'"
 }
 
-# fca - activate a conda environment
-fca() {
-  conda_env=$(conda info -e | sed -E '/^#/d' | sed -E '/^$/d' | fzf --exit-0 --select-1 | awk '{print $1}')
-  [[ -n $conda_env ]] && conda activate "${conda_env}"
-}
-
 fssh() {
     local host
     [ ! -f ~/.ssh/config ] && return 1
