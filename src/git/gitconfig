@@ -5,6 +5,8 @@
 	st = status
 	df = diff
 	cm = commit
+	default-branch = !git symbolic-ref refs/remotes/origin/HEAD | sed 's!.*/!!'
+	home = !git switch $(git default-branch)
 [core]
 	excludesfile = ~/dotfiles/git/ignore_global
 [commit]
