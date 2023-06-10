@@ -10,7 +10,7 @@ set noruler
 set hidden
 set nonumber
 set norelativenumber
-set laststatus=0
+set laststatus=2
 set cmdheight=1
 set wrap
 set list
@@ -65,7 +65,7 @@ set shiftwidth=0
 set expandtab
 augroup TabSetting
   autocmd!
-  autocmd FileType vim,yaml,toml,markdown,xml,html,sh,zsh setlocal tabstop=2
+  autocmd FileType vim,yaml,toml,markdown,xml,html,sh,zsh,typescriptreact setlocal tabstop=2
 augroup END
 
 " parentheses

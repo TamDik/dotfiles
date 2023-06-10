@@ -5,3 +5,4 @@
 *.pyc
 .pylintrc
 .vimrc.local
+.python-version
