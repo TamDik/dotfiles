@@ -10,7 +10,7 @@ let g:mapleader = "\<Space>"
 execute 'source' . expand('~/.config/nvim/optionrc.vim')
 execute 'source' . expand('~/.config/nvim/mappingrc.vim')
 execute 'source' . expand('~/.config/nvim/deinrc.vim')
- execute 'source' . expand('~/.config/nvim/colorrc.vim')
+execute 'source' . expand('~/.config/nvim/colorrc.vim')
 
 " default plugins
 let g:loaded_netrw = 1

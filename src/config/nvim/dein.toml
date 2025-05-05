@@ -25,7 +25,6 @@ hook_add = """
   nnoremap <silent> <leader>fh <Cmd>Telescope help_tags<CR>
 """
 
-
 [[plugins]]
 repo = "MunifTanjim/nui.nvim"
 
