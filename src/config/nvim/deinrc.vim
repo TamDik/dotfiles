@@ -1,6 +1,3 @@
-" dein
-
-
 if &runtimepath !~# '/dein.vim'
   let s:dein_vim_path = expand('~/repos/github.com/Shougo/dein.vim')
   if !isdirectory(s:dein_vim_path)
@@ -8,15 +5,6 @@ if &runtimepath !~# '/dein.vim'
   endif
   execute 'set runtimepath^=' . fnamemodify(s:dein_vim_path, ':p')
 endif
-
-function! s:load_dein_toml(filename, ...)
-  if !filereadable(a:filename)
-    call _error(printf('file %s is not found.', a:filename))
-    return
-  endif
-  let lazy = get(a:000, 0, 0)
-  call dein#load_toml(a:filename, {'lazy': lazy})
-endfunction
 
 let s:dein_repo_path = expand('~/repos/dein.vim')
 let s:dein_cache_path = expand('~/.cache/dein')
@@ -29,9 +17,9 @@ let g:dein#install_check_diff = v:false
 " let g:dein#auto_recache = !has('win32')
 let g:dein#cache_directory = s:dein_cache_path
 call dein#begin(s:dein_repo_path)
-call s:load_dein_toml(g:VIM_ROOT . '/dein.toml')
-call s:load_dein_toml(g:VIM_ROOT . '/dein_lazy.toml', 1)
-call s:load_dein_toml(g:VIM_ROOT . '/dein_ft.toml')
+call dein#load_toml(expand('~/.config/nvim/dein.toml'), {'lazy': 0})
+ call dein#load_toml(expand('~/.config/nvim/dein_lazy.toml'), {'lazy': 1})
+" call dein#load_toml(expand('~/.config/nvim/dein_ft.toml'), {'lazy': 0})
 call dein#end()
 call dein#save_state()
 

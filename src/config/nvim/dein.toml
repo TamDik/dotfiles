@@ -1,0 +1,38 @@
+[[plugins]]
+repo = "wadackel/vim-dogrun"
+merged = 0
+
+[[plugins]]
+repo = "tpope/vim-surround"
+
+[[plugins]]
+repo = "tpope/vim-repeat"
+
+[[plugins]]
+repo = "nvim-lua/plenary.nvim"
+
+[[plugins]]
+repo = "nvim-tree/nvim-web-devicons"
+
+[[plugins]]
+repo = "nvim-telescope/telescope.nvim"
+depends = ["plenary.nvim", "nvim-web-devicons"]
+hook_add = """
+  " パフォーマンスに問題があったらfzfをsorterとして使う
+  nnoremap <silent> <leader>ff <Cmd>Telescope find_files<CR>
+  nnoremap <silent> <leader>fr <Cmd>Telescope live_grep<CR>
+  nnoremap <silent> <leader>fb <Cmd>Telescope buffers<CR>
+  nnoremap <silent> <leader>fh <Cmd>Telescope help_tags<CR>
+"""
+
+
+[[plugins]]
+repo = "MunifTanjim/nui.nvim"
+
+[[plugins]]
+repo = "nvim-neo-tree/neo-tree.nvim"
+depends = ["plenary.nvim", "nvim-web-devicons", "nui.nvim"]
+hook_add = """
+  nnoremap <silent> <leader>b <Cmd>Neotree toggle<CR>
+  nnoremap <silent> <leader>;e <Cmd>Neotree toggle<CR>
+"""

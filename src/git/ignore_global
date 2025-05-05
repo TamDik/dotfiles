@@ -1,8 +1,0 @@
-*~
-.DS_Store
-.swp
-.tags
-*.pyc
-.pylintrc
-.vimrc.local
-.python-version

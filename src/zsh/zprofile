@@ -7,36 +7,14 @@ export XDG_CONFIG_HOME=~/.config
 export XDG_CACHE_HOME=~/.cache
 export XDG_DATA_HOME=~/.local/share
 export PATH
-[ -f ~/.secret-export ] && source ~/.secret-export
 
+[ -f ~/.secret-export ] && source ~/.secret-export
 [ -d ~/bin ] && PATH=$PATH:~/bin
-[ -d ~/bin/pfn ] && PATH=$PATH:~/bin/pfn
-[ -d /Applications/WezTerm.app/Contents/MacOS ] && PATH=$PATH:/Applications/Webex.app/Contents/MacOS
+[ -d ~/.local/bin ] && PATH=$PATH:~/.local/bin
 
 [ -x /opt/homebrew/bin/brew ] && eval "$(/opt/homebrew/bin/brew shellenv)"
-
-if [ -d ~/.deno ]; then
-  export DENO_INSTALL=~/.deno
-  PATH=$PATH:$DENO_INSTALL/bin
-fi
-
 [ -d ~/.nodebrew/current/bin ] && PATH=$PATH:~/.nodebrew/current/bin
 
-if [ -x /usr/libexec/java_home ]; then
-  export JAVA_HOME=$(/usr/libexec/java_home)
-  JavaFXLib=$JavaFXLib:~/Prog/Java/javafx-sdk-11.0.2/lib/
-  export JavaFXLib
-fi
-
-
-[ -f ~/.cargo/env ] && source ~/.cargo/env
-[ -d /usr/share/sumo ] && export SUMO_HOME=/usr/share/sumo
-[ -d /opt/homebrew/opt/sumo/share/sumo ] && export SUMO_HOME=/opt/homebrew/opt/sumo/share/sumo
-
-# zlib
-[ -d /opt/homebrew/opt/zlib/lib ] && export LDFLAGS=-L/opt/homebrew/opt/zlib/lib
-[ -d /opt/homebrew/opt/zlib/include ] && export CPPFLAGS=-I/opt/homebrew/opt/zlib/include
-[ -d /opt/homebrew/opt/zlib/lib/pkgconfig ] && export PKG_CONFIG_PATH=/opt/homebrew/opt/zlib/lib/pkgconfig
-
+[ -f ~/.secret-export ] && source ~/.secret-export
 
 # vim:ft=zsh

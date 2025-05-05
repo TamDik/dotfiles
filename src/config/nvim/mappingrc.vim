@@ -1,3 +1,6 @@
+" 勝手にvirtualedit=allになってしまうので一時しのぎ(skkeleton?)
+nnoremap <leader>e <Cmd>set virtualedit=<CR>
+
 " search
 nnoremap <silent> <leader><Space> <Cmd>nohlsearch<CR>
 
@@ -35,7 +38,6 @@ endif
 tnoremap j<Space> j
 
 " echo
-nnoremap <leader>; <Cmd>echo expand('%:~')<CR>
 nnoremap <leader>el <Cmd>echo line('.') . ':' . col('.')<CR>
 
 " command line
@@ -45,9 +47,6 @@ cnoremap <C-f> <Right>
 cnoremap <C-d> <Del>
 
 nnoremap Y y$
-if executable('compiler')
-  nnoremap <silent> <F5> :w<CR>:!compiler %<CR>
-endif
 
 nnoremap <silent><expr> * v:count ? '*'
       \: ':silent execute "keepjumps normal! *" <Bar> call winrestview(' . string(winsaveview()) . ')<CR>'

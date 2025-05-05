@@ -5,7 +5,6 @@ setopt interactivecomments
 setopt correct
 # disable r
 
-
 # key bind
 export KEYTIMEOUT=20
 
@@ -64,26 +63,6 @@ zstyle ':vcs_info:git:*' formats " %c%u%b"
 zstyle ':vcs_info:*' formats " %s(%b)"
 
 export RPROMPT='%1(j.%j-job.)${vcs_info_msg_0_}'
-
-
-# zplug
-export ZPLUG_HOME=~/repos/github.com/zplug/zplug
-export ZPLUG_CACHE_DIR=~/.cache/zplug
-export ZPLUG_REPOS=~/repos/zplug
-if [ ! -d $ZPLUG_HOME ]; then
-  curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
-fi
-source $ZPLUG_HOME/init.zsh
-zplug "zsh-users/zsh-syntax-highlighting", defer:2
-zplug "momo-lab/zsh-abbrev-alias"
-# now installed with ``brew''
-# zplug "universal-ctags/ctags"
-zplug "junegunn/fzf-bin", as:command, from:gh-r, rename-to:fzf
-zplug "junegunn/fzf", as:command, use:bin/fzf-tmux
-if ! zplug check; then
-  zplug install
-fi
-zplug load
 
 
 # history
@@ -172,18 +151,96 @@ bindkey "\C-x\C-e" edit-command-line
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 
 
-# python
-[ -f ${DOTFILES}/python/pythonrc.zsh ] && source ${DOTFILES}/python/pythonrc.zsh
+# alias
+alias sudo='sudo '
+alias vim='nvim'
+alias vimdiff='nvim -d'
+
+if [ `uname` = 'Darwin' ]; then
+  alias ls='ls -FG'
+  alias la='ls -aFG'
+  alias ll='ls -lhFG'
+  alias lla='ls -alhFG'
+elif [ `uname` = 'Linux' ]; then
+  alias ls='ls -F --color=always'
+  alias la='ls -aF --color=always'
+  alias ll='ls -lhF --color=always'
+  alias lla='ls -alhF --color=always'
+fi
+alias tree='tree -NC -l'
+
+alias history-all='history -E 1 '
+
+alias du='du -h'
+alias df='df -h'
+
+alias gst='git status'
+alias gdf='git diff'
+alias gaa='git add .'
+alias gcm='git commit'
+
+
+# pyenv
+export PYENV_ROOT=~/.pyenv
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
 
 # fzf
-[ -f ${DOTFILES}/zsh/fzfrc.zsh ] && source ${DOTFILES}/zsh/fzfrc.zsh
+export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
+FZF_SHELL_DIR=/opt/homebrew/opt/fzf/shell
+[ -f $FZF_SHELL_DIR/completion.zsh ] && source $FZF_SHELL_DIR/completion.zsh
+[ -f $FZF_SHELL_DIR/key-bindings.zsh ] && source $FZF_SHELL_DIR/key-bindings.zsh
+# CTRL-T - Paste the selected files and directories onto the command-line
+# CTRL-R - Paste the selected command from history onto the command-line
+# ALT-C  - cd into the selected directory
 
-# alias
-[ -f ${DOTFILES}/zsh/aliasrc.zsh ] && source ${DOTFILES}/zsh/aliasrc.zsh
+
+# attach the selected session
+fta () {
+  local message_of_creation sessions session
+  if [ -n "$TMUX" ]; then
+    return
+  fi
+
+  message_of_creation='CREATE NEW SESSION'
+  sessions=$(tmux list-sessions 2> /dev/null)
+  if [ -z "$sessions" ]; then
+    sessions=$message_of_creation
+  else
+    sessions="${message_of_creation}\n${sessions}"
+  fi
+
+  session=$(echo $sessions | fzf --exit-0 --select-1 | awk -F: '{print $1}')
+  case $session in
+    ${message_of_creation} )
+      echo -n '\n\e[031mNEW SESSION NAME ❱\e[m '
+      read session_name
+      if [ -n "$session_name" ]; then
+        tmux new -s $session_name
+      fi;;
+
+    '' ) ;;
+    * ) tmux attach -t $session;;
+  esac
+}
 
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/daiki/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/daiki/google-cloud-sdk/path.zsh.inc'; fi
+# Open the selected file at dotfiles
+frc() (
+  local rcdir rcfile preview
+  rcdir=~/repos/github.com/TamDik/dotfiles
+  cd $rcdir > /dev/null
 
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/daiki/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/daiki/google-cloud-sdk/completion.zsh.inc'; fi
+  if type bat > /dev/null 2>&1; then
+      preview="bat --style=numbers --color=always {}"
+  else
+      preview="cat -n {}"
+  fi
+  rcfile=$(find . -name '.git' -prune -o -type f -print | sed '/.DS_Store/d' | sed -e 's/^.\///' | fzf --preview $preview)
+
+  if [ -z "$rcfile" ]; then
+    return
+  fi
+  nvim "$rcfile"
+)

@@ -1,0 +1,172 @@
+[[plugins]]
+repo = 'prabirshrestha/vim-lsp'
+on_event = 'VimEnter'
+hook_add = '''
+  let g:lsp_document_code_action_signs_enabled = 0
+  let g:lsp_document_highlight_enabled = 0
+  let g:lsp_signature_help_enabled = 0
+  let g:lsp_diagnostics_virtual_text_prefix = '‣ '
+  let g:lsp_diagnostics_signs_error = {'text': 'E'}
+  let g:lsp_diagnostics_signs_warning = {'text': 'W'}
+  let g:lsp_diagnostics_signs_information = {'text': 'I'}
+  let g:lsp_diagnostics_signs_hint = {'text': 'H'}
+
+  function! s:on_lsp_buffer_enabled() abort
+    nmap <buffer> gd <plug>(lsp-definition)
+    nmap <buffer> <f2> <plug>(lsp-rename)
+    nmap <buffer> <leader>p <plug>(lsp-hover-float)
+    nmap <buffer> <leader>ak <Plug>(lsp-previous-diagnostic)
+    nmap <buffer> <leader>aj <plug>(lsp-next-diagnostic)
+  endfunction
+
+  augroup LSPInstall
+    autocmd!
+    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+  augroup END
+'''
+
+[[plugins]]
+repo = 'mattn/vim-lsp-settings'
+on_source = 'vim-lsp'
+hook_add = '''
+  let g:lsp_settings = {
+  \  'pylsp-all': {
+  \    'workspace_config': {
+  \      'pylsp': {
+  \        'plugins': {
+  \        'pycodestyle': {
+  \          'enabled': v:true,
+  \          'ignore': [
+  \            'E501',
+  \          ],
+  \        },
+  \        'pylint': {'enabled': v:false},
+  \        }
+  \      }
+  \    }
+  \  }
+  \}
+'''
+
+[[plugins]]
+repo = 'vim-denops/denops.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc.vim'
+depends = ['denops.vim']
+on_event = 'InsertEnter'
+hook_source = '''
+  inoremap <silent><expr> <C-l> ddc#complete_common_string()
+
+  call ddc#custom#patch_global('ui', 'pum')
+  call ddc#custom#patch_global('sources', ['vim-lsp', 'around', 'file', 'skkeleton'])
+  " 'ignoreCase': v:true, 'matchers': ['matcher_head'], 'sorters': ['sorter_rank'], 'converters': [],
+  call ddc#custom#patch_global('sourceOptions', {
+      \ '_': {
+      \   'matchers': ['matcher_fuzzy'],
+      \   'sorters': ['sorter_fuzzy'],
+      \   'converters': ['converter_fuzzy']
+      \ },
+      \ 'around': {
+      \   'mark': 'A',
+      \   'matchers': ['matcher_head', 'matcher_length']
+      \ },
+      \ 'file': {
+      \   'mark': 'F',
+      \   'isVolatile': v:true,
+      \   'forceCompletionPattern': '\S/\S*',
+      \ },
+      \ 'vim-lsp': {
+      \   'mark': 'lsp',
+      \   'minAutoCompleteLength': 1,
+      \ },
+      \ 'skkeleton': {
+      \   'mark': 'skk',
+      \   'matchers': [],
+      \   'sorters': [],
+      \   'converters': [],
+      \   'isVolatile': v:true,
+      \   'minAutoCompleteLength': 1,
+      \ },
+      \ })
+  call ddc#custom#patch_global('backspaceCompletion', v:true)
+  call ddc#enable()
+'''
+
+[[plugins]]
+repo = 'Shougo/pum.vim'
+hook_source = '''
+  inoremap <C-n> <Cmd>call pum#map#insert_relative(+1)<CR>
+  inoremap <C-p> <Cmd>call pum#map#insert_relative(-1)<CR>
+  inoremap <C-y> <Cmd>call pum#map#confirm()<CR>
+  inoremap <C-e> <Cmd>call pum#map#cancel()<CR>
+'''
+
+
+[[plugins]]
+repo = 'Shougo/ddc-ui-pum'
+depends = ['pum.vim']
+on_source = 'ddc.vim'
+
+
+[[plugins]]
+repo = 'Shougo/ddc-ui-native'
+on_source = 'ddc.vim'
+
+
+[[plugins]]
+repo = 'tani/ddc-fuzzy'
+on_source = 'ddc.vim'
+
+
+[[plugins]]
+repo = 'Shougo/ddc-sorter_rank'
+on_source = 'ddc.vim'
+
+
+[[plugins]]
+repo = 'Shougo/ddc-matcher_head'
+on_source = 'ddc.vim'
+
+
+[[plugins]]
+repo = 'Shougo/ddc-matcher_length'
+on_source = 'ddc.vim'
+
+
+[[plugins]]
+repo = 'Shougo/ddc-around'
+on_source = 'ddc.vim'
+
+
+[[plugins]]
+repo = 'LumaKernel/ddc-file'
+on_source = 'ddc.vim'
+
+
+[[plugins]]
+repo = 'shun/ddc-vim-lsp'
+on_source = 'ddc.vim'
+
+
+[[plugins]]
+repo = 'vim-skk/skkeleton'
+on_map = {ic = '<Plug>'}
+on_source = 'ddc.vim'
+hook_add = '''
+  imap <C-j> <Plug>(skkeleton-toggle)
+  cmap <C-j> <Plug>(skkeleton-toggle)
+'''
+hook_source = '''
+  if !isdirectory(expand('~/.skkeleton'))
+    call mkdir(expand('~/.skkeleton'), 'p')
+  endif
+  call skkeleton#config({
+      \ 'globalDictionaries': ['~/repos/github.com/skk-dev/dict/SKK-JISYO.L'],
+      \ 'eggLikeNewline': v:true,
+      \ 'registerConvertResult': v:true,
+      \ 'completionRankFile': '~/.skkeleton/rank.json',
+      \ 'userDictionary': '~/.skkeleton/user-dictionary'
+      \ })
+  call skkeleton#register_kanatable('rom', {'jj': 'escape'})
+'''
