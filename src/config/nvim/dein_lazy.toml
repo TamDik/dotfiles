@@ -54,13 +54,20 @@ repo = 'vim-denops/denops.vim'
 [[plugins]]
 repo = 'Shougo/ddc.vim'
 depends = ['denops.vim']
-on_event = 'InsertEnter'
+on_event =  ['InsertEnter', 'CmdlineEnter']
 hook_source = '''
+  autocmd CmdlineEnter * call ddc#enable_cmdline_completion()
+
   inoremap <silent><expr> <C-l> ddc#complete_common_string()
 
   call ddc#custom#patch_global('ui', 'pum')
   call ddc#custom#patch_global('sources', ['vim-lsp', 'around', 'file', 'skkeleton'])
-  " 'ignoreCase': v:true, 'matchers': ['matcher_head'], 'sorters': ['sorter_rank'], 'converters': [],
+  call ddc#custom#patch_global('cmdlineSources', {
+    \ ':': ['cmdline_history', 'cmdline', 'around', 'file'],
+    \ '/': ['around', 'line'],
+    \ '?': ['around', 'line'],
+    \ })
+  call ddc#custom#patch_global('autoCompleteEvents', ["InsertEnter", "TextChangedI", "TextChangedP", "CmdlineEnter", "CmdlineChanged"])
   call ddc#custom#patch_global('sourceOptions', {
       \ '_': {
       \   'matchers': ['matcher_fuzzy'],
@@ -68,11 +75,11 @@ hook_source = '''
       \   'converters': ['converter_fuzzy']
       \ },
       \ 'around': {
-      \   'mark': 'A',
+      \   'mark': 'around',
       \   'matchers': ['matcher_head', 'matcher_length']
       \ },
       \ 'file': {
-      \   'mark': 'F',
+      \   'mark': 'file',
       \   'isVolatile': v:true,
       \   'forceCompletionPattern': '\S/\S*',
       \ },
@@ -88,6 +95,12 @@ hook_source = '''
       \   'isVolatile': v:true,
       \   'minAutoCompleteLength': 1,
       \ },
+      \ 'cmdline': {
+      \   'mark': 'cmdline',
+      \ },
+      \ 'cmdline_history': {
+      \   'mark': 'history',
+      \ },
       \ })
   call ddc#custom#patch_global('backspaceCompletion', v:true)
   call ddc#enable()
@@ -100,54 +113,55 @@ hook_source = '''
   inoremap <C-p> <Cmd>call pum#map#insert_relative(-1)<CR>
   inoremap <C-y> <Cmd>call pum#map#confirm()<CR>
   inoremap <C-e> <Cmd>call pum#map#cancel()<CR>
-'''
 
+  cnoremap <C-n> <Cmd>call pum#map#insert_relative(+1)<CR>
+  cnoremap <C-p> <Cmd>call pum#map#insert_relative(-1)<CR>
+'''
 
 [[plugins]]
 repo = 'Shougo/ddc-ui-pum'
 depends = ['pum.vim']
 on_source = 'ddc.vim'
 
-
 [[plugins]]
 repo = 'Shougo/ddc-ui-native'
 on_source = 'ddc.vim'
-
 
 [[plugins]]
 repo = 'tani/ddc-fuzzy'
 on_source = 'ddc.vim'
 
-
 [[plugins]]
 repo = 'Shougo/ddc-sorter_rank'
 on_source = 'ddc.vim'
-
 
 [[plugins]]
 repo = 'Shougo/ddc-matcher_head'
 on_source = 'ddc.vim'
 
-
 [[plugins]]
 repo = 'Shougo/ddc-matcher_length'
 on_source = 'ddc.vim'
-
 
 [[plugins]]
 repo = 'Shougo/ddc-around'
 on_source = 'ddc.vim'
 
+[[plugins]]
+repo = 'Shougo/ddc-source-cmdline'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc-source-cmdline_history'
+on_source = 'ddc.vim'
 
 [[plugins]]
 repo = 'LumaKernel/ddc-file'
 on_source = 'ddc.vim'
 
-
 [[plugins]]
 repo = 'shun/ddc-vim-lsp'
 on_source = 'ddc.vim'
-
 
 [[plugins]]
 repo = 'vim-skk/skkeleton'
