@@ -116,6 +116,12 @@ hook_source = '''
 
   cnoremap <C-n> <Cmd>call pum#map#insert_relative(+1)<CR>
   cnoremap <C-p> <Cmd>call pum#map#insert_relative(-1)<CR>
+  cnoremap <Tab> <Cmd>call pum#map#insert_relative(+1)<CR>
+  cnoremap <S-Tab> <Cmd>call pum#map#insert_relative(-1)<CR>
+  cnoremap <C-y> <Cmd>call pum#map#confirm()<CR>
+
+  set nowildmenu
+  set wildoptions-=pum
 '''
 
 [[plugins]]
