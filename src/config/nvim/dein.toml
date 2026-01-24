@@ -72,14 +72,3 @@ hook_add = """
   }
 EOF
 """
-
-[[plugins]]
-repo = "MunifTanjim/nui.nvim"
-
-[[plugins]]
-repo = "nvim-neo-tree/neo-tree.nvim"
-depends = ["plenary.nvim", "nvim-web-devicons", "nui.nvim"]
-hook_add = """
-  nnoremap <silent> <leader>b <Cmd>Neotree toggle<CR>
-  nnoremap <silent> <leader>;e <Cmd>Neotree toggle<CR>
-"""
