@@ -1,5 +1,9 @@
+# [[plugins]]
+# repo = "wadackel/vim-dogrun"
+# merged = 0
+
 [[plugins]]
-repo = "wadackel/vim-dogrun"
+repo = "EdenEast/nightfox.nvim"
 merged = 0
 
 [[plugins]]

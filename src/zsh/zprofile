@@ -16,5 +16,13 @@ export PATH
 [ -d ~/.nodebrew/current/bin ] && PATH=$PATH:~/.nodebrew/current/bin
 
 [ -f ~/.secret-export ] && source ~/.secret-export
+[ -d /opt/homebrew/opt/unzip/bin ] && PATH="/opt/homebrew/opt/unzip/bin:$PATH"
+
+# pnpm
+export PNPM_HOME=~/.local/share/pnpm
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
 
 # vim:ft=zsh

@@ -8,8 +8,8 @@ set noshowcmd
 set noshowmode
 set noruler
 set hidden
-set nonumber
-set norelativenumber
+set number
+set relativenumber
 set laststatus=2
 set cmdheight=1
 set wrap
