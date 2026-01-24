@@ -196,4 +196,5 @@ repo = 'github/copilot.vim'
 on_event = 'VimEnter'
 hook_source = """
   " let g:copilot_no_maps = v:true
+  let g:copilot_filetypes = { 'gitcommit': v:true }
 """
