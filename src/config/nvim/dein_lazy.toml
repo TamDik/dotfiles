@@ -171,11 +171,12 @@ on_source = 'ddc.vim'
 
 [[plugins]]
 repo = 'vim-skk/skkeleton'
-on_map = {ic = '<Plug>'}
+on_map = {ict = '<Plug>'}
 on_source = 'ddc.vim'
 hook_add = '''
   imap <C-j> <Plug>(skkeleton-toggle)
   cmap <C-j> <Plug>(skkeleton-toggle)
+  tmap <C-j> <Plug>(skkeleton-toggle)
 '''
 hook_source = '''
   if !isdirectory(expand('~/.skkeleton'))
