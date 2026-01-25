@@ -2,6 +2,7 @@
 function! s:bg_to_transparent()
   if !has('gui')
     highlight Normal ctermbg=NONE guibg=NONE
+    highlight NormalNC ctermbg=NONE guibg=NONE
   endif
   highlight LineNr      ctermbg=NONE guibg=NONE
   highlight NonText     ctermbg=NONE guibg=NONE
