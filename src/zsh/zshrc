@@ -244,3 +244,7 @@ frc() (
   fi
   nvim "$rcfile"
 )
+
+
+# sheldon
+eval "$(sheldon source)"

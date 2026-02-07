@@ -25,7 +25,7 @@ function! s:my_color_setting()
     call s:bg_to_transparent()
   endif
   highlight Visual guibg=#424550
-  highlight VertSplit ctermfg=232 guifg=#202023 guibg=None
+  highlight VertSplit ctermfg=232 guifg=#202023 guibg=NONE
 endfunction
 
 augroup TransparentBG
