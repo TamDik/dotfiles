@@ -16,3 +16,9 @@ shell = "zsh"
 
 [plugins.zsh-syntax-highlighting]
 git = "https://github.com/zsh-users/zsh-syntax-highlighting.git"
+
+# [plugins.zsh-autocomplete]
+# git = "https://github.com/marlonrichert/zsh-autocomplete.git"
+
+[plugins.zsh-completions]
+git = "https://github.com/zsh-users/zsh-completions.git"

@@ -186,6 +186,19 @@ export PYENV_ROOT=~/.pyenv
 eval "$(pyenv init -)"
 
 
+# sheldon
+eval "$(sheldon source)"
+
+# zoxide
+eval "$(zoxide init zsh)"
+zi-widget() {
+  zi
+  zle reset-prompt
+}
+zle -N zi-widget
+bindkey '^G' zi-widget
+
+
 # fzf
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 FZF_SHELL_DIR=/opt/homebrew/opt/fzf/shell
@@ -244,7 +257,3 @@ frc() (
   fi
   nvim "$rcfile"
 )
-
-
-# sheldon
-eval "$(sheldon source)"
