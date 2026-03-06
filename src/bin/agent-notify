@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+title="$1"
+message="$(date +"%H:%M") $2"
+
+if command -v osascript &>/dev/null; then
+  osascript -e "display notification \"$message\" with title \"$title\" sound name \"Glass\""
+elif command -v notify-send &>/dev/null; then
+  notify-send "$title" "$message"
+fi

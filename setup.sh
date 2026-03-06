@@ -11,3 +11,11 @@ done
 ln -snfv ${SCRIPT_DIR}/vim/vimrc ~/.vimrc
 ln -snfv ${SCRIPT_DIR}/zsh/zshrc ~/.zshrc
 ln -snfv ${SCRIPT_DIR}/zsh/zprofile ~/.zprofile
+
+mkdir -p ~/.claude
+ln -snfv ${SCRIPT_DIR}/agent/claude/settings.json ~/.claude/settings.json
+
+mkdir -p ~/.local/bin
+for bin in ${SCRIPT_DIR}/bin/*; do
+  ln -snfv $bin ~/.local/bin/$(basename $bin)
+done
