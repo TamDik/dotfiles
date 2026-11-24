@@ -8,7 +8,7 @@ end
 
 config.harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' }
 config.color_scheme = 'iceberg-dark'
-config.font_size = 17
+config.font_size = 14
 config.window_background_opacity = 0.8
 config.window_decorations = "RESIZE"
 config.window_padding = {

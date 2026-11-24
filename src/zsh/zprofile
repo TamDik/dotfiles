@@ -26,4 +26,7 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 
+# claude
+export CLAUDE_CODE_DISABLE_ARTIFACT=1
+
 # vim:ft=zsh

@@ -55,7 +55,7 @@ endif
 let s:backup_path =  s:nvim_root . '/backup'
 let s:undo_path = s:nvim_root . '/undo'
 let &undodir = s:undo_path
-let &backupdir = s:backup_path
+let &backupdir = s:backup_path . '//'
 
 " tab
 set tabstop=4

@@ -257,3 +257,23 @@ frc() (
   fi
   nvim "$rcfile"
 )
+
+# codex
+function codex-profile() {
+  local profile=$1
+  if [ -z "$profile" ]; then
+    echo "Usage: codex-profile <profile>"
+    return 1
+  fi
+  export CODEX_HOME="$HOME/.codex-$profile"
+  [ -d "$CODEX_HOME" ] || mkdir -p "$CODEX_HOME"
+  codex
+}
+
+alias codex-personal='codex-profile personal'
+alias codex-work='codex-profile work'
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/daiki/.lmstudio/bin"
+# End of LM Studio CLI section
+
