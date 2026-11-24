@@ -180,11 +180,6 @@ alias gaa='git add .'
 alias gcm='git commit'
 
 
-# pyenv
-export PYENV_ROOT=~/.pyenv
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-
 
 # sheldon
 eval "$(sheldon source)"
