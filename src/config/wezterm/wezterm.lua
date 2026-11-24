@@ -6,6 +6,14 @@ if wezterm.config_builder then
   config = wezterm.config_builder()
 end
 
+-- Homebrew cask のフォントは ~/Library/Fonts に入るが、CoreText 経由だと
+-- 見つからないことがあるため明示的に読み込む
+config.font_dirs = { wezterm.home_dir .. '/Library/Fonts' }
+config.font = wezterm.font_with_fallback({
+  'JetBrains Mono',
+  'Noto Sans Mono CJK JP',
+  'Hiragino Sans',
+})
 config.harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' }
 config.color_scheme = 'iceberg-dark'
 config.font_size = 14
@@ -19,13 +27,6 @@ config.window_padding = {
 }
 config.audible_bell = "Disabled"
 
-config.keys = {
-  {
-    key = 'n',
-    mods = 'SHIFT|CTRL',
-    action = wezterm.action.ToggleFullScreen,
-  },
-}
 config.visual_bell = {
   fade_in_function = 'EaseIn',
   fade_in_duration_ms = 150,
