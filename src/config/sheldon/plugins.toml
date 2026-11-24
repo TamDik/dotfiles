@@ -14,11 +14,16 @@ shell = "zsh"
 
 [plugins]
 
-[plugins.zsh-syntax-highlighting]
-git = "https://github.com/zsh-users/zsh-syntax-highlighting.git"
+# 読み込み順: zsh-completions (fpath 追加) → compinit → zsh-syntax-highlighting (最後)
 
 # [plugins.zsh-autocomplete]
 # git = "https://github.com/marlonrichert/zsh-autocomplete.git"
 
 [plugins.zsh-completions]
 git = "https://github.com/zsh-users/zsh-completions.git"
+
+[plugins.compinit]
+inline = "autoload -Uz compinit && compinit -d ~/.zcompdump"
+
+[plugins.zsh-syntax-highlighting]
+git = "https://github.com/zsh-users/zsh-syntax-highlighting.git"

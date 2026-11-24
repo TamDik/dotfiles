@@ -112,7 +112,6 @@ chpwd() {
 # completion
 setopt list_types
 setopt complete_in_word
-autoload -Uz compinit && compinit -d ~/.zcompdump
 zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}'
 zstyle ':completion:*' menu select
 zstyle ':completion:*' list-colors $LS_COLORS
@@ -179,10 +178,6 @@ alias gdf='git diff'
 alias gaa='git add .'
 alias gcm='git commit'
 
-
-
-# sheldon
-eval "$(sheldon source)"
 
 # mise
 command -v mise > /dev/null 2>&1 && eval "$(mise activate zsh)"
@@ -258,6 +253,11 @@ function codex-profile() {
 
 alias codex-personal='codex-profile personal'
 alias codex-work='codex-profile work'
+
+# sheldon
+# compinit と zsh-syntax-highlighting の読み込みも plugins.toml で行う。
+# syntax-highlighting は全ての zle ウィジェット定義後に読み込む必要があるため末尾に置く。
+eval "$(sheldon source)"
 
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/Users/daiki/.lmstudio/bin"
