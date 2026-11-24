@@ -184,6 +184,9 @@ alias gcm='git commit'
 # sheldon
 eval "$(sheldon source)"
 
+# mise
+command -v mise > /dev/null 2>&1 && eval "$(mise activate zsh)"
+
 # fzf
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 FZF_SHELL_DIR=/opt/homebrew/opt/fzf/shell
