@@ -14,9 +14,6 @@ export PATH
 [ -d ~/.local/bin ] && PATH=$PATH:~/.local/bin
 
 [ -x /opt/homebrew/bin/brew ] && eval "$(/opt/homebrew/bin/brew shellenv)"
-[ -d ~/.nodebrew/current/bin ] && PATH=$PATH:~/.nodebrew/current/bin
-
-[ -f ~/.secret-export ] && source ~/.secret-export
 [ -d /opt/homebrew/opt/unzip/bin ] && PATH="/opt/homebrew/opt/unzip/bin:$PATH"
 
 # pnpm

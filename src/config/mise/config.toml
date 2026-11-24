@@ -1,4 +1,9 @@
 [tools]
 deno = "latest"
+fzf = "latest"
+gh = "latest"
+neovim = "latest"
+node = "lts"
 pnpm = "latest"
+ripgrep = "latest"
 uv = "latest"
