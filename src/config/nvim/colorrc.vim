@@ -33,6 +33,8 @@ augroup TransparentBG
   autocmd ColorScheme * call s:my_color_setting()
 augroup END
 
+colorscheme nightfox
+
 command TransparencyToggle let s:transparent = 1 - s:transparent | execute "colorscheme " . g:colors_name
 
 call s:my_color_setting()
