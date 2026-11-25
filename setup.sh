@@ -18,3 +18,7 @@ mkdir -p ~/.local/bin
 for bin in ${SCRIPT_DIR}/bin/*; do
   ln -snfv $bin ~/.local/bin/$(basename $bin)
 done
+
+# mise で入れた docker-compose を `docker compose` サブコマンドとして使えるようにする
+mkdir -p ~/.docker/cli-plugins
+ln -snfv ~/.local/share/mise/installs/docker-compose/latest/docker-compose ~/.docker/cli-plugins/docker-compose

@@ -1,7 +1,11 @@
 [tools]
+colima = "latest"
 deno = "latest"
+docker-cli = "latest"
+docker-compose = "latest"
 fzf = "latest"
 gh = "latest"
+lima = "latest"
 neovim = "latest"
 node = "lts"
 pnpm = "latest"
