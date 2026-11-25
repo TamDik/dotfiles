@@ -167,6 +167,7 @@ elif [ `uname` = 'Linux' ]; then
   alias lla='ls -alhF --color=always'
 fi
 alias tree='tree -NC -l'
+alias treeg='tree --gitignore'
 
 alias history-all='history -E 1 '
 
