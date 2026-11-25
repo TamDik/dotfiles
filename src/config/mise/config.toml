@@ -1,14 +1,21 @@
 [tools]
+awscli = "latest"
+bat = "latest"
 colima = "latest"
 deno = "latest"
 docker-cli = "latest"
 docker-compose = "latest"
 fzf = "latest"
+gcloud = "latest"
 gh = "latest"
 lima = "latest"
 neovim = "latest"
 node = "lts"
 pnpm = "latest"
+python = "3.14"
 ripgrep = "latest"
 tmux = "latest"
 uv = "latest"
+
+[env]
+CLOUDSDK_PYTHON = "{{ env.HOME }}/.local/share/mise/installs/python/3.14/bin/python3"
